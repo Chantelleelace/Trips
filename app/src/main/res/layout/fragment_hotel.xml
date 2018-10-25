@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:padding="16dp"
+  tools:context=".Hotel"
+  >
+
+  <android.support.v7.widget.CardView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/hotel_card_1"
+    android:animateLayoutChanges="true"
+    >
+
+    <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:padding="16dp"
+      >
+
+      <!--Always Shown-->
+      <ImageView
+        android:id="@+id/hotel_picture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/hotel_picture_small"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="16dp"
+        />
+
+      <!--Always Shown-->
+      <TextView
+        android:id="@+id/hotel_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/hotel_picture"
+        android:layout_alignParentTop="true"
+        android:textSize="30sp"
+        android:text="Hotel Name"
+        />
+
+      <!--Hide Expand-->
+      <ImageView
+      android:id="@+id/calendar_check_in"
+      android:layout_width="30dp"
+      android:layout_height="30dp"
+      android:layout_below="@id/hotel_name"
+      android:layout_toRightOf="@id/hotel_picture"
+      android:src="@drawable/date_7_calendar"/>
+
+      <!--Hide Expand-->
+      <ImageView
+        android:id="@+id/calendar_check_out"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/hotel_name"
+        android:layout_toRightOf="@id/calendar_check_in"
+        android:src="@drawable/date_7_calendar"/>
+
+      <!--Show Expand-->
+      <TextView
+      android:id="@+id/hotel_address"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_toRightOf="@id/hotel_picture"
+      android:layout_below="@+id/hotel_name"
+      android:text="@string/hotel_address"
+      android:textColor="@android:color/darker_gray"
+      android:textSize="8pt"
+      />
+
+      <!--Show Expand-->
+      <TextView
+        android:id="@+id/hotel_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/hotel_picture"
+        android:layout_below="@+id/hotel_address"
+        android:text="@string/hotel_phone"
+        android:textColor="@android:color/darker_gray"
+        android:textSize="8pt"
+        />
+
+      <!--Show Expand-->
+      <ImageView
+        android:id="@+id/calendar_check_in_2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/hotel_phone"
+        android:layout_toRightOf="@id/hotel_picture"
+        android:paddingTop="8dp"
+        android:src="@drawable/date_7_calendar"/>
+
+      <!--Show Expand-->
+      <ImageView
+        android:id="@+id/calendar_check_out_2"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@id/calendar_check_in_2"
+        android:layout_toRightOf="@id/hotel_picture"
+        android:paddingTop="8dp"
+        android:src="@drawable/date_7_calendar"/>
+
+      <!--Show Expand-->
+      <TextView
+        android:id="@+id/hotel_check_in"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/calendar_check_in_2"
+        android:layout_below="@+id/hotel_phone"
+        android:paddingTop="8dp"
+        android:text="check-in date"
+        android:textSize="8pt"
+        />
+
+      <!--Show Expand-->
+      <TextView
+        android:id="@+id/hotel_check_out"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/calendar_check_out_2"
+        android:layout_below="@+id/calendar_check_in_2"
+        android:paddingTop="8dp"
+        android:text="check-out date"
+        android:textSize="8pt"
+        />
+
+      <!--Show Expand-->
+      <!--<TextView-->
+        <!--android:id="@+id/name_on_reservation"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_alignParentLeft="true"-->
+        <!--android:layout_below="@+id/hotel_check_out"-->
+        <!--android:paddingTop="8dp"-->
+        <!--android:text="Name on Reservation"-->
+        <!--android:textSize="10pt"-->
+        <!--android:textColor="@android:color/black"-->
+        <!--android:textStyle="bold|italic"-->
+        <!--/>-->
+
+    </RelativeLayout>
+
+  </android.support.v7.widget.CardView>
+
+</LinearLayout>

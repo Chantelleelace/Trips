@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.TextInputLayout.FilledBox
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <android.support.design.widget.TextInputEditText
+      android:hint="@string/hotel_name"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+
+      />
+
+    <android.support.design.widget.TextInputEditText
+    android:hint="@string/hotel_phone"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    />
+
+    <android.support.design.widget.TextInputEditText
+    android:hint="@string/hotel_address"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    />
+
+  <android.support.design.widget.TextInputEditText
+    android:hint="@string/name_on_reservation"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    />
+
+  <android.support.design.widget.TextInputEditText
+    android:hint="@string/confirmation_number"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    />
+
+  <android.support.design.widget.TextInputEditText
+    android:hint="@string/rewards_number"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    />
+
+  <android.support.design.widget.TextInputEditText
+    android:hint="@string/check_in_day"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    />
+
+  <android.support.design.widget.TextInputEditText
+    android:hint="@string/check_in_time"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    />
+
+  <android.support.design.widget.TextInputEditText
+    android:hint="@string/room_type"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    />
+
+  <android.support.design.widget.TextInputEditText
+    android:hint="@string/check_out_date"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    />
+
+  <android.support.design.widget.TextInputEditText
+    android:hint="@string/check_out_time"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    />
+
+  <android.support.design.widget.TextInputEditText
+    android:hint="@string/cost"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    />
+
+  </android.support.design.widget.TextInputLayout.FilledBox>
+
+

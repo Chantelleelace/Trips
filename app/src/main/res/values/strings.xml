@@ -1,0 +1,23 @@
+<resources>
+  <string name="app_name">Trips</string>
+  <string name="tab_text_1">Tab 1</string>
+  <string name="tab_text_2">Tab 2</string>
+  <string name="tab_text_3">Tab 3</string>
+  <string name="action_settings">Settings</string>
+  <string name="section_format">Hello World from section: %1$d</string>
+
+  <!-- TODO: Remove or change this placeholder text -->
+  <string name="hello_blank_fragment">Hello blank fragment</string>
+  <string name="hotel_name">Hotel Name</string>
+  <string name="hotel_phone">hotel_phone</string>
+  <string name="hotel_address">hotel_address</string>
+  <string name="name_on_reservation">Name on Reservation</string>
+  <string name="confirmation_number">confirmation_number</string>
+  <string name="rewards_number">rewards_number</string>
+  <string name="check_in_day">check_in_day</string>
+  <string name="check_in_time">check_in_time</string>
+  <string name="room_type">room_type</string>
+  <string name="check_out_date">check_out_date</string>
+  <string name="check_out_time">check_out_time</string>
+  <string name="cost">cost_due_at_check_out</string>
+</resources>
