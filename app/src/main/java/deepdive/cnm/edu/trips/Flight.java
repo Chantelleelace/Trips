@@ -25,15 +25,26 @@ public class Flight extends Fragment {
       Bundle savedInstanceState) {
     final View view = inflater.inflate(R.layout.fragment_flight, container, false);
 //    puts in EXPAND view
-
+    view.findViewById(R.id.passenger_1).setVisibility(View.GONE);
+    view.findViewById(R.id.airport_code_outbound).setVisibility(View.VISIBLE);
+    view.findViewById(R.id.airport_code_arrival).setVisibility(View.VISIBLE);
+    view.findViewById(R.id.departure_date).setVisibility(View.VISIBLE);
 //    expands card
     view.findViewById(R.id.flight_card_1).setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
         if (view.findViewById(R.id.passenger_1).getVisibility() == View.VISIBLE) {
           view.findViewById(R.id.passenger_1).setVisibility(View.GONE);
+          view.findViewById(R.id.airport_code_outbound).setVisibility(View.VISIBLE);
+          view.findViewById(R.id.airport_code_arrival).setVisibility(View.VISIBLE);
+          view.findViewById(R.id.departure_date).setVisibility(View.VISIBLE);
+          view.findViewById(R.id.departure_time).setVisibility(View.VISIBLE);
         } else {
           view.findViewById(R.id.passenger_1).setVisibility(View.VISIBLE);
+          view.findViewById(R.id.airport_code_outbound).setVisibility(View.VISIBLE);
+          view.findViewById(R.id.airport_code_arrival).setVisibility(View.VISIBLE);
+          view.findViewById(R.id.departure_date).setVisibility(View.VISIBLE);
+          view.findViewById(R.id.departure_time).setVisibility(View.VISIBLE);
         }
       }
     });
