@@ -14,141 +14,187 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_horizontal_margin"
+        app:hintAnimationEnabled="true">
+
+      <android.support.design.widget.TextInputEditText
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="passenger"
+          android:textSize="10sp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:layout_gravity="center_horizontal">
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="70dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_gravity="center"
+        app:hintAnimationEnabled="false">
+
+      <android.support.design.widget.TextInputEditText
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="Conf #"
+          android:textSize="10sp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_gravity="center"
+        app:hintAnimationEnabled="false">
+
+      <android.support.design.widget.TextInputEditText
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:hint="Rewards #"
+          android:textSize="10sp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_gravity="center"
+        app:hintAnimationEnabled="false">
+
+      <android.support.design.widget.TextInputEditText
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:hint="Flight #"
+          android:textSize="10sp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+  </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="18dp"
+        android:text="Departure"
+        android:textSize="15sp"/>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:layout_gravity="center_horizontal">
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="99dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_gravity="center"
         app:counterEnabled="true"
         app:counterMaxLength="3">
 
       <android.support.design.widget.TextInputEditText
-          android:layout_width="match_parent"
+          android:layout_width="15dp"
           android:layout_height="wrap_content"
-          android:hint="Departure Airport" />
+          android:layout_weight="1"
+          android:hint="Airport"
+          android:textSize="10dp" />
 
     </android.support.design.widget.TextInputLayout>
 
-
     <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_gravity="center"
         app:hintAnimationEnabled="false"
         >
 
       <android.support.design.widget.TextInputEditText
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:hint="Departure Date" />
+          android:hint="Date"
+          android:textSize="10sp" />
 
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/activity_horizontal_margin"
+        android:layout_gravity="center"
+        app:hintAnimationEnabled="false"
+        >
+
+      <android.support.design.widget.TextInputEditText
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:hint="Time"
+          android:textSize="10sp" />
+
+    </android.support.design.widget.TextInputLayout>
+
+  </LinearLayout>
+
+    <TextView
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="18dp"
+        android:text="Arrival"
+        android:textSize="15sp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_horizontal_margin"
         app:hintAnimationEnabled="false">
 
       <android.support.design.widget.TextInputEditText
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:hint="Departure Time" />
+          android:hint="Airport"
+          android:textSize="10sp" />
 
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_horizontal_margin"
         app:hintAnimationEnabled="false">
 
       <android.support.design.widget.TextInputEditText
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:hint="Flight Number" />
+          android:hint="Date"
+          android:textSize="10sp" />
 
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/activity_horizontal_margin"
         app:hintAnimationEnabled="false">
 
       <android.support.design.widget.TextInputEditText
-          android:layout_width="match_parent"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:hint="Conf #" />
+          android:hint="Time"
+          android:textSize="10sp" />
 
     </android.support.design.widget.TextInputLayout>
 
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        app:hintAnimationEnabled="false">
-
-      <android.support.design.widget.TextInputEditText
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:hint="Arrival Airport" />
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        app:hintAnimationEnabled="false">
-
-      <android.support.design.widget.TextInputEditText
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:hint="Arrival Date" />
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        app:hintAnimationEnabled="false">
-
-      <android.support.design.widget.TextInputEditText
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:hint="Arrival Time" />
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        app:hintAnimationEnabled="false">
-
-      <android.support.design.widget.TextInputEditText
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:hint="passenger 1" />
-
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        app:hintAnimationEnabled="false">
-
-      <android.support.design.widget.TextInputEditText
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:hint="Passenger Rewards" />
-
-    </android.support.design.widget.TextInputLayout>
-
-
-
-
-
-
-
+    </LinearLayout>
 
   </LinearLayout>
 </ScrollView>
