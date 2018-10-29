@@ -4,14 +4,11 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
-
-import java.sql.Time;
 import java.util.Date;
 
 @Entity (foreignKeys = {
         @ForeignKey(entity = Person.class, parentColumns = "person_id", childColumns = "person_id", onDelete = ForeignKey.CASCADE)
 })
-
 public class Flight {
 
     @ColumnInfo (name = "flight_id")
@@ -30,14 +27,8 @@ public class Flight {
     @ColumnInfo (name = "departure_date", index = true)
     private Date departureDate;
 
-    @ColumnInfo (name = "departure_time", index = true)
-    private Time departureTime;
-
     @ColumnInfo (name = "arrival_date")
     private Date arrivalDate;
-
-    @ColumnInfo (name = "arrival_time")
-    private Time arrivalTime;
 
     @ColumnInfo (name = "flight_number")
     private String flightNumber;
@@ -90,13 +81,6 @@ public class Flight {
         this.departureDate = departureDate;
     }
 
-    public Time getDepartureTime() {
-        return departureTime;
-    }
-
-    public void setDepartureTime(Time departureTime) {
-        this.departureTime = departureTime;
-    }
 
     public Date getArrivalDate() {
         return arrivalDate;
@@ -106,13 +90,7 @@ public class Flight {
         this.arrivalDate = arrivalDate;
     }
 
-    public Time getArrivalTime() {
-        return arrivalTime;
-    }
 
-    public void setArrivalTime(Time arrivalTime) {
-        this.arrivalTime = arrivalTime;
-    }
 
     public String getFlightNumber() {
         return flightNumber;

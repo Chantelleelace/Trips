@@ -10,12 +10,12 @@ import android.view.ViewGroup;
 
 
 /**
- * Hotel {@link Fragment} subclass.
+ * HotelDao {@link Fragment} subclass.
  */
-public class Hotel extends Fragment {
+public class HotelFragment extends Fragment {
 
 
-  public Hotel() {
+  public HotelFragment() {
     // Required empty public constructor
   }
 
