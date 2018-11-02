@@ -26,6 +26,9 @@ public class AddFlight extends DialogFragment {
 
   private Calendar calendar;
   private TextInputEditText date;
+  private TextInputEditText date1;
+  private TextInputEditText time;
+  private TextInputEditText time1;
 
   public AddFlight() {
     // Required empty public constructor
@@ -74,6 +77,28 @@ public class AddFlight extends DialogFragment {
         pickDate(date);
       }
     });
+    date1 = view.findViewById(R.id.date_input_2);
+    date1.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        pickDate(date1);
+      }
+    });
+    time = view.findViewById(R.id.time_input);
+    time.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        pickTime(time);
+      }
+    });
+    time1 = view.findViewById(R.id.time_input_2);
+    time1.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        pickTime(time1);
+      }
+    });
+
 
     return view;
     }
