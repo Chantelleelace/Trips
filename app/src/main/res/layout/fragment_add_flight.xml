@@ -226,5 +226,14 @@
 
     </LinearLayout>
 
+    <Button
+      android:id="@+id/submit_transportation"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_gravity="center"
+      android:backgroundTint="@android:color/transparent"
+      android:text="Submit"
+      android:textAlignment="center"/>
+
   </LinearLayout>
 </ScrollView>
