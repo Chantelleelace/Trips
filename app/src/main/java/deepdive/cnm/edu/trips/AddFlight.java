@@ -1,6 +1,7 @@
 package deepdive.cnm.edu.trips;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.DialogFragment;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment.Mode;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment.OnChangeListener;
@@ -23,7 +25,7 @@ public class AddFlight extends DialogFragment {
 
   private static final String DATE_FORMAT = "yyyy-MM-dd";
   private static final String CALENDAR_KEY = "calendar";
-
+  private String test;
   private Calendar calendar;
   private TextInputEditText date;
   private TextInputEditText date1;
@@ -98,8 +100,6 @@ public class AddFlight extends DialogFragment {
         pickTime(time1);
       }
     });
-
-
     return view;
     }
 
