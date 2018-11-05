@@ -23,6 +23,7 @@
         app:hintAnimationEnabled="true">
 
         <android.support.design.widget.TextInputEditText
+          android:id="@+id/hotel_name_input"
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:hint="Hotel"
@@ -38,6 +39,7 @@
         app:hintAnimationEnabled="false">
 
         <android.support.design.widget.TextInputEditText
+          android:id="@+id/hotel_phone_input"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:hint="Phone"
@@ -62,6 +64,7 @@
         app:hintAnimationEnabled="false">
 
         <android.support.design.widget.TextInputEditText
+          android:id="@+id/hotel_address_input"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:hint="Address"
@@ -84,6 +87,7 @@
         app:hintAnimationEnabled="false">
 
         <android.support.design.widget.TextInputEditText
+          android:id="@+id/hotel_city_input"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:hint="City"
@@ -100,6 +104,7 @@
         app:hintAnimationEnabled="false">
 
         <android.support.design.widget.TextInputEditText
+          android:id="@+id/hotel_state_input"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:hint="State"
@@ -116,6 +121,7 @@
         app:hintAnimationEnabled="false">
 
         <android.support.design.widget.TextInputEditText
+          android:id="@+id/hotel_zip_input"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:hint="Zip"
@@ -137,6 +143,7 @@
         app:hintAnimationEnabled="false">
 
         <android.support.design.widget.TextInputEditText
+          android:id="@+id/hotel_name_on_reservation_input"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:hint="Name on Reservation"
@@ -161,7 +168,7 @@
         >
 
         <android.support.design.widget.TextInputEditText
-          android:id="@+id/check_in_date"
+          android:id="@+id/check_in_date_input"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:focusable="false"
@@ -178,7 +185,7 @@
         app:hintAnimationEnabled="false">
 
         <android.support.design.widget.TextInputEditText
-          android:id="@+id/check_out_date"
+          android:id="@+id/check_out_date_input"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:focusable="false"
@@ -201,6 +208,7 @@
         app:hintAnimationEnabled="false">
 
         <android.support.design.widget.TextInputEditText
+          android:id="@+id/hotel_confirmation_input"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:hint="Confirmation"
@@ -216,6 +224,7 @@
         app:hintAnimationEnabled="false">
 
         <android.support.design.widget.TextInputEditText
+          android:id="@+id/hotel_rewards_input"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:hint="Rewards"
@@ -231,6 +240,7 @@
         app:hintAnimationEnabled="false">
 
         <android.support.design.widget.TextInputEditText
+          android:id="@+id/hotel_cost_input"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:hint="Cost"
@@ -253,6 +263,7 @@
         app:hintAnimationEnabled="false">
 
         <android.support.design.widget.TextInputEditText
+          android:id="@+id/hotel_room_type_input"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:hint="Room Type"
@@ -264,7 +275,7 @@
     </LinearLayout>
 
     <Button
-      android:id="@+id/submit_transportation"
+      android:id="@+id/submit_hotel"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_gravity="center"

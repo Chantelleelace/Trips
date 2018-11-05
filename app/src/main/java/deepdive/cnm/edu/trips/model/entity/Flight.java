@@ -11,35 +11,42 @@ import java.util.Date;
 })
 public class Flight {
 
-    @ColumnInfo (name = "flight_id")
-    @PrimaryKey (autoGenerate = true)
+    @ColumnInfo(name = "flight_id")
+    @PrimaryKey(autoGenerate = true)
     private long id;
 
-    @ColumnInfo (name = "person_id", index = true)
+    @ColumnInfo(name = "person_id", index = true)
     private long personId;
 
-    @ColumnInfo (name = "arrival_airport")
+    @ColumnInfo(name = "arrival_airport")
     private String arrivalAirport;
 
-    @ColumnInfo (name = "departure_airport")
+    @ColumnInfo(name = "departure_airport")
     private String departureAirport;
 
-    @ColumnInfo (name = "departure_date", index = true)
-    private Date departureDate;
+    @ColumnInfo(name = "departure_date", index = true)
+    private String departureDate;
 
-    @ColumnInfo (name = "arrival_date")
-    private Date arrivalDate;
+    @ColumnInfo(name = "arrival_date")
+    private String arrivalDate;
 
-    @ColumnInfo (name = "flight_number")
+    @ColumnInfo(name = "flight_number")
     private String flightNumber;
 
-    @ColumnInfo (name = "confirmation_name ")
+    @ColumnInfo(name = "confirmation_number")
     private String confirmationNumber;
 
-    @ColumnInfo (name = "passenger_name")
-    private long passengerName;
+    @ColumnInfo(name = "passenger_name")
+    private String passengerName;
 
-    private long rewards;
+    @ColumnInfo(name = "flight_rewards")
+    private String flightRewards;
+
+    @ColumnInfo(name = "arrival_time", index = true)
+    private String arrivalTime;
+
+    @ColumnInfo(name = "departure_time")
+    private String departureTime;
 
     public long getId() {
         return id;
@@ -73,24 +80,21 @@ public class Flight {
         this.departureAirport = departureAirport;
     }
 
-    public Date getDepartureDate() {
+    public String getDepartureDate() {
         return departureDate;
     }
 
-    public void setDepartureDate(Date departureDate) {
+    public void setDepartureDate(String departureDate) {
         this.departureDate = departureDate;
     }
 
-
-    public Date getArrivalDate() {
+    public String getArrivalDate() {
         return arrivalDate;
     }
 
-    public void setArrivalDate(Date arrivalDate) {
+    public void setArrivalDate(String arrivalDate) {
         this.arrivalDate = arrivalDate;
     }
-
-
 
     public String getFlightNumber() {
         return flightNumber;
@@ -108,19 +112,35 @@ public class Flight {
         this.confirmationNumber = confirmationNumber;
     }
 
-    public long getPassengerName() {
+    public String getPassengerName() {
         return passengerName;
     }
 
-    public void setPassengerName(long passengerName) {
+    public void setPassengerName(String passengerName) {
         this.passengerName = passengerName;
     }
 
-    public long getRewards() {
-        return rewards;
+    public String getFlightRewards() {
+        return flightRewards;
     }
 
-    public void setRewards(long rewards) {
-        this.rewards = rewards;
+    public void setFlightRewards(String flightRewards) {
+        this.flightRewards = flightRewards;
+    }
+
+    public String getArrivalTime() {
+        return arrivalTime;
+    }
+
+    public void setArrivalTime(String arrivalTime) {
+        this.arrivalTime = arrivalTime;
+    }
+
+    public String getDepartureTime() {
+        return departureTime;
+    }
+
+    public void setDepartureTime(String departureTime) {
+        this.departureTime = departureTime;
     }
 }

@@ -12,35 +12,42 @@ import java.util.Date;
 })
 public class Hotel {
 
-    @ColumnInfo (name = "hotel_id")
-    @PrimaryKey (autoGenerate = true)
+    @ColumnInfo(name = "hotel_id")
+    @PrimaryKey(autoGenerate = true)
     private long id;
 
-    @ColumnInfo (name = "person_id", index = true)
+    @ColumnInfo(name = "person_id", index = true)
     private long personId;
 
-    private String name;
+    @ColumnInfo(name = "hotel_name")
+    private String hotelName;
 
-    @ColumnInfo (name = "check_in", index = true)
-    private Date checkIn;
+    @ColumnInfo(name = "check_in", index = true)
+    private String checkIn;
 
-    @ColumnInfo (name = "check_out", index = true)
-    private Date checkOut;
+    @ColumnInfo(name = "check_out", index = true)
+    private String checkOut;
 
-    private int confirmation;
+    @ColumnInfo(name = "hotel_confirmation")
+    private String hotelConfirmation;
 
-    private int rewards;
+    @ColumnInfo(name = "hotel_rewards")
+    private String hotelRewards;
 
-    @ColumnInfo (name = "room_type")
+    @ColumnInfo(name = "room_type")
     private String roomType;
 
-    private int cost;
+    @ColumnInfo(name = "hotel_cost")
+    private String cost;
 
-    @ColumnInfo (name = "hotel_address")
+    @ColumnInfo(name = "hotel_address")
     private String hotelAddress;
 
-    @ColumnInfo (name = "hotel_phone")
-    private int hotelPhone;
+    @ColumnInfo(name = "hotel_phone")
+    private String hotelPhone;
+
+    @ColumnInfo(name = "name_on_reservation")
+    private String nameOnResrvation;
 
     public long getId() {
         return id;
@@ -58,44 +65,44 @@ public class Hotel {
         this.personId = personId;
     }
 
-    public String getName() {
-        return name;
+    public String getHotelName() {
+        return hotelName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
     }
 
-    public Date getCheckIn() {
+    public String getCheckIn() {
         return checkIn;
     }
 
-    public void setCheckIn(Date checkIn) {
+    public void setCheckIn(String checkIn) {
         this.checkIn = checkIn;
     }
 
-    public Date getCheckOut() {
+    public String getCheckOut() {
         return checkOut;
     }
 
-    public void setCheckOut(Date checkOut) {
+    public void setCheckOut(String checkOut) {
         this.checkOut = checkOut;
     }
 
-    public int getConfirmation() {
-        return confirmation;
+    public String getHotelConfirmation() {
+        return hotelConfirmation;
     }
 
-    public void setConfirmation(int confirmation) {
-        this.confirmation = confirmation;
+    public void setHotelConfirmation(String hotelConfirmation) {
+        this.hotelConfirmation = hotelConfirmation;
     }
 
-    public int getRewards() {
-        return rewards;
+    public String getHotelRewards() {
+        return hotelRewards;
     }
 
-    public void setRewards(int rewards) {
-        this.rewards = rewards;
+    public void setHotelRewards(String hotelRewards) {
+        this.hotelRewards = hotelRewards;
     }
 
     public String getRoomType() {
@@ -106,11 +113,11 @@ public class Hotel {
         this.roomType = roomType;
     }
 
-    public int getCost() {
+    public String getCost() {
         return cost;
     }
 
-    public void setCost(int cost) {
+    public void setCost(String cost) {
         this.cost = cost;
     }
 
@@ -122,11 +129,19 @@ public class Hotel {
         this.hotelAddress = hotelAddress;
     }
 
-    public int getHotelPhone() {
+    public String getHotelPhone() {
         return hotelPhone;
     }
 
-    public void setHotelPhone(int hotelPhone) {
+    public void setHotelPhone(String hotelPhone) {
         this.hotelPhone = hotelPhone;
+    }
+
+    public String getNameOnResrvation() {
+        return nameOnResrvation;
+    }
+
+    public void setNameOnResrvation(String nameOnResrvation) {
+        this.nameOnResrvation = nameOnResrvation;
     }
 }

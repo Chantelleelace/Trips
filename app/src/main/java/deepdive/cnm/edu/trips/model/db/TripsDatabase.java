@@ -21,7 +21,11 @@ import deepdive.cnm.edu.trips.model.entity.Transportation;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase.Converters;
 
 @Database(
-        entities = {Flight.class, Hotel.class, Person.class, Transportation.class},
+        entities = {
+            Flight.class,
+            Hotel.class,
+            Person.class,
+            Transportation.class},
         version = 1,
         exportSchema = true
 )

@@ -11,7 +11,7 @@ import java.util.List;
 import deepdive.cnm.edu.trips.model.entity.Flight;
 
 @Dao
-public interface FlightDao {
+public interface  FlightDao {
 
     @Insert(onConflict = OnConflictStrategy.FAIL)
     long insert(Flight flight);

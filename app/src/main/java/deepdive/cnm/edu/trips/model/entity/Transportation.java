@@ -5,117 +5,141 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 
-import java.util.Date;
-
-@Entity (foreignKeys = {
-        @ForeignKey(entity = Person.class, parentColumns = "person_id", childColumns = "person_id", onDelete = ForeignKey.CASCADE)
+@Entity(foreignKeys = {
+    @ForeignKey(entity = Person.class, parentColumns = "person_id", childColumns = "person_id", onDelete = ForeignKey.CASCADE)
 })
 public class Transportation {
 
-    @ColumnInfo(name = "transportation_id")
-    @PrimaryKey(autoGenerate = true)
-    private long id;
+  @ColumnInfo(name = "transportation_id")
+  @PrimaryKey(autoGenerate = true)
+  private long id;
 
-    @ColumnInfo (name = "person_id", index = true)
-    private long personId;
+  @ColumnInfo(name = "person_id", index = true)
+  private long personId;
 
-    @ColumnInfo (name = "hotel_name")
-    private long hotelName;
+  @ColumnInfo(name = "company_name")
+  private String rentalCompanyName;
 
-    private long address;
+  @ColumnInfo(name = "company_address")
+  private String rentalCompanyAddress;
 
-    private long phone;
+  @ColumnInfo(name = "company_phone")
+  private String rentalCompanyPhone;
 
-    @ColumnInfo (name = "check_in")
-    private Date checkIn;
+  @ColumnInfo(name = "pick_up")
+  private String rentalPickUp;
 
-    @ColumnInfo (name = "check_out")
-    private Date checkOut;
+  @ColumnInfo(name = "return")
+  private String rentalReturn;
 
-    private String rewards;
+  @ColumnInfo(name = "rental_rewards")
+  private String rentalRewards;
 
-    @ColumnInfo (name = "car_type")
-    private String carType;
+  @ColumnInfo(name = "car_type")
+  private String carType;
 
-    private int cost;
+  @ColumnInfo(name = "rental_cost")
+  private String rentalCost;
 
-    public long getId() {
-        return id;
-    }
+  @ColumnInfo(name = "name_on_rental_reservation")
+  private String nameOnRentalReservation;
 
-    public void setId(long id) {
-        this.id = id;
-    }
+  @ColumnInfo(name = "rental_confirmation")
+  private String rentalConfirmation;
 
-    public long getPersonId() {
-        return personId;
-    }
+  public long getId() {
+    return id;
+  }
 
-    public void setPersonId(long personId) {
-        this.personId = personId;
-    }
+  public void setId(long id) {
+    this.id = id;
+  }
 
-    public long getHotelName() {
-        return hotelName;
-    }
+  public long getPersonId() {
+    return personId;
+  }
 
-    public void setHotelName(long hotelName) {
-        this.hotelName = hotelName;
-    }
+  public void setPersonId(long personId) {
+    this.personId = personId;
+  }
 
-    public long getAddress() {
-        return address;
-    }
+  public String getRentalCompanyName() {
+    return rentalCompanyName;
+  }
 
-    public void setAddress(long address) {
-        this.address = address;
-    }
+  public void setRentalCompanyName(String rentalCompanyName) {
+    this.rentalCompanyName = rentalCompanyName;
+  }
 
-    public long getPhone() {
-        return phone;
-    }
+  public String getRentalCompanyAddress() {
+    return rentalCompanyAddress;
+  }
 
-    public void setPhone(long phone) {
-        this.phone = phone;
-    }
+  public void setRentalCompanyAddress(String rentalCompanyAddress) {
+    this.rentalCompanyAddress = rentalCompanyAddress;
+  }
 
-    public Date getCheckIn() {
-        return checkIn;
-    }
+  public String getRentalCompanyPhone() {
+    return rentalCompanyPhone;
+  }
 
-    public void setCheckIn(Date checkIn) {
-        this.checkIn = checkIn;
-    }
+  public void setRentalCompanyPhone(String rentalCompanyPhone) {
+    this.rentalCompanyPhone = rentalCompanyPhone;
+  }
 
-    public Date getCheckOut() {
-        return checkOut;
-    }
+  public String getRentalPickUp() {
+    return rentalPickUp;
+  }
 
-    public void setCheckOut(Date checkOut) {
-        this.checkOut = checkOut;
-    }
+  public void setRentalPickUp(String rentalPickUp) {
+    this.rentalPickUp = rentalPickUp;
+  }
 
-    public String getRewards() {
-        return rewards;
-    }
+  public String getRentalReturn() {
+    return rentalReturn;
+  }
 
-    public void setRewards(String rewards) {
-        this.rewards = rewards;
-    }
+  public void setRentalReturn(String rentalReturn) {
+    this.rentalReturn = rentalReturn;
+  }
 
-    public String getCarType() {
-        return carType;
-    }
+  public String getRentalRewards() {
+    return rentalRewards;
+  }
 
-    public void setCarType(String carType) {
-        this.carType = carType;
-    }
+  public void setRentalRewards(String rentalRewards) {
+    this.rentalRewards = rentalRewards;
+  }
 
-    public int getCost() {
-        return cost;
-    }
+  public String getCarType() {
+    return carType;
+  }
 
-    public void setCost(int cost) {
-        this.cost = cost;
-    }
+  public void setCarType(String carType) {
+    this.carType = carType;
+  }
+
+  public String getRentalCost() {
+    return rentalCost;
+  }
+
+  public void setRentalCost(String rentalCost) {
+    this.rentalCost = rentalCost;
+  }
+
+  public String getNameOnRentalReservation() {
+    return nameOnRentalReservation;
+  }
+
+  public void setNameOnRentalReservation(String nameOnRentalReservation) {
+    this.nameOnRentalReservation = nameOnRentalReservation;
+  }
+
+  public String getRentalConfirmation() {
+    return rentalConfirmation;
+  }
+
+  public void setRentalConfirmation(String rentalConfirmation) {
+    this.rentalConfirmation = rentalConfirmation;
+  }
 }

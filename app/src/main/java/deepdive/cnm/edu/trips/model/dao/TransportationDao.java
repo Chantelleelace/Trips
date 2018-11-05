@@ -16,10 +16,10 @@ public interface TransportationDao {
     @Insert(onConflict = OnConflictStrategy.FAIL)
     long insert(Transportation transportation);
 
-    @Query("SELECT * FROM Transportation ORDER BY check_in")
+    @Query("SELECT * FROM Transportation ORDER BY pick_up")
     List<Transportation> select();
 
-    @Query("SELECT * FROM Transportation WHERE person_id = :personId ORDER BY check_in")
+    @Query("SELECT * FROM Transportation WHERE person_id = :personId ORDER BY pick_up")
     List<Transportation> select(long personId);
 
     @Delete
