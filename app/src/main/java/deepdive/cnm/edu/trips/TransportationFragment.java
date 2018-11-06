@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase;
 import deepdive.cnm.edu.trips.model.entity.Transportation;
 import java.util.List;
@@ -21,7 +22,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TransportationFragment extends Fragment {
+public class TransportationFragment extends Fragment implements AddCallBack {
 
   private ListView view;
 
@@ -36,6 +37,11 @@ public class TransportationFragment extends Fragment {
     view = (ListView) inflater.inflate(R.layout.fragment_transportation, container, false);
     new TransportationTask().execute();
     return view;
+  }
+
+  @Override
+  public void update() {
+    new TransportationTask().execute();
   }
 
   private class TransportationTask extends AsyncTask<Void, Void, List<Transportation>> {

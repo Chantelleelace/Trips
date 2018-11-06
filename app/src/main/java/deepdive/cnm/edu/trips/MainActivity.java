@@ -33,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
      * The {@link ViewPager} that will host the section contents.
      */
     private ViewPager mViewPager;
+    private FlightFragment flightFragment;
+    private HotelFragment hotelFragment;
+    private TransportationFragment transportationFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,21 +62,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (tabLayout.getSelectedTabPosition() == 0) {
-                    DialogFragment newFragment = new AddFlight();
+                    AddFlight newFragment = new AddFlight();
+                    newFragment.setAddCallBack(flightFragment);
                     newFragment.show(getSupportFragmentManager(), "add flight dialog");
                 }
                 if (tabLayout.getSelectedTabPosition() == 1) {
-                    DialogFragment newFragment = new AddHotel();
+                    AddHotel newFragment = new AddHotel();
+                    newFragment.setAddCallBack(hotelFragment);
                     newFragment.show(getSupportFragmentManager(), "add hotel dialog");
                 }
                 if (tabLayout.getSelectedTabPosition() == 2) {
-                    DialogFragment newFragment = new AddTransportation();
+                    AddTransportation newFragment = new AddTransportation();
+                    newFragment.setAddCallBack(transportationFragment);
                     newFragment.show(getSupportFragmentManager(), "add transportation dialog");
                 }
 
             }
         });
 
+    }
+
+    public interface AddCallBack {
+        void update();
     }
 
 
@@ -149,13 +159,16 @@ public class MainActivity extends AppCompatActivity {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
             if (position == 0) {
-                return new FlightFragment();
+                flightFragment = new FlightFragment();
+                return flightFragment;
             }
             if (position == 1) {
-                return new HotelFragment();
+                hotelFragment = new HotelFragment();
+                return hotelFragment;
             }
             if (position == 2) {
-                return new TransportationFragment();
+                transportationFragment = new TransportationFragment();
+                return transportationFragment;
             } else {
                 return PlaceholderFragment.newInstance(position + 1);
             }

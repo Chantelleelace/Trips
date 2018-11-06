@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase;
 import deepdive.cnm.edu.trips.model.entity.Hotel;
 import java.util.List;
@@ -22,7 +23,7 @@ import java.util.List;
 /**
  * HotelDao {@link Fragment} subclass.
  */
-public class HotelFragment extends Fragment {
+public class HotelFragment extends Fragment implements AddCallBack {
 
   private ListView view;
 
@@ -37,6 +38,11 @@ public class HotelFragment extends Fragment {
     view = (ListView) inflater.inflate(R.layout.fragment_hotel, container, false);
     new HotelTask().execute();
     return view;
+  }
+
+  @Override
+  public void update() {
+    new HotelTask().execute();
   }
 
   private class HotelTask extends AsyncTask<Void, Void, List<Hotel>> {

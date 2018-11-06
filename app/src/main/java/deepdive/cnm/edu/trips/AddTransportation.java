@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment.Mode;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment.OnChangeListener;
@@ -26,6 +27,7 @@ public class AddTransportation extends DialogFragment {
   private TextInputEditText pickUpDate;
   private TextInputEditText returnDate;
   private Calendar calendar;
+  private AddCallBack addCallBack;
 
   public AddTransportation() {
     // Required empty public constructor
@@ -95,6 +97,10 @@ public class AddTransportation extends DialogFragment {
         });
 
     return view;
+  }
+
+  public void setAddCallBack(AddCallBack addCallBack) {
+    this.addCallBack = addCallBack;
   }
 
   private class TransportationTask extends AsyncTask<Transportation, Void, Void> {

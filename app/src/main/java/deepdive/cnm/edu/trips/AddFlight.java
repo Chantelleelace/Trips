@@ -11,9 +11,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment.Mode;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment.OnChangeListener;
+import deepdive.cnm.edu.trips.model.db.TripsDatabase;
 import deepdive.cnm.edu.trips.model.entity.Flight;
 import java.util.Calendar;
 
@@ -31,6 +33,7 @@ public class AddFlight extends DialogFragment {
   private TextInputEditText date1;
   private TextInputEditText time;
   private TextInputEditText time1;
+  private AddCallBack addCallBack;
 
   public AddFlight() {
     // Required empty public constructor
@@ -79,7 +82,7 @@ public class AddFlight extends DialogFragment {
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
 //    Inflates calendar and clock
-    View view = inflater.inflate(R.layout.fragment_add_flight, container, false);
+   final View view = inflater.inflate(R.layout.fragment_add_flight, container, false);
     date = view.findViewById(R.id.departure_date_input);
     date.setOnClickListener(new OnClickListener() {
       @Override
@@ -112,7 +115,7 @@ public class AddFlight extends DialogFragment {
 //    saves all input to database
     view.findViewById(R.id.submit_flight).setOnClickListener(
         new View.OnClickListener() {
-          public void onClick(View view) {
+          public void onClick(View clickView) {
             Flight flight = new Flight();
             flight.setArrivalAirport(((TextInputEditText)
                 view.findViewById(R.id.arrival_airport_input)).getText().toString());
@@ -134,18 +137,32 @@ public class AddFlight extends DialogFragment {
                 view.findViewById(R.id.arrival_time_input)).getText().toString());
             flight.setDepartureTime(((TextInputEditText)
                 view.findViewById(R.id.departure_time_input)).getText().toString());
+            dismiss();
+            new FlightTask().execute(flight);
           }
         });
 
     return view;
   }
 
+  public void setAddCallBack(AddCallBack addCallBack) {
+    this.addCallBack = addCallBack;
+  }
+
   private class FlightTask extends AsyncTask<Flight, Void, Void> {
 
     @Override
     protected Void doInBackground(Flight... flight) {
+      TripsDatabase tripsDatabase = TripsDatabase.getInstance(getActivity());
+      tripsDatabase.getFlightDao().insert(flight[0]);
       return null;
     }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+      addCallBack.update();
+    }
   }
+
 
 }

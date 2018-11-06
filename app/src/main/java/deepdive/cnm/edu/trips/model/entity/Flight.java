@@ -6,9 +6,9 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 import java.util.Date;
 
-@Entity (foreignKeys = {
-        @ForeignKey(entity = Person.class, parentColumns = "person_id", childColumns = "person_id", onDelete = ForeignKey.CASCADE)
-})
+@Entity //(foreignKeys = {
+//        @ForeignKey(entity = Person.class, parentColumns = "person_id", childColumns = "person_id", onDelete = ForeignKey.CASCADE)
+//})
 public class Flight {
 
     @ColumnInfo(name = "flight_id")

@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,15 +15,23 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase;
 import deepdive.cnm.edu.trips.model.entity.Flight;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.Duration;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FlightFragment extends Fragment {
+public class FlightFragment extends Fragment implements AddCallBack {
 
   private ListView view;
 
@@ -38,6 +47,11 @@ public class FlightFragment extends Fragment {
     return view;
   }
 
+  @Override
+  public void update() {
+    new FlightTask().execute();
+  }
+
   private class FlightTask extends AsyncTask<Void, Void, List<Flight>> {
 
     @Override
@@ -51,6 +65,10 @@ public class FlightFragment extends Fragment {
       view.setAdapter(new FlightListAdapter(getActivity(), flights));
 
     }
+  }
+
+  public void refreshList() {
+    new FlightTask().execute();
   }
 
   private class FlightListAdapter extends ArrayAdapter<Flight> {
@@ -73,12 +91,20 @@ public class FlightFragment extends Fragment {
       ((TextView) view.findViewById(R.id.airport_code_outbound))
           .setText(flight.getArrivalAirport());
       ((TextView) view.findViewById(R.id.airport_code_arrival)).setText(flight.getArrivalAirport());
-      ((TextView) view.findViewById(R.id.departure_date)).setText(flight.getDepartureDate());
+      ((TextView) view.findViewById(R.id.departure_date)).setText(flight.getDepartureDate().substring(0, 5));
       ((TextView) view.findViewById(R.id.departure_time)).setText(flight.getDepartureTime());
-      ((TextView) view.findViewById(R.id.arrival_date)).setText(flight.getArrivalDate());
+      ((TextView) view.findViewById(R.id.arrival_date)).setText(flight.getArrivalDate().substring(0, 5));
       ((TextView) view.findViewById(R.id.arrival_time)).setText(flight.getArrivalTime());
       ((TextView) view.findViewById(R.id.flight_confirmation))
           .setText(flight.getConfirmationNumber());
+      DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("h:m a");
+      LocalTime arrivalTime = LocalTime.parse(flight.getArrivalTime(), dateTimeFormatter);
+      LocalTime departureTime = LocalTime.parse(flight.getDepartureTime(), dateTimeFormatter);
+      Duration length = Duration.between(departureTime,arrivalTime);
+      long s = length.getSeconds();
+      String lengthString = String.format("%d:%02d", s / 3600, (s % 3600) / 60);
+      ((TextView) view.findViewById(R.id.flight_length)).setText(lengthString);
+
       //    puts in EXPAND view
       view.findViewById(R.id.first_plane).setVisibility(View.VISIBLE);
       view.findViewById(R.id.airport_code_1).setVisibility(View.VISIBLE);
@@ -146,7 +172,7 @@ public class FlightFragment extends Fragment {
           }
         }
       });
-      return super.getView(position, convertView, parent);
+      return view;
     }
   }
 }

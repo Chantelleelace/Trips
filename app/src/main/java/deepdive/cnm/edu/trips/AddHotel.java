@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment.Mode;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment.OnChangeListener;
@@ -26,6 +27,7 @@ public class AddHotel extends DialogFragment {
   private TextInputEditText checkInDate;
   private TextInputEditText checkOutDate;
   private Calendar calendar;
+  private AddCallBack addCallBack;
 
 
   public AddHotel() {
@@ -98,6 +100,10 @@ public class AddHotel extends DialogFragment {
         });
 
     return view;
+  }
+
+  public void setAddCallBack(AddCallBack addCallBack) {
+    this.addCallBack = addCallBack;
   }
 
   private class HotelTask extends AsyncTask<Hotel, Void, Void> {

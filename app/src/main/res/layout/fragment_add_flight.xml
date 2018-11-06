@@ -192,6 +192,7 @@
           android:hint="Airport"
           android:inputType="text"
           android:textAllCaps="true"
+          android:maxLength="3"
           android:textSize="10sp"/>
 
       </android.support.design.widget.TextInputLayout>
