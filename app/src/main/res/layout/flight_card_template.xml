@@ -32,26 +32,30 @@
           />
 
         <TextView
-          android:id="@+id/airport_code_1"
+          android:id="@+id/airport_code_departure_1"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:layout_toLeftOf="@id/first_plane"
           android:paddingLeft="35dp"
           android:layout_gravity="center"
           android:text="ABQ"
+          android:maxLength="3"
+          android:textAllCaps="true"
           android:textColor="@android:color/black"
           android:textSize="30sp"
           android:textStyle="bold" />
 
         <TextView
-          android:id="@+id/airport_code_2"
+          android:id="@+id/airport_code_arrival_1"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_toLeftOf="@id/airport_code_1"
+          android:layout_toLeftOf="@id/airport_code_departure_1"
           android:paddingLeft="35dp"
           android:layout_gravity="center"
           android:text="LAX"
           android:textColor="@android:color/black"
+          android:maxLength="3"
+          android:textAllCaps="true"
           android:textSize="30sp"
           android:textStyle="bold" />
 
@@ -61,7 +65,7 @@
           android:layout_height="wrap_content"
           android:textAlignment="center"
           android:paddingLeft="35dp"
-          android:layout_toLeftOf="@id/airport_code_2"
+          android:layout_toLeftOf="@id/airport_code_arrival_1"
           android:layout_gravity="center"
           android:text="1 hr 16 m"
           android:textColor="@android:color/darker_gray"
@@ -129,6 +133,8 @@
           android:layout_alignParentLeft="true"
           android:layout_alignParentTop="true"
           android:layout_centerHorizontal="true"
+          android:maxLength="3"
+          android:textAllCaps="true"
           android:gravity="center"
           android:text="ABQ"
           android:textAlignment="center"
@@ -177,6 +183,8 @@
           android:layout_alignParentTop="true"
           android:layout_alignParentRight="true"
           android:layout_centerHorizontal="true"
+          android:maxLength="3"
+          android:textAllCaps="true"
           android:gravity="center"
           android:text="LAX"
           android:textAlignment="center"
@@ -233,56 +241,6 @@
         android:layout_alignParentRight="true"
         android:paddingTop="30dp"
         android:text="20138961636"
-        android:textAlignment="center"
-        android:textSize="8pt" />
-
-      <!--Expand Show-->
-      <TextView
-        android:id="@+id/passenger_2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/passenger_1"
-        android:layout_alignParentLeft="true"
-        android:paddingTop="2dp"
-        android:text="passenger_name"
-        android:textAlignment="center"
-        android:textSize="8pt" />
-
-
-      <!--Expand Show-->
-      <TextView
-        android:id="@+id/passenger_2_rewards"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/passenger_1_rewards"
-        android:layout_alignParentRight="true"
-        android:paddingTop="2dp"
-        android:text="20644826414"
-        android:textAlignment="center"
-        android:textSize="8pt" />
-
-      <!--Expand Show-->
-      <TextView
-        android:id="@+id/passenger_3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/passenger_2"
-        android:layout_alignParentLeft="true"
-        android:paddingTop="2dp"
-        android:text="passenger_name"
-        android:textAlignment="center"
-        android:textSize="8pt" />
-
-
-      <!--Expand Show-->
-      <TextView
-        android:id="@+id/passenger_3_rewards"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/passenger_2_rewards"
-        android:layout_alignParentRight="true"
-        android:paddingTop="2dp"
-        android:text="20705400026"
         android:textAlignment="center"
         android:textSize="8pt" />
 

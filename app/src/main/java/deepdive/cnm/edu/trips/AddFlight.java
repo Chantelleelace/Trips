@@ -70,19 +70,15 @@ public class AddFlight extends DialogFragment {
   }
 
   /**
-   * Gives user a calendar and clock to input date and time fields.
-   * Also, this will save users input to our data base for future use.
-   * @param inflater
-   * @param container
-   * @param savedInstanceState
-   * @return
+   * Gives user a calendar and clock to input date and time fields. Also, this will save users input
+   * to our data base for future use.
    */
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
 //    Inflates calendar and clock
-   final View view = inflater.inflate(R.layout.fragment_add_flight, container, false);
+    final View view = inflater.inflate(R.layout.fragment_add_flight, container, false);
     date = view.findViewById(R.id.departure_date_input);
     date.setOnClickListener(new OnClickListener() {
       @Override
@@ -163,6 +159,4 @@ public class AddFlight extends DialogFragment {
       addCallBack.update();
     }
   }
-
-
 }

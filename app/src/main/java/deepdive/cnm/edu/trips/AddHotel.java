@@ -15,6 +15,7 @@ import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment.Mode;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment.OnChangeListener;
+import deepdive.cnm.edu.trips.model.db.TripsDatabase;
 import deepdive.cnm.edu.trips.model.entity.Hotel;
 import java.util.Calendar;
 
@@ -53,7 +54,7 @@ public class AddHotel extends DialogFragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    View view = inflater.inflate(R.layout.fragment_add_hotel, container, false);
+    final View view = inflater.inflate(R.layout.fragment_add_hotel, container, false);
     checkInDate = view.findViewById(R.id.check_in_date_input);
     checkInDate.setOnClickListener(new OnClickListener() {
       @Override
@@ -110,6 +111,8 @@ public class AddHotel extends DialogFragment {
 
     @Override
     protected Void doInBackground(Hotel... hotel) {
+      TripsDatabase tripsDatabase = TripsDatabase.getInstance(getActivity());
+      tripsDatabase.getHotelDao().insert(hotel[0]);
       return null;
     }
   }

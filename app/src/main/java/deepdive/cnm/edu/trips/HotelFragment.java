@@ -60,6 +60,10 @@ public class HotelFragment extends Fragment implements AddCallBack {
 
   }
 
+  public void refreshList() {
+    new HotelTask().execute();
+  }
+
   private class HotelListAdapter extends ArrayAdapter<Hotel> {
 
     public HotelListAdapter(
@@ -133,7 +137,7 @@ public class HotelFragment extends Fragment implements AddCallBack {
           }
         }
       });
-      return super.getView(position, convertView, parent);
+      return view;
     }
   }
 }

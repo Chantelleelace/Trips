@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,12 +17,8 @@ import android.widget.TextView;
 import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase;
 import deepdive.cnm.edu.trips.model.entity.Flight;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.time.Duration;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -89,33 +84,34 @@ public class FlightFragment extends Fragment implements AddCallBack {
       ((TextView) view.findViewById(R.id.passenger_1)).setText(flight.getPassengerName());
       ((TextView) view.findViewById(R.id.passenger_1_rewards)).setText(flight.getFlightRewards());
       ((TextView) view.findViewById(R.id.airport_code_outbound))
-          .setText(flight.getArrivalAirport());
+          .setText(flight.getDepartureAirport());
+      ((TextView) view.findViewById(R.id.airport_code_departure_1))
+          .setText(flight.getDepartureAirport());
       ((TextView) view.findViewById(R.id.airport_code_arrival)).setText(flight.getArrivalAirport());
-      ((TextView) view.findViewById(R.id.departure_date)).setText(flight.getDepartureDate().substring(0, 5));
+      ((TextView) view.findViewById(R.id.airport_code_arrival_1))
+          .setText(flight.getArrivalAirport());
+      ((TextView) view.findViewById(R.id.departure_date))
+          .setText(flight.getDepartureDate().substring(0, 5));
       ((TextView) view.findViewById(R.id.departure_time)).setText(flight.getDepartureTime());
-      ((TextView) view.findViewById(R.id.arrival_date)).setText(flight.getArrivalDate().substring(0, 5));
+      ((TextView) view.findViewById(R.id.arrival_date))
+          .setText(flight.getArrivalDate().substring(0, 5));
       ((TextView) view.findViewById(R.id.arrival_time)).setText(flight.getArrivalTime());
       ((TextView) view.findViewById(R.id.flight_confirmation))
           .setText(flight.getConfirmationNumber());
       DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("h:m a");
       LocalTime arrivalTime = LocalTime.parse(flight.getArrivalTime(), dateTimeFormatter);
       LocalTime departureTime = LocalTime.parse(flight.getDepartureTime(), dateTimeFormatter);
-      Duration length = Duration.between(departureTime,arrivalTime);
+      Duration length = Duration.between(departureTime, arrivalTime);
       long s = length.getSeconds();
       String lengthString = String.format("%d:%02d", s / 3600, (s % 3600) / 60);
       ((TextView) view.findViewById(R.id.flight_length)).setText(lengthString);
-
       //    puts in EXPAND view
       view.findViewById(R.id.first_plane).setVisibility(View.VISIBLE);
-      view.findViewById(R.id.airport_code_1).setVisibility(View.VISIBLE);
-      view.findViewById(R.id.airport_code_2).setVisibility(View.VISIBLE);
+      view.findViewById(R.id.airport_code_departure_1).setVisibility(View.VISIBLE);
+      view.findViewById(R.id.airport_code_arrival_1).setVisibility(View.VISIBLE);
       view.findViewById(R.id.flight_length).setVisibility(View.VISIBLE);
       view.findViewById(R.id.passenger_1).setVisibility(View.GONE);
       view.findViewById(R.id.passenger_1_rewards).setVisibility(View.GONE);
-      view.findViewById(R.id.passenger_2).setVisibility(View.GONE);
-      view.findViewById(R.id.passenger_2_rewards).setVisibility(View.GONE);
-      view.findViewById(R.id.passenger_3).setVisibility(View.GONE);
-      view.findViewById(R.id.passenger_3_rewards).setVisibility(View.GONE);
       view.findViewById(R.id.airport_code_outbound).setVisibility(View.GONE);
       view.findViewById(R.id.airport_code_arrival).setVisibility(View.GONE);
       view.findViewById(R.id.departure_date).setVisibility(View.GONE);
@@ -131,15 +127,11 @@ public class FlightFragment extends Fragment implements AddCallBack {
         public void onClick(View v) {
           if (view.findViewById(R.id.passenger_1).getVisibility() == View.VISIBLE) {
             view.findViewById(R.id.first_plane).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.airport_code_1).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.airport_code_2).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.airport_code_departure_1).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.airport_code_arrival_1).setVisibility(View.VISIBLE);
             view.findViewById(R.id.flight_length).setVisibility(View.VISIBLE);
             view.findViewById(R.id.passenger_1).setVisibility(View.GONE);
             view.findViewById(R.id.passenger_1_rewards).setVisibility(View.GONE);
-            view.findViewById(R.id.passenger_2).setVisibility(View.GONE);
-            view.findViewById(R.id.passenger_2_rewards).setVisibility(View.GONE);
-            view.findViewById(R.id.passenger_3).setVisibility(View.GONE);
-            view.findViewById(R.id.passenger_3_rewards).setVisibility(View.GONE);
             view.findViewById(R.id.airport_code_outbound).setVisibility(View.GONE);
             view.findViewById(R.id.airport_code_arrival).setVisibility(View.GONE);
             view.findViewById(R.id.departure_date).setVisibility(View.GONE);
@@ -151,15 +143,11 @@ public class FlightFragment extends Fragment implements AddCallBack {
             view.findViewById(R.id.plane_outbound_icon).setVisibility(View.GONE);
           } else {
             view.findViewById(R.id.first_plane).setVisibility(View.GONE);
-            view.findViewById(R.id.airport_code_1).setVisibility(View.GONE);
-            view.findViewById(R.id.airport_code_2).setVisibility(View.GONE);
+            view.findViewById(R.id.airport_code_departure_1).setVisibility(View.GONE);
+            view.findViewById(R.id.airport_code_arrival_1).setVisibility(View.GONE);
             view.findViewById(R.id.flight_length).setVisibility(View.GONE);
             view.findViewById(R.id.passenger_1).setVisibility(View.VISIBLE);
             view.findViewById(R.id.passenger_1_rewards).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.passenger_2).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.passenger_2_rewards).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.passenger_3).setVisibility(View.VISIBLE);
-            view.findViewById(R.id.passenger_3_rewards).setVisibility(View.VISIBLE);
             view.findViewById(R.id.airport_code_outbound).setVisibility(View.VISIBLE);
             view.findViewById(R.id.airport_code_arrival).setVisibility(View.VISIBLE);
             view.findViewById(R.id.departure_date).setVisibility(View.VISIBLE);

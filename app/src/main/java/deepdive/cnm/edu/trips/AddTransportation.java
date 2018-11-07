@@ -15,6 +15,7 @@ import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment.Mode;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment.OnChangeListener;
+import deepdive.cnm.edu.trips.model.db.TripsDatabase;
 import deepdive.cnm.edu.trips.model.entity.Transportation;
 import java.util.Calendar;
 
@@ -90,9 +91,8 @@ public class AddTransportation extends DialogFragment {
                 view.findViewById(R.id.name_on_rental_reservation)).getText().toString());
             transportation.setRentalCost(((TextInputEditText)
                 view.findViewById(R.id.rental_confirmation)).getText().toString());
-
-
-
+            dismiss();
+            new TransportationTask().execute(transportation);
           }
         });
 
@@ -107,7 +107,16 @@ public class AddTransportation extends DialogFragment {
 
     @Override
     protected Void doInBackground(Transportation... transportation) {
+      TripsDatabase tripsDatabase = TripsDatabase.getInstance(getActivity());
+      tripsDatabase.getTransportationDao().insert(transportation[0]);
       return null;
     }
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+      addCallBack.update();
+    }
   }
+
 }
+
