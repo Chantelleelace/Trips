@@ -22,7 +22,8 @@ import java.util.Calendar;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple {@link Fragment} subclass that lets the user add their own hotel information to
+ * create new cards.
  */
 public class AddHotel extends DialogFragment {
 
@@ -42,6 +43,10 @@ public class AddHotel extends DialogFragment {
     picker.setCalendar(calendar);
     picker.show(getFragmentManager(), picker.getClass().getSimpleName());
     picker.setListener(new OnChangeListener() {
+      /**
+       * This get the date from my date picker and adds it to my textInput field.
+       * @param calendar
+       */
       @Override
       public void onChange(Calendar calendar) {
         java.text.DateFormat format = DateFormat.getDateFormat(getActivity());
@@ -51,6 +56,13 @@ public class AddHotel extends DialogFragment {
     });
   }
 
+  /**
+   * This inflates the dialog for users to add their own data.
+   * @param inflater
+   * @param container
+   * @param savedInstanceState
+   * @return
+   */
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
@@ -58,6 +70,10 @@ public class AddHotel extends DialogFragment {
     final View view = inflater.inflate(R.layout.fragment_add_hotel, container, false);
     checkInDate = view.findViewById(R.id.check_in_date_input);
     checkInDate.setOnClickListener(new OnClickListener() {
+      /**
+       * This pulls up a date picker when the user clicks on the date field.
+       * @param v
+       */
       @Override
       public void onClick(View v) {
         pickCheckInDate(checkInDate);
@@ -65,6 +81,10 @@ public class AddHotel extends DialogFragment {
     });
     checkOutDate = view.findViewById(R.id.check_out_date_input);
     checkOutDate.setOnClickListener(new OnClickListener() {
+      /**
+       * This pulls up a date picker when the user clicks on the date field.
+       * @param v
+       */
       @Override
       public void onClick(View v) {
         pickCheckInDate(checkOutDate);
@@ -73,6 +93,11 @@ public class AddHotel extends DialogFragment {
 
     view.findViewById(R.id.submit_hotel).setOnClickListener(
         new View.OnClickListener() {
+          /**
+           * When the user clicks submit, the data that they entered will be stored in the DB
+           * and then populated to create a new card.
+           * @param v
+           */
           public void onClick(View v) {
             Hotel hotel = new Hotel();
             if ((((TextInputEditText)
@@ -133,6 +158,10 @@ public class AddHotel extends DialogFragment {
     return view;
   }
 
+  /**
+   * This add (Hotel) call back add a new card to my Hotel fragment from my add hotel fragment.
+   * @param addCallBack
+   */
   public void setAddCallBack(AddCallBack addCallBack) {
     this.addCallBack = addCallBack;
   }

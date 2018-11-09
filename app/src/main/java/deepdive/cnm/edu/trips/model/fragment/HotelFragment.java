@@ -22,7 +22,7 @@ import java.util.List;
 
 
 /**
- * HotelDao {@link Fragment} subclass.
+ * A simple {@link Fragment} subclass that holds cards per user submitted data.
  */
 public class HotelFragment extends Fragment implements AddCallBack {
 

@@ -21,7 +21,7 @@ import java.util.List;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple {@link Fragment} subclass that holds cards per user submitted data.
  */
 public class TransportationFragment extends Fragment implements AddCallBack {
 

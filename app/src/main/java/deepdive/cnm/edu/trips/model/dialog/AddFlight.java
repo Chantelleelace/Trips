@@ -22,7 +22,7 @@ import java.util.Calendar;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple {@link Fragment} subclass to let users add their flight information to new cards.
  */
 public class AddFlight extends DialogFragment {
 
@@ -46,6 +46,10 @@ public class AddFlight extends DialogFragment {
     picker.setCalendar(calendar);
     picker.show(getFragmentManager(), picker.getClass().getSimpleName());
     picker.setListener(new OnChangeListener() {
+      /**
+       * This inputs the time from my time picker to my TextInputEditText.
+       * @param calendar
+       */
       @Override
       public void onChange(Calendar calendar) {
         java.text.DateFormat format = DateFormat.getTimeFormat(getActivity());
@@ -61,6 +65,10 @@ public class AddFlight extends DialogFragment {
     picker.setCalendar(calendar);
     picker.show(getFragmentManager(), picker.getClass().getSimpleName());
     picker.setListener(new OnChangeListener() {
+      /**
+       * This sets the date from my date picker to my TextInputEditText.
+       * @param calendar
+       */
       @Override
       public void onChange(Calendar calendar) {
         java.text.DateFormat format = DateFormat.getDateFormat(getActivity());
@@ -72,7 +80,7 @@ public class AddFlight extends DialogFragment {
 
   /**
    * Gives user a calendar and clock to input date and time fields. Also, this will save users input
-   * to our data base for future use.
+   * to our data base and then set it to appropriate fields on the created card.
    */
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -172,6 +180,10 @@ public class AddFlight extends DialogFragment {
     return view;
   }
 
+  /**
+   * This add (Flight) call back adds a new card to my Flight fragment from add flight.
+   * @param addCallBack
+   */
   public void setAddCallBack(AddCallBack addCallBack) {
     this.addCallBack = addCallBack;
   }

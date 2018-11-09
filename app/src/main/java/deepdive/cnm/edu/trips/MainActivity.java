@@ -64,6 +64,10 @@ public class MainActivity extends AppCompatActivity {
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.add);
         fab.setOnClickListener(new View.OnClickListener() {
+            /**
+             * This onClick populates a dialog fragment when the FAB is clicked
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 if (tabLayout.getSelectedTabPosition() == 0) {
@@ -92,9 +96,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * This inflates a menu and adds items to the action bar if it is present.
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }

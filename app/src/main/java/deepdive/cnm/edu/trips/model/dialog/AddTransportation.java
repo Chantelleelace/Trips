@@ -22,7 +22,8 @@ import java.util.Calendar;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * A simple {@link Fragment} subclass that lets the user add their own hotel information to
+ * create new cards.
  */
 public class AddTransportation extends DialogFragment {
 
@@ -41,6 +42,10 @@ public class AddTransportation extends DialogFragment {
     picker.setCalendar(calendar);
     picker.show(getFragmentManager(), picker.getClass().getSimpleName());
     picker.setListener(new OnChangeListener() {
+      /**
+       * This get the date from my date picker and adds it to my textInput field.
+       * @param calendar
+       */
       @Override
       public void onChange(Calendar calendar) {
         java.text.DateFormat format = DateFormat.getDateFormat(getActivity());
@@ -50,6 +55,13 @@ public class AddTransportation extends DialogFragment {
     });
   }
 
+  /**
+   * This inflates the dialog for users to add their own data.
+   * @param inflater
+   * @param container
+   * @param savedInstanceState
+   * @return
+   */
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
@@ -57,6 +69,10 @@ public class AddTransportation extends DialogFragment {
     final View view = inflater.inflate(R.layout.fragment_add_transportation, container, false);
     pickUpDate = view.findViewById(R.id.pick_up_date_input);
     pickUpDate.setOnClickListener(new OnClickListener() {
+      /**
+       * This pulls up a date picker when the user clicks on the date field.
+       * @param v
+       */
       @Override
       public void onClick(View v) {
         pickUpDate(pickUpDate);
@@ -64,6 +80,10 @@ public class AddTransportation extends DialogFragment {
     });
     returnDate = view.findViewById(R.id.return_date_input);
     returnDate.setOnClickListener(new OnClickListener() {
+      /**
+       * This pulls up a date picker when the user clicks on the date field.
+       * @param v
+       */
       @Override
       public void onClick(View v) {
         pickUpDate(returnDate);
@@ -73,6 +93,11 @@ public class AddTransportation extends DialogFragment {
     // saves all input to database.
     view.findViewById(R.id.submit_transportation).setOnClickListener(
         new View.OnClickListener() {
+          /**
+           * When the user clicks submit, the data that they entered will be stored in the DB
+           * and then populated to create a new card.
+           * @param v
+           */
           public void onClick(View v) {
             Transportation transportation = new Transportation();
             if ( (((TextInputEditText)
@@ -128,6 +153,11 @@ public class AddTransportation extends DialogFragment {
     return view;
   }
 
+  /**
+   * This add (Transportation) call back add a new card to my Transportation fragment from my
+   * add transportation fragment.
+   * @param addCallBack
+   */
   public void setAddCallBack(AddCallBack addCallBack) {
     this.addCallBack = addCallBack;
   }
