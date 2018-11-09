@@ -2,7 +2,6 @@ package deepdive.cnm.edu.trips;
 
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -18,6 +17,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+import deepdive.cnm.edu.trips.model.dialog.AddFlight;
+import deepdive.cnm.edu.trips.model.dialog.AddHotel;
+import deepdive.cnm.edu.trips.model.dialog.AddTransportation;
+import deepdive.cnm.edu.trips.model.fragment.FlightFragment;
+import deepdive.cnm.edu.trips.model.fragment.HotelFragment;
+import deepdive.cnm.edu.trips.model.fragment.TransportationFragment;
 
 public class MainActivity extends AppCompatActivity {
 

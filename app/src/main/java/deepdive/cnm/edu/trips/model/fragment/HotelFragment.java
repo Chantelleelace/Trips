@@ -1,4 +1,4 @@
-package deepdive.cnm.edu.trips;
+package deepdive.cnm.edu.trips.model.fragment;
 
 
 import android.content.Context;
@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
+import deepdive.cnm.edu.trips.R;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase;
 import deepdive.cnm.edu.trips.model.entity.Hotel;
 import java.util.List;
@@ -79,6 +80,7 @@ public class HotelFragment extends Fragment implements AddCallBack {
         @NonNull ViewGroup parent) {
       final View view = getLayoutInflater().inflate(R.layout.hotel_card_template, parent, false);
       Hotel hotel = getItem(position);
+      ((TextView) view.findViewById(R.id.hotel_name)).setText(hotel.getHotelName());
       ((TextView) view.findViewById(R.id.hotel_address)).setText(hotel.getHotelAddress());
       ((TextView) view.findViewById(R.id.hotel_phone)).setText(hotel.getHotelPhone());
       ((TextView) view.findViewById(R.id.hotel_check_in)).setText(hotel.getCheckIn());

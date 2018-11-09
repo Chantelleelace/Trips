@@ -1,4 +1,4 @@
-package deepdive.cnm.edu.trips;
+package deepdive.cnm.edu.trips.model.fragment;
 
 
 import android.content.Context;
@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
+import deepdive.cnm.edu.trips.R;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase;
 import deepdive.cnm.edu.trips.model.entity.Flight;
 import java.time.Duration;
@@ -78,7 +79,8 @@ public class FlightFragment extends Fragment implements AddCallBack {
     @Override
     public View getView(int position, @Nullable View convertView,
         @NonNull ViewGroup parent) {
-      final View view = getLayoutInflater().inflate(R.layout.flight_card_template, parent, false);
+      final View view = getLayoutInflater()
+          .inflate(R.layout.flight_card_template, parent, false);
       Flight flight = getItem(position);
       ((TextView) view.findViewById(R.id.flight_number)).setText(flight.getFlightNumber());
       ((TextView) view.findViewById(R.id.passenger_1)).setText(flight.getPassengerName());
@@ -90,19 +92,35 @@ public class FlightFragment extends Fragment implements AddCallBack {
       ((TextView) view.findViewById(R.id.airport_code_arrival)).setText(flight.getArrivalAirport());
       ((TextView) view.findViewById(R.id.airport_code_arrival_1))
           .setText(flight.getArrivalAirport());
-      ((TextView) view.findViewById(R.id.departure_date))
-          .setText(flight.getDepartureDate().substring(0, 5));
+      if (flight.getDepartureDate() != null && flight.getDepartureDate().length()>4) {
+        ((TextView) view.findViewById(R.id.departure_date))
+            .setText(flight.getDepartureDate().substring(0, 5));
+      }
       ((TextView) view.findViewById(R.id.departure_time)).setText(flight.getDepartureTime());
-      ((TextView) view.findViewById(R.id.arrival_date))
-          .setText(flight.getArrivalDate().substring(0, 5));
+      if (flight.getArrivalDate() != null && flight.getArrivalDate().length()>4) {
+        ((TextView) view.findViewById(R.id.arrival_date))
+            .setText(flight.getArrivalDate().substring(0, 5));
+      }
       ((TextView) view.findViewById(R.id.arrival_time)).setText(flight.getArrivalTime());
       ((TextView) view.findViewById(R.id.flight_confirmation))
           .setText(flight.getConfirmationNumber());
       DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("h:m a");
-      LocalTime arrivalTime = LocalTime.parse(flight.getArrivalTime(), dateTimeFormatter);
-      LocalTime departureTime = LocalTime.parse(flight.getDepartureTime(), dateTimeFormatter);
-      Duration length = Duration.between(departureTime, arrivalTime);
-      long s = length.getSeconds();
+      LocalTime arrivalTime = null;
+      if (flight.getArrivalTime() != null && !flight.getArrivalTime().isEmpty()) {
+        arrivalTime = LocalTime.parse(flight.getArrivalTime(), dateTimeFormatter);
+      }
+      LocalTime departureTime = null;
+      if (flight.getDepartureTime() != null && !flight.getDepartureTime().isEmpty()) {
+        departureTime = LocalTime.parse(flight.getDepartureTime(), dateTimeFormatter);
+      }
+      Duration length = null;
+      if (departureTime != null && arrivalTime != null) {
+        length = Duration.between(departureTime, arrivalTime);
+      }
+      long s = 0;
+      if (length != null) {
+        s = length.getSeconds();
+      }
       String lengthString = String.format("%d:%02d", s / 3600, (s % 3600) / 60);
       ((TextView) view.findViewById(R.id.flight_length)).setText(lengthString);
       //    puts in EXPAND view

@@ -1,4 +1,4 @@
-package deepdive.cnm.edu.trips;
+package deepdive.cnm.edu.trips.model.dialog;
 
 
 import android.os.AsyncTask;
@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
+import deepdive.cnm.edu.trips.R;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment.Mode;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment.OnChangeListener;
@@ -113,26 +114,56 @@ public class AddFlight extends DialogFragment {
         new View.OnClickListener() {
           public void onClick(View clickView) {
             Flight flight = new Flight();
-            flight.setArrivalAirport(((TextInputEditText)
-                view.findViewById(R.id.arrival_airport_input)).getText().toString());
-            flight.setDepartureAirport(((TextInputEditText)
-                view.findViewById(R.id.departure_airport_input)).getText().toString());
-            flight.setDepartureDate(((TextInputEditText)
-                view.findViewById(R.id.departure_date_input)).getText().toString());
-            flight.setArrivalDate(((TextInputEditText)
-                view.findViewById(R.id.arrival_date_input)).getText().toString());
-            flight.setFlightNumber(((TextInputEditText)
-                view.findViewById(R.id.flight_number_input)).getText().toString());
-            flight.setConfirmationNumber(((TextInputEditText)
-                view.findViewById(R.id.flight_confirmation_input)).getText().toString());
-            flight.setPassengerName(((TextInputEditText)
-                view.findViewById(R.id.passenger_name_input)).getText().toString());
-            flight.setFlightRewards(((TextInputEditText)
-                view.findViewById(R.id.flight_rewards_input)).getText().toString());
-            flight.setArrivalTime(((TextInputEditText)
-                view.findViewById(R.id.arrival_time_input)).getText().toString());
-            flight.setDepartureTime(((TextInputEditText)
-                view.findViewById(R.id.departure_time_input)).getText().toString());
+            if ((((TextInputEditText)
+                view.findViewById(R.id.arrival_airport_input)).getText() != null)) {
+              flight.setArrivalAirport(((TextInputEditText)
+                  view.findViewById(R.id.arrival_airport_input)).getText().toString());
+            }
+            if ((((TextInputEditText)
+                view.findViewById(R.id.departure_airport_input)).getText() != null)) {
+              flight.setDepartureAirport(((TextInputEditText)
+                  view.findViewById(R.id.departure_airport_input)).getText().toString());
+            }
+            if ((((TextInputEditText)
+                view.findViewById(R.id.departure_date_input)).getText() != null)) {
+              flight.setDepartureDate(((TextInputEditText)
+                  view.findViewById(R.id.departure_date_input)).getText().toString());
+            }
+            if ((((TextInputEditText)
+                view.findViewById(R.id.arrival_date_input)).getText() != null)) {
+              flight.setArrivalDate(((TextInputEditText)
+                  view.findViewById(R.id.arrival_date_input)).getText().toString());
+            }
+            if ((((TextInputEditText)
+                view.findViewById(R.id.flight_number_input)).getText() != null)) {
+              flight.setFlightNumber(((TextInputEditText)
+                  view.findViewById(R.id.flight_number_input)).getText().toString());
+            }
+            if ((((TextInputEditText)
+                view.findViewById(R.id.flight_confirmation_input)).getText() != null)) {
+              flight.setConfirmationNumber(((TextInputEditText)
+                  view.findViewById(R.id.flight_confirmation_input)).getText().toString());
+            }
+            if ((((TextInputEditText)
+                view.findViewById(R.id.passenger_name_input)).getText() != null)) {
+              flight.setPassengerName(((TextInputEditText)
+                  view.findViewById(R.id.passenger_name_input)).getText().toString());
+            }
+            if ((((TextInputEditText)
+                view.findViewById(R.id.flight_rewards_input)).getText() != null)) {
+              flight.setFlightRewards(((TextInputEditText)
+                  view.findViewById(R.id.flight_rewards_input)).getText().toString());
+            }
+            if ((((TextInputEditText)
+                view.findViewById(R.id.arrival_time_input)).getText() != null)) {
+              flight.setArrivalTime(((TextInputEditText)
+                  view.findViewById(R.id.arrival_time_input)).getText().toString());
+            }
+            if ((((TextInputEditText)
+                view.findViewById(R.id.departure_time_input)).getText() != null)) {
+              flight.setDepartureTime(((TextInputEditText)
+                  view.findViewById(R.id.departure_time_input)).getText().toString());
+            }
             dismiss();
             new FlightTask().execute(flight);
           }

@@ -1,4 +1,4 @@
-package deepdive.cnm.edu.trips;
+package deepdive.cnm.edu.trips.model.fragment;
 
 
 import android.content.Context;
@@ -14,6 +14,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
+import deepdive.cnm.edu.trips.R;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase;
 import deepdive.cnm.edu.trips.model.entity.Transportation;
 import java.util.List;
@@ -53,8 +54,8 @@ public class TransportationFragment extends Fragment implements AddCallBack {
     }
 
     @Override
-    protected void onPostExecute(List<Transportation> transportation) {
-      view.setAdapter(new TransportationListAdapter(getActivity(), transportation));
+    protected void onPostExecute(List<Transportation> transportations) {
+      view.setAdapter(new TransportationListAdapter(getActivity(), transportations));
 
     }
   }
@@ -76,13 +77,15 @@ public class TransportationFragment extends Fragment implements AddCallBack {
       final View view = getLayoutInflater()
           .inflate(R.layout.transportation_card_template, parent, false);
       Transportation transportation = getItem(position);
+      ((TextView) view.findViewById(R.id.rental_company_name))
+          .setText(transportation.getRentalCompanyName());
       ((TextView) view.findViewById(R.id.rental_company_address))
           .setText(transportation.getRentalCompanyAddress());
       ((TextView) view.findViewById(R.id.rental_company_phone))
           .setText(transportation.getRentalCompanyPhone());
-      ((TextView) view.findViewById(R.id.rental_check_in))
-          .setText(transportation.getRentalPickUp());
-      ((TextView) view.findViewById(R.id.rental_check_out))
+      ((TextView) view.findViewById(R.id.rental_return))
+          .setText(transportation.getRentalReturn());
+      ((TextView) view.findViewById(R.id.rental_pick_up))
           .setText(transportation.getRentalPickUp());
       ((TextView) view.findViewById(R.id.name_on_rental_reservation))
           .setText(transportation.getNameOnRentalReservation());
@@ -97,8 +100,8 @@ public class TransportationFragment extends Fragment implements AddCallBack {
       view.findViewById(R.id.calendar_check_out_car).setVisibility(View.VISIBLE);
       view.findViewById(R.id.rental_company_address).setVisibility(View.GONE);
       view.findViewById(R.id.rental_company_phone).setVisibility(View.GONE);
-      view.findViewById(R.id.rental_check_in).setVisibility(View.GONE);
-      view.findViewById(R.id.rental_check_out).setVisibility(View.GONE);
+      view.findViewById(R.id.rental_return).setVisibility(View.GONE);
+      view.findViewById(R.id.rental_pick_up).setVisibility(View.GONE);
       view.findViewById(R.id.calendar_check_in_car_2).setVisibility(View.GONE);
       view.findViewById(R.id.calendar_check_out_car_2).setVisibility(View.GONE);
       view.findViewById(R.id.name_on_rental_reservation).setVisibility(View.GONE);
@@ -116,8 +119,8 @@ public class TransportationFragment extends Fragment implements AddCallBack {
                 view.findViewById(R.id.calendar_check_out_car).setVisibility(View.GONE);
                 view.findViewById(R.id.rental_company_address).setVisibility(View.VISIBLE);
                 view.findViewById(R.id.rental_company_phone).setVisibility(View.VISIBLE);
-                view.findViewById(R.id.rental_check_in).setVisibility(View.VISIBLE);
-                view.findViewById(R.id.rental_check_out).setVisibility(View.VISIBLE);
+                view.findViewById(R.id.rental_return).setVisibility(View.VISIBLE);
+                view.findViewById(R.id.rental_pick_up).setVisibility(View.VISIBLE);
                 view.findViewById(R.id.calendar_check_in_car_2).setVisibility(View.VISIBLE);
                 view.findViewById(R.id.calendar_check_out_car_2).setVisibility(View.VISIBLE);
                 view.findViewById(R.id.name_on_rental_reservation).setVisibility(View.VISIBLE);
@@ -130,8 +133,8 @@ public class TransportationFragment extends Fragment implements AddCallBack {
                 view.findViewById(R.id.calendar_check_out_car).setVisibility(View.VISIBLE);
                 view.findViewById(R.id.rental_company_address).setVisibility(View.GONE);
                 view.findViewById(R.id.rental_company_phone).setVisibility(View.GONE);
-                view.findViewById(R.id.rental_check_in).setVisibility(View.GONE);
-                view.findViewById(R.id.rental_check_out).setVisibility(View.GONE);
+                view.findViewById(R.id.rental_return).setVisibility(View.GONE);
+                view.findViewById(R.id.rental_pick_up).setVisibility(View.GONE);
                 view.findViewById(R.id.calendar_check_in_car_2).setVisibility(View.GONE);
                 view.findViewById(R.id.calendar_check_out_car_2).setVisibility(View.GONE);
                 view.findViewById(R.id.name_on_rental_reservation).setVisibility(View.GONE);
