@@ -35,7 +35,7 @@ public class TransportationFragment extends Fragment implements AddCallBack {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-    view = (ListView) inflater.inflate(R.layout.fragment_transportation, container, false);
+    view = (ListView) inflater.inflate(R.layout.transportation_fragment, container, false);
     new TransportationTask().execute();
     return view;
   }
@@ -98,6 +98,7 @@ public class TransportationFragment extends Fragment implements AddCallBack {
       //    puts in EXPAND view
       view.findViewById(R.id.calendar_check_in_car).setVisibility(View.VISIBLE);
       view.findViewById(R.id.calendar_check_out_car).setVisibility(View.VISIBLE);
+      view.findViewById(R.id.expand_more_transportation).setVisibility(View.VISIBLE);
       view.findViewById(R.id.rental_company_address).setVisibility(View.GONE);
       view.findViewById(R.id.rental_company_phone).setVisibility(View.GONE);
       view.findViewById(R.id.rental_return).setVisibility(View.GONE);
@@ -109,6 +110,8 @@ public class TransportationFragment extends Fragment implements AddCallBack {
       view.findViewById(R.id.rental_rewards).setVisibility(View.GONE);
       view.findViewById(R.id.car_type).setVisibility(View.GONE);
       view.findViewById(R.id.rental_cost).setVisibility(View.GONE);
+      view.findViewById(R.id.expand_less_transportation).setVisibility(View.GONE);
+      view.findViewById(R.id.trash_transportation).setVisibility(View.GONE);
 //    expands card
       view.findViewById(R.id.transportation_card_1)
           .setOnClickListener(new View.OnClickListener() {
@@ -117,6 +120,7 @@ public class TransportationFragment extends Fragment implements AddCallBack {
               if (view.findViewById(R.id.calendar_check_in_car).getVisibility() == View.VISIBLE) {
                 view.findViewById(R.id.calendar_check_in_car).setVisibility(View.GONE);
                 view.findViewById(R.id.calendar_check_out_car).setVisibility(View.GONE);
+                view.findViewById(R.id.expand_more_transportation).setVisibility(View.GONE);
                 view.findViewById(R.id.rental_company_address).setVisibility(View.VISIBLE);
                 view.findViewById(R.id.rental_company_phone).setVisibility(View.VISIBLE);
                 view.findViewById(R.id.rental_return).setVisibility(View.VISIBLE);
@@ -128,9 +132,12 @@ public class TransportationFragment extends Fragment implements AddCallBack {
                 view.findViewById(R.id.rental_rewards).setVisibility(View.VISIBLE);
                 view.findViewById(R.id.car_type).setVisibility(View.VISIBLE);
                 view.findViewById(R.id.rental_cost).setVisibility(View.VISIBLE);
+                view.findViewById(R.id.expand_less_transportation).setVisibility(View.VISIBLE);
+                view.findViewById(R.id.trash_transportation).setVisibility(View.VISIBLE);
               } else {
                 view.findViewById(R.id.calendar_check_in_car).setVisibility(View.VISIBLE);
                 view.findViewById(R.id.calendar_check_out_car).setVisibility(View.VISIBLE);
+                view.findViewById(R.id.expand_more_transportation).setVisibility(View.VISIBLE);
                 view.findViewById(R.id.rental_company_address).setVisibility(View.GONE);
                 view.findViewById(R.id.rental_company_phone).setVisibility(View.GONE);
                 view.findViewById(R.id.rental_return).setVisibility(View.GONE);
@@ -142,6 +149,8 @@ public class TransportationFragment extends Fragment implements AddCallBack {
                 view.findViewById(R.id.rental_rewards).setVisibility(View.GONE);
                 view.findViewById(R.id.car_type).setVisibility(View.GONE);
                 view.findViewById(R.id.rental_cost).setVisibility(View.GONE);
+                view.findViewById(R.id.expand_less_transportation).setVisibility(View.GONE);
+                view.findViewById(R.id.trash_transportation).setVisibility(View.GONE);
               }
             }
           });

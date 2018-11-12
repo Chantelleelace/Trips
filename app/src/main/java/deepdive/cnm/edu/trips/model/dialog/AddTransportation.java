@@ -66,7 +66,7 @@ public class AddTransportation extends DialogFragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    final View view = inflater.inflate(R.layout.fragment_add_transportation, container, false);
+    final View view = inflater.inflate(R.layout.transportation_add, container, false);
     pickUpDate = view.findViewById(R.id.pick_up_date_input);
     pickUpDate.setOnClickListener(new OnClickListener() {
       /**
@@ -137,13 +137,18 @@ public class AddTransportation extends DialogFragment {
             }
             if ((((TextInputEditText)
                 view.findViewById(R.id.rental_name_on_reservation_input)).getText() != null)) {
-              transportation.setRentalCost(((TextInputEditText)
+              transportation.setNameOnRentalReservation(((TextInputEditText)
                   view.findViewById(R.id.rental_name_on_reservation_input)).getText().toString());
             }
             if ((((TextInputEditText)
                 view.findViewById(R.id.rental_confirmation_input)).getText() != null)) {
-              transportation.setRentalCost(((TextInputEditText)
+              transportation.setRentalConfirmation(((TextInputEditText)
                   view.findViewById(R.id.rental_confirmation_input)).getText().toString());
+            }
+            if ((((TextInputEditText)
+                view.findViewById(R.id.rental_rewards_input)).getText() != null)) {
+              transportation.setRentalRewards(((TextInputEditText)
+                  view.findViewById(R.id.rental_rewards_input)).getText().toString());
             }
             dismiss();
             new TransportationTask().execute(transportation);

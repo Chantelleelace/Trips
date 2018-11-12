@@ -8,6 +8,7 @@
     android:id="@+id/flight_card_1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:padding="20dp"
     android:animateLayoutChanges="true">
 
     <RelativeLayout
@@ -16,63 +17,80 @@
       android:layout_gravity="center"
       android:padding="16dp">
 
-      <LinearLayout
-        android:layout_width="321dp"
-        android:layout_height="65dp"
-        android:layout_alignParentLeft="true"
-        android:orientation="horizontal"
-        >
+      <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <ImageView
-          android:id="@+id/first_plane"
-          android:layout_width="50dp"
-          android:layout_height="50dp"
-          android:src="@drawable/ic_flight_black"
-          android:layout_gravity="center"
-          />
+        <LinearLayout
+          android:id="@+id/flight_first_view"
+          android:layout_width="321dp"
+          android:layout_height="65dp"
+          android:layout_alignParentLeft="true"
+          android:orientation="horizontal"
+          >
 
-        <TextView
-          android:id="@+id/airport_code_departure_1"
+          <ImageView
+            android:id="@+id/first_plane"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_flight_black"
+            />
+
+          <TextView
+            android:id="@+id/airport_code_departure_1"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_toLeftOf="@id/first_plane"
+            android:paddingLeft="35dp"
+            android:maxLength="3"
+            android:text="ABQ"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textSize="30sp"/>
+
+          <TextView
+            android:id="@+id/airport_code_arrival_1"
+            android:textStyle="bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_toLeftOf="@id/airport_code_departure_1"
+            android:paddingLeft="35dp"
+            android:maxLength="3"
+            android:text="LAX"
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textSize="30sp"/>
+
+          <TextView
+            android:id="@+id/flight_length"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_toLeftOf="@id/airport_code_arrival_1"
+            android:paddingLeft="35dp"
+            android:text="1 hr 16 m"
+            android:textAlignment="center"
+            android:textColor="@android:color/darker_gray"
+            android:textSize="20sp"
+            />
+
+        </LinearLayout>
+
+
+        <ImageButton
+          android:id="@+id/expand_more_flight"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_toLeftOf="@id/first_plane"
-          android:paddingLeft="35dp"
-          android:layout_gravity="center"
-          android:text="ABQ"
-          android:maxLength="3"
-          android:textAllCaps="true"
-          android:textColor="@android:color/black"
-          android:textSize="30sp"
-          android:textStyle="bold" />
+          android:layout_below="@+id/flight_first_view"
+          android:layout_alignParentRight="true"
+          android:src="@drawable/ic_expand_more"/>
 
-        <TextView
-          android:id="@+id/airport_code_arrival_1"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_toLeftOf="@id/airport_code_departure_1"
-          android:paddingLeft="35dp"
-          android:layout_gravity="center"
-          android:text="LAX"
-          android:textColor="@android:color/black"
-          android:maxLength="3"
-          android:textAllCaps="true"
-          android:textSize="30sp"
-          android:textStyle="bold" />
-
-        <TextView
-          android:id="@+id/flight_length"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:textAlignment="center"
-          android:paddingLeft="35dp"
-          android:layout_toLeftOf="@id/airport_code_arrival_1"
-          android:layout_gravity="center"
-          android:text="1 hr 16 m"
-          android:textColor="@android:color/darker_gray"
-          android:textSize="20sp"
-          />
-
-      </LinearLayout>
+      </RelativeLayout>
 
 
       <android.support.v7.widget.LinearLayoutCompat
@@ -243,6 +261,25 @@
         android:text="20138961636"
         android:textAlignment="center"
         android:textSize="8pt" />
+
+      <ImageButton
+        android:id="@+id/expand_less_flight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/passenger_1_rewards"
+        android:layout_alignEnd="@+id/right_column"
+        android:layout_alignParentBottom="true"
+        android:src="@drawable/ic_expand_less"/>
+
+      <ImageButton
+        android:id="@+id/trash_flight"
+        android:layout_width="27dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="269dp"
+        android:layout_alignStart="@+id/left_column"
+        android:layout_below="@+id/passenger_1"
+        android:layout_toLeftOf="@+id/expand_less_flight"
+        android:src="@drawable/ic_trash"/>
 
 
     </RelativeLayout>

@@ -4,6 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="16dp"
+    android:paddingBottom="20dp"
     tools:context=".model.fragment.HotelFragment">
 
 

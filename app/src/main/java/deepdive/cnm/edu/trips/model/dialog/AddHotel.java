@@ -67,7 +67,7 @@ public class AddHotel extends DialogFragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    final View view = inflater.inflate(R.layout.fragment_add_hotel, container, false);
+    final View view = inflater.inflate(R.layout.hotel_add, container, false);
     checkInDate = view.findViewById(R.id.check_in_date_input);
     checkInDate.setOnClickListener(new OnClickListener() {
       /**

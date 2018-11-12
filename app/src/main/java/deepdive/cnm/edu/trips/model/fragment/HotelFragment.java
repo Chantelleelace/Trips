@@ -36,7 +36,7 @@ public class HotelFragment extends Fragment implements AddCallBack {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-    view = (ListView) inflater.inflate(R.layout.fragment_hotel, container, false);
+    view = (ListView) inflater.inflate(R.layout.hotel_fragment, container, false);
     new HotelTask().execute();
     return view;
   }
@@ -93,6 +93,7 @@ public class HotelFragment extends Fragment implements AddCallBack {
       //    puts in EXPAND view
       view.findViewById(R.id.calendar_check_in).setVisibility(View.VISIBLE);
       view.findViewById(R.id.calendar_check_out).setVisibility(View.VISIBLE);
+      view.findViewById(R.id.expand_more_hotel).setVisibility(View.VISIBLE);
       view.findViewById(R.id.hotel_address).setVisibility(View.GONE);
       view.findViewById(R.id.hotel_phone).setVisibility(View.GONE);
       view.findViewById(R.id.hotel_check_in).setVisibility(View.GONE);
@@ -104,6 +105,8 @@ public class HotelFragment extends Fragment implements AddCallBack {
       view.findViewById(R.id.hotel_rewards).setVisibility(View.GONE);
       view.findViewById(R.id.room_type).setVisibility(View.GONE);
       view.findViewById(R.id.hotel_cost).setVisibility(View.GONE);
+      view.findViewById(R.id.expand_less_hotel).setVisibility(View.GONE);
+      view.findViewById(R.id.trash_hotel).setVisibility(View.GONE);
 //    expands card
       view.findViewById(R.id.hotel_card_1).setOnClickListener(new OnClickListener() {
         @Override
@@ -111,6 +114,7 @@ public class HotelFragment extends Fragment implements AddCallBack {
           if (view.findViewById(R.id.calendar_check_in).getVisibility() == View.VISIBLE) {
             view.findViewById(R.id.calendar_check_in).setVisibility(View.GONE);
             view.findViewById(R.id.calendar_check_out).setVisibility(View.GONE);
+            view.findViewById(R.id.expand_more_hotel).setVisibility(View.GONE);
             view.findViewById(R.id.hotel_address).setVisibility(View.VISIBLE);
             view.findViewById(R.id.hotel_phone).setVisibility(View.VISIBLE);
             view.findViewById(R.id.hotel_check_in).setVisibility(View.VISIBLE);
@@ -122,9 +126,12 @@ public class HotelFragment extends Fragment implements AddCallBack {
             view.findViewById(R.id.hotel_rewards).setVisibility(View.VISIBLE);
             view.findViewById(R.id.room_type).setVisibility(View.VISIBLE);
             view.findViewById(R.id.hotel_cost).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.expand_less_hotel).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.trash_hotel).setVisibility(View.VISIBLE);
           } else {
             view.findViewById(R.id.calendar_check_in).setVisibility(View.VISIBLE);
             view.findViewById(R.id.calendar_check_out).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.expand_more_hotel).setVisibility(View.VISIBLE);
             view.findViewById(R.id.hotel_address).setVisibility(View.GONE);
             view.findViewById(R.id.hotel_phone).setVisibility(View.GONE);
             view.findViewById(R.id.hotel_check_in).setVisibility(View.GONE);
@@ -136,6 +143,8 @@ public class HotelFragment extends Fragment implements AddCallBack {
             view.findViewById(R.id.hotel_rewards).setVisibility(View.GONE);
             view.findViewById(R.id.room_type).setVisibility(View.GONE);
             view.findViewById(R.id.hotel_cost).setVisibility(View.GONE);
+            view.findViewById(R.id.expand_less_hotel).setVisibility(View.GONE);
+            view.findViewById(R.id.trash_hotel).setVisibility(View.GONE);
           }
         }
       });

@@ -87,7 +87,7 @@ public class AddFlight extends DialogFragment {
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
 //    Inflates calendar and clock
-    final View view = inflater.inflate(R.layout.fragment_add_flight, container, false);
+    final View view = inflater.inflate(R.layout.flight_add, container, false);
     date = view.findViewById(R.id.departure_date_input);
     date.setOnClickListener(new OnClickListener() {
       @Override

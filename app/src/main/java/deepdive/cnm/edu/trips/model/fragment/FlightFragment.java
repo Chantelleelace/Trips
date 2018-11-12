@@ -38,10 +38,12 @@ public class FlightFragment extends Fragment implements AddCallBack {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-    view = (ListView) inflater.inflate(R.layout.fragment_flight, container, false);
+    view = (ListView) inflater.inflate(R.layout.flight_fragment, container, false);
     new FlightTask().execute();
     return view;
   }
+
+  // TODO Create a clickListener for trashcan to delete cards
 
   @Override
   public void update() {
@@ -92,12 +94,13 @@ public class FlightFragment extends Fragment implements AddCallBack {
       ((TextView) view.findViewById(R.id.airport_code_arrival)).setText(flight.getArrivalAirport());
       ((TextView) view.findViewById(R.id.airport_code_arrival_1))
           .setText(flight.getArrivalAirport());
-      if (flight.getDepartureDate() != null && flight.getDepartureDate().length()>4) {
+      if (flight.getDepartureDate() != null && flight.getDepartureDate().length()>3) {
         ((TextView) view.findViewById(R.id.departure_date))
             .setText(flight.getDepartureDate().substring(0, 5));
+        // TODO Fix 5 digits/ 4 digits for date string
       }
       ((TextView) view.findViewById(R.id.departure_time)).setText(flight.getDepartureTime());
-      if (flight.getArrivalDate() != null && flight.getArrivalDate().length()>4) {
+      if (flight.getArrivalDate() != null && flight.getArrivalDate().length()>3) {
         ((TextView) view.findViewById(R.id.arrival_date))
             .setText(flight.getArrivalDate().substring(0, 5));
       }
@@ -128,6 +131,7 @@ public class FlightFragment extends Fragment implements AddCallBack {
       view.findViewById(R.id.airport_code_departure_1).setVisibility(View.VISIBLE);
       view.findViewById(R.id.airport_code_arrival_1).setVisibility(View.VISIBLE);
       view.findViewById(R.id.flight_length).setVisibility(View.VISIBLE);
+      view.findViewById(R.id.expand_more_flight).setVisibility(View.VISIBLE);
       view.findViewById(R.id.passenger_1).setVisibility(View.GONE);
       view.findViewById(R.id.passenger_1_rewards).setVisibility(View.GONE);
       view.findViewById(R.id.airport_code_outbound).setVisibility(View.GONE);
@@ -139,6 +143,8 @@ public class FlightFragment extends Fragment implements AddCallBack {
       view.findViewById(R.id.flight_confirmation).setVisibility(View.GONE);
       view.findViewById(R.id.flight_number).setVisibility(View.GONE);
       view.findViewById(R.id.plane_outbound_icon).setVisibility(View.GONE);
+      view.findViewById(R.id.expand_less_flight).setVisibility(View.GONE);
+      view.findViewById(R.id.trash_flight).setVisibility(View.GONE);
 //    expands card
       view.findViewById(R.id.flight_card_1).setOnClickListener(new OnClickListener() {
         @Override
@@ -148,6 +154,7 @@ public class FlightFragment extends Fragment implements AddCallBack {
             view.findViewById(R.id.airport_code_departure_1).setVisibility(View.VISIBLE);
             view.findViewById(R.id.airport_code_arrival_1).setVisibility(View.VISIBLE);
             view.findViewById(R.id.flight_length).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.expand_more_flight).setVisibility(View.VISIBLE);
             view.findViewById(R.id.passenger_1).setVisibility(View.GONE);
             view.findViewById(R.id.passenger_1_rewards).setVisibility(View.GONE);
             view.findViewById(R.id.airport_code_outbound).setVisibility(View.GONE);
@@ -159,11 +166,14 @@ public class FlightFragment extends Fragment implements AddCallBack {
             view.findViewById(R.id.flight_confirmation).setVisibility(View.GONE);
             view.findViewById(R.id.flight_number).setVisibility(View.GONE);
             view.findViewById(R.id.plane_outbound_icon).setVisibility(View.GONE);
+            view.findViewById(R.id.expand_less_flight).setVisibility(View.GONE);
+            view.findViewById(R.id.trash_flight).setVisibility(View.GONE);
           } else {
             view.findViewById(R.id.first_plane).setVisibility(View.GONE);
             view.findViewById(R.id.airport_code_departure_1).setVisibility(View.GONE);
             view.findViewById(R.id.airport_code_arrival_1).setVisibility(View.GONE);
             view.findViewById(R.id.flight_length).setVisibility(View.GONE);
+            view.findViewById(R.id.expand_more_flight).setVisibility(View.GONE);
             view.findViewById(R.id.passenger_1).setVisibility(View.VISIBLE);
             view.findViewById(R.id.passenger_1_rewards).setVisibility(View.VISIBLE);
             view.findViewById(R.id.airport_code_outbound).setVisibility(View.VISIBLE);
@@ -175,6 +185,8 @@ public class FlightFragment extends Fragment implements AddCallBack {
             view.findViewById(R.id.flight_confirmation).setVisibility(View.VISIBLE);
             view.findViewById(R.id.flight_number).setVisibility(View.VISIBLE);
             view.findViewById(R.id.plane_outbound_icon).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.expand_less_flight).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.trash_flight).setVisibility(View.VISIBLE);
           }
         }
       });
