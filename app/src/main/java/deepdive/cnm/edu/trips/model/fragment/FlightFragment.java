@@ -176,6 +176,7 @@ public class FlightFragment extends Fragment implements AddCallBack {
       view.findViewById(R.id.plane_outbound_icon).setVisibility(View.GONE);
       view.findViewById(R.id.expand_less_flight).setVisibility(View.GONE);
       view.findViewById(R.id.trash_flight).setVisibility(View.GONE);
+      view.findViewById(R.id.edit_flight).setVisibility(View.GONE);
 //    expands card
       view.findViewById(R.id.flight_card_1).setOnClickListener(new OnClickListener() {
         @Override
@@ -199,6 +200,7 @@ public class FlightFragment extends Fragment implements AddCallBack {
             view.findViewById(R.id.plane_outbound_icon).setVisibility(View.GONE);
             view.findViewById(R.id.expand_less_flight).setVisibility(View.GONE);
             view.findViewById(R.id.trash_flight).setVisibility(View.GONE);
+            view.findViewById(R.id.edit_flight).setVisibility(View.GONE);
           } else {
             view.findViewById(R.id.first_plane).setVisibility(View.GONE);
             view.findViewById(R.id.airport_code_departure_1).setVisibility(View.GONE);
@@ -218,6 +220,7 @@ public class FlightFragment extends Fragment implements AddCallBack {
             view.findViewById(R.id.plane_outbound_icon).setVisibility(View.VISIBLE);
             view.findViewById(R.id.expand_less_flight).setVisibility(View.VISIBLE);
             view.findViewById(R.id.trash_flight).setVisibility(View.VISIBLE);
+            view.findViewById(R.id.edit_flight).setVisibility(View.VISIBLE);
           }
         }
       });

@@ -17,7 +17,6 @@ import android.widget.TextView;
 import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.R;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase;
-import deepdive.cnm.edu.trips.model.dialog.AddFlight;
 import deepdive.cnm.edu.trips.model.dialog.AddTransportation;
 import deepdive.cnm.edu.trips.model.entity.Transportation;
 import java.util.List;
@@ -98,7 +97,7 @@ public class TransportationFragment extends Fragment implements AddCallBack {
           .setText(transportation.getRentalRewards());
       ((TextView) view.findViewById(R.id.car_type)).setText(transportation.getCarType());
       ((TextView) view.findViewById(R.id.rental_cost)).setText(transportation.getRentalCost());
-      Button editButton = view.findViewById(R.id.edit_flight);
+      Button editButton = view.findViewById(R.id.edit_transportation);
       editButton.setOnClickListener((v) -> {
         // TODO ADD code to display AddTransportation dialog fragment
         AddTransportation newFragment = new AddTransportation();
@@ -123,46 +122,46 @@ public class TransportationFragment extends Fragment implements AddCallBack {
       view.findViewById(R.id.rental_cost).setVisibility(View.GONE);
       view.findViewById(R.id.expand_less_transportation).setVisibility(View.GONE);
       view.findViewById(R.id.trash_transportation).setVisibility(View.GONE);
+      view.findViewById(R.id.edit_transportation).setVisibility(View.GONE);
 //    expands card
       view.findViewById(R.id.transportation_card_1)
-          .setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-              if (view.findViewById(R.id.calendar_check_in_car).getVisibility() == View.VISIBLE) {
-                view.findViewById(R.id.calendar_check_in_car).setVisibility(View.GONE);
-                view.findViewById(R.id.calendar_check_out_car).setVisibility(View.GONE);
-                view.findViewById(R.id.expand_more_transportation).setVisibility(View.GONE);
-                view.findViewById(R.id.rental_company_address).setVisibility(View.VISIBLE);
-                view.findViewById(R.id.rental_company_phone).setVisibility(View.VISIBLE);
-                view.findViewById(R.id.rental_return).setVisibility(View.VISIBLE);
-                view.findViewById(R.id.rental_pick_up).setVisibility(View.VISIBLE);
-                view.findViewById(R.id.calendar_check_in_car_2).setVisibility(View.VISIBLE);
-                view.findViewById(R.id.calendar_check_out_car_2).setVisibility(View.VISIBLE);
-                view.findViewById(R.id.name_on_rental_reservation).setVisibility(View.VISIBLE);
-                view.findViewById(R.id.rental_confirmation).setVisibility(View.VISIBLE);
-                view.findViewById(R.id.rental_rewards).setVisibility(View.VISIBLE);
-                view.findViewById(R.id.car_type).setVisibility(View.VISIBLE);
-                view.findViewById(R.id.rental_cost).setVisibility(View.VISIBLE);
-                view.findViewById(R.id.expand_less_transportation).setVisibility(View.VISIBLE);
-                view.findViewById(R.id.trash_transportation).setVisibility(View.VISIBLE);
-              } else {
-                view.findViewById(R.id.calendar_check_in_car).setVisibility(View.VISIBLE);
-                view.findViewById(R.id.calendar_check_out_car).setVisibility(View.VISIBLE);
-                view.findViewById(R.id.expand_more_transportation).setVisibility(View.VISIBLE);
-                view.findViewById(R.id.rental_company_address).setVisibility(View.GONE);
-                view.findViewById(R.id.rental_company_phone).setVisibility(View.GONE);
-                view.findViewById(R.id.rental_return).setVisibility(View.GONE);
-                view.findViewById(R.id.rental_pick_up).setVisibility(View.GONE);
-                view.findViewById(R.id.calendar_check_in_car_2).setVisibility(View.GONE);
-                view.findViewById(R.id.calendar_check_out_car_2).setVisibility(View.GONE);
-                view.findViewById(R.id.name_on_rental_reservation).setVisibility(View.GONE);
-                view.findViewById(R.id.rental_confirmation).setVisibility(View.GONE);
-                view.findViewById(R.id.rental_rewards).setVisibility(View.GONE);
-                view.findViewById(R.id.car_type).setVisibility(View.GONE);
-                view.findViewById(R.id.rental_cost).setVisibility(View.GONE);
-                view.findViewById(R.id.expand_less_transportation).setVisibility(View.GONE);
-                view.findViewById(R.id.trash_transportation).setVisibility(View.GONE);
-              }
+          .setOnClickListener(v -> {
+            if (view.findViewById(R.id.calendar_check_in_car).getVisibility() == View.VISIBLE) {
+              view.findViewById(R.id.calendar_check_in_car).setVisibility(View.GONE);
+              view.findViewById(R.id.calendar_check_out_car).setVisibility(View.GONE);
+              view.findViewById(R.id.expand_more_transportation).setVisibility(View.GONE);
+              view.findViewById(R.id.rental_company_address).setVisibility(View.VISIBLE);
+              view.findViewById(R.id.rental_company_phone).setVisibility(View.VISIBLE);
+              view.findViewById(R.id.rental_return).setVisibility(View.VISIBLE);
+              view.findViewById(R.id.rental_pick_up).setVisibility(View.VISIBLE);
+              view.findViewById(R.id.calendar_check_in_car_2).setVisibility(View.VISIBLE);
+              view.findViewById(R.id.calendar_check_out_car_2).setVisibility(View.VISIBLE);
+              view.findViewById(R.id.name_on_rental_reservation).setVisibility(View.VISIBLE);
+              view.findViewById(R.id.rental_confirmation).setVisibility(View.VISIBLE);
+              view.findViewById(R.id.rental_rewards).setVisibility(View.VISIBLE);
+              view.findViewById(R.id.car_type).setVisibility(View.VISIBLE);
+              view.findViewById(R.id.rental_cost).setVisibility(View.VISIBLE);
+              view.findViewById(R.id.expand_less_transportation).setVisibility(View.VISIBLE);
+              view.findViewById(R.id.trash_transportation).setVisibility(View.VISIBLE);
+              view.findViewById(R.id.edit_transportation).setVisibility(View.VISIBLE);
+            } else {
+              view.findViewById(R.id.calendar_check_in_car).setVisibility(View.VISIBLE);
+              view.findViewById(R.id.calendar_check_out_car).setVisibility(View.VISIBLE);
+              view.findViewById(R.id.expand_more_transportation).setVisibility(View.VISIBLE);
+              view.findViewById(R.id.rental_company_address).setVisibility(View.GONE);
+              view.findViewById(R.id.rental_company_phone).setVisibility(View.GONE);
+              view.findViewById(R.id.rental_return).setVisibility(View.GONE);
+              view.findViewById(R.id.rental_pick_up).setVisibility(View.GONE);
+              view.findViewById(R.id.calendar_check_in_car_2).setVisibility(View.GONE);
+              view.findViewById(R.id.calendar_check_out_car_2).setVisibility(View.GONE);
+              view.findViewById(R.id.name_on_rental_reservation).setVisibility(View.GONE);
+              view.findViewById(R.id.rental_confirmation).setVisibility(View.GONE);
+              view.findViewById(R.id.rental_rewards).setVisibility(View.GONE);
+              view.findViewById(R.id.car_type).setVisibility(View.GONE);
+              view.findViewById(R.id.rental_cost).setVisibility(View.GONE);
+              view.findViewById(R.id.expand_less_transportation).setVisibility(View.GONE);
+              view.findViewById(R.id.trash_transportation).setVisibility(View.GONE);
+              view.findViewById(R.id.edit_transportation).setVisibility(View.GONE);
             }
           });
       return view;

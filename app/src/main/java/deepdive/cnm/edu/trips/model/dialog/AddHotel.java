@@ -71,19 +71,9 @@ public class AddHotel extends DialogFragment {
     // Inflate the layout for this fragment
     final View view = inflater.inflate(R.layout.hotel_add, container, false);
     checkInDate = view.findViewById(R.id.check_in_date_input);
-    checkInDate.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        pickCheckInDate(checkInDate);
-      }
-    });
+    checkInDate.setOnClickListener(v -> pickCheckInDate(checkInDate));
     checkOutDate = view.findViewById(R.id.check_out_date_input);
-    checkOutDate.setOnClickListener(new OnClickListener() {
-      @Override
-      public void onClick(View v) {
-        pickCheckInDate(checkOutDate);
-      }
-    });
+    checkOutDate.setOnClickListener(v -> pickCheckInDate(checkOutDate));
 
     view.findViewById(R.id.submit_hotel).setOnClickListener(
         v -> {
