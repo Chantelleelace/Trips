@@ -11,11 +11,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.R;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase;
+import deepdive.cnm.edu.trips.model.dialog.AddFlight;
+import deepdive.cnm.edu.trips.model.dialog.AddTransportation;
 import deepdive.cnm.edu.trips.model.entity.Transportation;
 import java.util.List;
 
@@ -95,6 +98,14 @@ public class TransportationFragment extends Fragment implements AddCallBack {
           .setText(transportation.getRentalRewards());
       ((TextView) view.findViewById(R.id.car_type)).setText(transportation.getCarType());
       ((TextView) view.findViewById(R.id.rental_cost)).setText(transportation.getRentalCost());
+      Button editButton = view.findViewById(R.id.edit_flight);
+      editButton.setOnClickListener((v) -> {
+        // TODO ADD code to display AddTransportation dialog fragment
+        AddTransportation newFragment = new AddTransportation();
+        newFragment.setTransportationId(transportation.getId());
+        newFragment.setAddCallBack(TransportationFragment.this);
+        newFragment.show(getActivity().getSupportFragmentManager(), "add transportation dialog");
+      });
       //    puts in EXPAND view
       view.findViewById(R.id.calendar_check_in_car).setVisibility(View.VISIBLE);
       view.findViewById(R.id.calendar_check_out_car).setVisibility(View.VISIBLE);

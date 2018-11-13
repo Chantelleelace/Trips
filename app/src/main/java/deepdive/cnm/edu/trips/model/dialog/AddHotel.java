@@ -22,8 +22,8 @@ import java.util.Calendar;
 
 
 /**
- * A simple {@link Fragment} subclass that lets the user add their own hotel information to
- * create new cards.
+ * A simple {@link Fragment} subclass that lets the user add their own hotel information to create
+ * new cards.
  */
 public class AddHotel extends DialogFragment {
 
@@ -31,6 +31,12 @@ public class AddHotel extends DialogFragment {
   private TextInputEditText checkOutDate;
   private Calendar calendar;
   private AddCallBack addCallBack;
+  private long hotelId;
+  private Hotel hotel;
+
+  public void setHotelId(long hotelId) {
+    this.hotelId = hotelId;
+  }
 
 
   public AddHotel() {
@@ -58,10 +64,6 @@ public class AddHotel extends DialogFragment {
 
   /**
    * This inflates the dialog for users to add their own data.
-   * @param inflater
-   * @param container
-   * @param savedInstanceState
-   * @return
    */
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -70,10 +72,6 @@ public class AddHotel extends DialogFragment {
     final View view = inflater.inflate(R.layout.hotel_add, container, false);
     checkInDate = view.findViewById(R.id.check_in_date_input);
     checkInDate.setOnClickListener(new OnClickListener() {
-      /**
-       * This pulls up a date picker when the user clicks on the date field.
-       * @param v
-       */
       @Override
       public void onClick(View v) {
         pickCheckInDate(checkInDate);
@@ -81,10 +79,6 @@ public class AddHotel extends DialogFragment {
     });
     checkOutDate = view.findViewById(R.id.check_out_date_input);
     checkOutDate.setOnClickListener(new OnClickListener() {
-      /**
-       * This pulls up a date picker when the user clicks on the date field.
-       * @param v
-       */
       @Override
       public void onClick(View v) {
         pickCheckInDate(checkOutDate);
@@ -92,75 +86,71 @@ public class AddHotel extends DialogFragment {
     });
 
     view.findViewById(R.id.submit_hotel).setOnClickListener(
-        new View.OnClickListener() {
-          /**
-           * When the user clicks submit, the data that they entered will be stored in the DB
-           * and then populated to create a new card.
-           * @param v
-           */
-          public void onClick(View v) {
-            Hotel hotel = new Hotel();
-            if ((((TextInputEditText)
-                view.findViewById(R.id.hotel_name_input)).getText() != null)) {
-              hotel.setHotelName(((TextInputEditText)
-                  view.findViewById(R.id.hotel_name_input)).getText().toString());
-            }
-            if ((((TextInputEditText)
-                view.findViewById(R.id.check_in_date_input)).getText() != null)) {
-              hotel.setCheckIn(((TextInputEditText)
-                  view.findViewById(R.id.check_in_date_input)).getText().toString());
-            }
-            if ((((TextInputEditText)
-                view.findViewById(R.id.check_out_date_input)).getText() != null)) {
-              hotel.setCheckOut(((TextInputEditText)
-                  view.findViewById(R.id.check_out_date_input)).getText().toString());
-            }
-            if ((((TextInputEditText)
-                view.findViewById(R.id.hotel_confirmation_input)).getText() != null)) {
-              hotel.setHotelConfirmation(((TextInputEditText)
-                  view.findViewById(R.id.hotel_confirmation_input)).getText().toString());
-            }
-            if ((((TextInputEditText)
-                view.findViewById(R.id.hotel_rewards_input)).getText() != null)) {
-              hotel.setHotelRewards(((TextInputEditText)
-                  view.findViewById(R.id.hotel_rewards_input)).getText().toString());
-            }
-            if ((((TextInputEditText)
-                view.findViewById(R.id.hotel_room_type_input)).getText() != null)) {
-              hotel.setRoomType(((TextInputEditText)
-                  view.findViewById(R.id.hotel_room_type_input)).getText().toString());
-            }
-            if ((((TextInputEditText)
-                view.findViewById(R.id.hotel_cost_input)).getText() != null)) {
-              hotel.setCost(((TextInputEditText)
-                  view.findViewById(R.id.hotel_cost_input)).getText().toString());
-            }
-            if ((((TextInputEditText)
-                view.findViewById(R.id.hotel_address_input)).getText() != null)) {
-              hotel.setHotelAddress(((TextInputEditText)
-                  view.findViewById(R.id.hotel_address_input)).getText().toString());
-            }
-            if ((((TextInputEditText)
-                view.findViewById(R.id.hotel_phone_input)).getText() != null)) {
-              hotel.setHotelPhone(((TextInputEditText)
-                  view.findViewById(R.id.hotel_phone_input)).getText().toString());
-            }
-            if ((((TextInputEditText)
-                view.findViewById(R.id.hotel_name_on_reservation_input)).getText() != null)) {
-              hotel.setNameOnResrvation(((TextInputEditText)
-                  view.findViewById(R.id.hotel_name_on_reservation_input)).getText().toString());
-            }
-            dismiss();
-            new HotelTask().execute(hotel);
+        v -> {
+          Hotel hotel = new Hotel();
+          if ((((TextInputEditText)
+              view.findViewById(R.id.hotel_name_input)).getText() != null)) {
+            hotel.setHotelName(((TextInputEditText)
+                view.findViewById(R.id.hotel_name_input)).getText().toString());
           }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.check_in_date_input)).getText() != null)) {
+            hotel.setCheckIn(((TextInputEditText)
+                view.findViewById(R.id.check_in_date_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.check_out_date_input)).getText() != null)) {
+            hotel.setCheckOut(((TextInputEditText)
+                view.findViewById(R.id.check_out_date_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.hotel_confirmation_input)).getText() != null)) {
+            hotel.setHotelConfirmation(((TextInputEditText)
+                view.findViewById(R.id.hotel_confirmation_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.hotel_rewards_input)).getText() != null)) {
+            hotel.setHotelRewards(((TextInputEditText)
+                view.findViewById(R.id.hotel_rewards_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.hotel_room_type_input)).getText() != null)) {
+            hotel.setRoomType(((TextInputEditText)
+                view.findViewById(R.id.hotel_room_type_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.hotel_cost_input)).getText() != null)) {
+            hotel.setCost(((TextInputEditText)
+                view.findViewById(R.id.hotel_cost_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.hotel_address_input)).getText() != null)) {
+            hotel.setHotelAddress(((TextInputEditText)
+                view.findViewById(R.id.hotel_address_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.hotel_phone_input)).getText() != null)) {
+            hotel.setHotelPhone(((TextInputEditText)
+                view.findViewById(R.id.hotel_phone_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.hotel_name_on_reservation_input)).getText() != null)) {
+            hotel.setNameOnResrvation(((TextInputEditText)
+                view.findViewById(R.id.hotel_name_on_reservation_input)).getText().toString());
+          }
+          dismiss();
+          new HotelTask().execute(hotel);
         });
-
+    if (hotelId != 0) {
+      new QueryTask().execute(hotelId);
+    } else {
+      hotel = new Hotel();
+    }
     return view;
   }
 
   /**
    * This add (Hotel) call back add a new card to my Hotel fragment from my add hotel fragment.
-   * @param addCallBack
    */
   public void setAddCallBack(AddCallBack addCallBack) {
     this.addCallBack = addCallBack;
@@ -171,13 +161,31 @@ public class AddHotel extends DialogFragment {
     @Override
     protected Void doInBackground(Hotel... hotel) {
       TripsDatabase tripsDatabase = TripsDatabase.getInstance(getActivity());
-      tripsDatabase.getHotelDao().insert(hotel[0]);
+      if (hotel[0].getId() != 0) {
+        tripsDatabase.getHotelDao().update(hotel[0]);
+      } else {
+        tripsDatabase.getHotelDao().insert(hotel[0]);
+      }
       return null;
     }
 
     @Override
     protected void onPostExecute(Void aVoid) {
       addCallBack.update();
+    }
+  }
+
+  private class QueryTask extends AsyncTask<Long, Void, Hotel> {
+
+    @Override
+    protected void onPostExecute(Hotel hotel) {
+      AddHotel.this.hotel = hotel;
+      // TODO Fill in fields with fields from flight object
+    }
+
+    @Override
+    protected Hotel doInBackground(Long... hotelIds) {
+      return TripsDatabase.getInstance(getContext()).getHotelDao().selectOne(hotelIds[0]);
     }
   }
 }

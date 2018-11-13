@@ -12,11 +12,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.R;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase;
+import deepdive.cnm.edu.trips.model.dialog.AddFlight;
 import deepdive.cnm.edu.trips.model.entity.Flight;
 import java.time.Duration;
 import java.time.LocalTime;
@@ -31,10 +33,21 @@ public class FlightFragment extends Fragment implements AddCallBack {
 
   private ListView view;
 
+  /**
+   * Instantiates a new Flight fragment.
+   */
   public FlightFragment() {
     // Required empty public constructor
   }
 
+  /**
+   * {@inheritDoc}
+   *
+   * @param inflater
+   * @param container
+   * @param savedInstanceState
+   * @return
+   */
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
@@ -48,6 +61,7 @@ public class FlightFragment extends Fragment implements AddCallBack {
   @Override
   public void update() {
     new FlightTask().execute();
+    //TODO
   }
 
   private class FlightTask extends AsyncTask<Void, Void, List<Flight>> {
@@ -65,12 +79,21 @@ public class FlightFragment extends Fragment implements AddCallBack {
     }
   }
 
+  /**
+   * Refresh list.
+   */
   public void refreshList() {
     new FlightTask().execute();
   }
 
   private class FlightListAdapter extends ArrayAdapter<Flight> {
 
+    /**
+     * Instantiates a new Flight list adapter.
+     *
+     * @param context the context
+     * @param objects the objects
+     */
     public FlightListAdapter(
         @NonNull Context context,
         @NonNull List<Flight> objects) {
@@ -83,7 +106,7 @@ public class FlightFragment extends Fragment implements AddCallBack {
         @NonNull ViewGroup parent) {
       final View view = getLayoutInflater()
           .inflate(R.layout.flight_card_template, parent, false);
-      Flight flight = getItem(position);
+      final Flight flight = getItem(position);
       ((TextView) view.findViewById(R.id.flight_number)).setText(flight.getFlightNumber());
       ((TextView) view.findViewById(R.id.passenger_1)).setText(flight.getPassengerName());
       ((TextView) view.findViewById(R.id.passenger_1_rewards)).setText(flight.getFlightRewards());
@@ -126,6 +149,14 @@ public class FlightFragment extends Fragment implements AddCallBack {
       }
       String lengthString = String.format("%d:%02d", s / 3600, (s % 3600) / 60);
       ((TextView) view.findViewById(R.id.flight_length)).setText(lengthString);
+      Button editButton = view.findViewById(R.id.edit_flight);
+      editButton.setOnClickListener((v) -> {
+        // TODO ADD code to display AddFlight dialog fragment
+        AddFlight newFragment = new AddFlight();
+        newFragment.setFlightId(flight.getId());
+        newFragment.setAddCallBack(FlightFragment.this);
+        newFragment.show(getActivity().getSupportFragmentManager(), "add flight dialog");
+      });
       //    puts in EXPAND view
       view.findViewById(R.id.first_plane).setVisibility(View.VISIBLE);
       view.findViewById(R.id.airport_code_departure_1).setVisibility(View.VISIBLE);

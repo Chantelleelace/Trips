@@ -22,8 +22,8 @@ import java.util.Calendar;
 
 
 /**
- * A simple {@link Fragment} subclass that lets the user add their own hotel information to
- * create new cards.
+ * A simple {@link Fragment} subclass that lets the user add their own hotel information to create
+ * new cards.
  */
 public class AddTransportation extends DialogFragment {
 
@@ -31,6 +31,12 @@ public class AddTransportation extends DialogFragment {
   private TextInputEditText returnDate;
   private Calendar calendar;
   private AddCallBack addCallBack;
+  private long transportationId;
+  private Transportation transportation;
+
+  public void setTransportationId(long transportationId) {
+    this.transportationId = transportationId;
+  }
 
   public AddTransportation() {
     // Required empty public constructor
@@ -55,113 +61,85 @@ public class AddTransportation extends DialogFragment {
     });
   }
 
-  /**
-   * This inflates the dialog for users to add their own data.
-   * @param inflater
-   * @param container
-   * @param savedInstanceState
-   * @return
-   */
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
     final View view = inflater.inflate(R.layout.transportation_add, container, false);
     pickUpDate = view.findViewById(R.id.pick_up_date_input);
-    pickUpDate.setOnClickListener(new OnClickListener() {
-      /**
-       * This pulls up a date picker when the user clicks on the date field.
-       * @param v
-       */
-      @Override
-      public void onClick(View v) {
-        pickUpDate(pickUpDate);
-      }
-    });
+    pickUpDate.setOnClickListener(v -> pickUpDate(pickUpDate));
     returnDate = view.findViewById(R.id.return_date_input);
-    returnDate.setOnClickListener(new OnClickListener() {
-      /**
-       * This pulls up a date picker when the user clicks on the date field.
-       * @param v
-       */
-      @Override
-      public void onClick(View v) {
-        pickUpDate(returnDate);
-      }
-    });
+    returnDate.setOnClickListener(v -> pickUpDate(returnDate));
 
     // saves all input to database.
     view.findViewById(R.id.submit_transportation).setOnClickListener(
-        new View.OnClickListener() {
-          /**
-           * When the user clicks submit, the data that they entered will be stored in the DB
-           * and then populated to create a new card.
-           * @param v
-           */
-          public void onClick(View v) {
-            Transportation transportation = new Transportation();
-            if ( (((TextInputEditText)
-                view.findViewById(R.id.rental_company_input)).getText() != null)) {
-              transportation.setRentalCompanyName(((TextInputEditText)
-                  view.findViewById(R.id.rental_company_input)).getText().toString());
-            }
-            if ((((TextInputEditText)
-                view.findViewById(R.id.rental_address_input)).getText() != null)) {
-              transportation.setRentalCompanyAddress(((TextInputEditText)
-                  view.findViewById(R.id.rental_address_input)).getText().toString());
-            }
-            if ((((TextInputEditText)
-                view.findViewById(R.id.rental_phone_number_input)).getText() != null)) {
-              transportation.setRentalCompanyPhone(((TextInputEditText)
-                  view.findViewById(R.id.rental_phone_number_input)).getText().toString());
-            }
-            if ((((TextInputEditText)
-                view.findViewById(R.id.return_date_input)).getText() != null)) {
-              transportation.setRentalReturn(((TextInputEditText)
-                  view.findViewById(R.id.return_date_input)).getText().toString());
-            }
-            if ((((TextInputEditText)
-                view.findViewById(R.id.pick_up_date_input)).getText() != null)) {
-              transportation.setRentalPickUp(((TextInputEditText)
-                  view.findViewById(R.id.pick_up_date_input)).getText().toString());
-            }
-            if ((((TextInputEditText)
-                view.findViewById(R.id.rental_car_type_input)).getText() != null)) {
-              transportation.setCarType(((TextInputEditText)
-                  view.findViewById(R.id.rental_car_type_input)).getText().toString());
-            }
-            if ((((TextInputEditText)
-                view.findViewById(R.id.rental_cost_input)).getText() != null)) {
-              transportation.setRentalCost(((TextInputEditText)
-                  view.findViewById(R.id.rental_cost_input)).getText().toString());
-            }
-            if ((((TextInputEditText)
-                view.findViewById(R.id.rental_name_on_reservation_input)).getText() != null)) {
-              transportation.setNameOnRentalReservation(((TextInputEditText)
-                  view.findViewById(R.id.rental_name_on_reservation_input)).getText().toString());
-            }
-            if ((((TextInputEditText)
-                view.findViewById(R.id.rental_confirmation_input)).getText() != null)) {
-              transportation.setRentalConfirmation(((TextInputEditText)
-                  view.findViewById(R.id.rental_confirmation_input)).getText().toString());
-            }
-            if ((((TextInputEditText)
-                view.findViewById(R.id.rental_rewards_input)).getText() != null)) {
-              transportation.setRentalRewards(((TextInputEditText)
-                  view.findViewById(R.id.rental_rewards_input)).getText().toString());
-            }
-            dismiss();
-            new TransportationTask().execute(transportation);
+        v -> {
+          Transportation transportation = new Transportation();
+          if ((((TextInputEditText)
+              view.findViewById(R.id.rental_company_input)).getText() != null)) {
+            transportation.setRentalCompanyName(((TextInputEditText)
+                view.findViewById(R.id.rental_company_input)).getText().toString());
           }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.rental_address_input)).getText() != null)) {
+            transportation.setRentalCompanyAddress(((TextInputEditText)
+                view.findViewById(R.id.rental_address_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.rental_phone_number_input)).getText() != null)) {
+            transportation.setRentalCompanyPhone(((TextInputEditText)
+                view.findViewById(R.id.rental_phone_number_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.return_date_input)).getText() != null)) {
+            transportation.setRentalReturn(((TextInputEditText)
+                view.findViewById(R.id.return_date_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.pick_up_date_input)).getText() != null)) {
+            transportation.setRentalPickUp(((TextInputEditText)
+                view.findViewById(R.id.pick_up_date_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.rental_car_type_input)).getText() != null)) {
+            transportation.setCarType(((TextInputEditText)
+                view.findViewById(R.id.rental_car_type_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.rental_cost_input)).getText() != null)) {
+            transportation.setRentalCost(((TextInputEditText)
+                view.findViewById(R.id.rental_cost_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.rental_name_on_reservation_input)).getText() != null)) {
+            transportation.setNameOnRentalReservation(((TextInputEditText)
+                view.findViewById(R.id.rental_name_on_reservation_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.rental_confirmation_input)).getText() != null)) {
+            transportation.setRentalConfirmation(((TextInputEditText)
+                view.findViewById(R.id.rental_confirmation_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.rental_rewards_input)).getText() != null)) {
+            transportation.setRentalRewards(((TextInputEditText)
+                view.findViewById(R.id.rental_rewards_input)).getText().toString());
+          }
+          dismiss();
+          new TransportationTask().execute(transportation);
         });
-
+    if (transportationId != 0) {
+      new QueryTask().execute(transportationId);
+    } else {
+      transportation = new Transportation();
+    }
     return view;
   }
 
+
   /**
-   * This add (Transportation) call back add a new card to my Transportation fragment from my
-   * add transportation fragment.
-   * @param addCallBack
+   * This add (Transportation) call back add a new card to my Transportation fragment from my add
+   * transportation fragment.
    */
   public void setAddCallBack(AddCallBack addCallBack) {
     this.addCallBack = addCallBack;
@@ -172,7 +150,11 @@ public class AddTransportation extends DialogFragment {
     @Override
     protected Void doInBackground(Transportation... transportation) {
       TripsDatabase tripsDatabase = TripsDatabase.getInstance(getActivity());
-      tripsDatabase.getTransportationDao().insert(transportation[0]);
+      if (transportation[0].getId() != 0) {
+        tripsDatabase.getTransportationDao().update(transportation[0]);
+      } else {
+        tripsDatabase.getTransportationDao().insert(transportation[0]);
+      }
       return null;
     }
 
@@ -182,5 +164,19 @@ public class AddTransportation extends DialogFragment {
     }
   }
 
+  private class QueryTask extends AsyncTask<Long, Void, Transportation> {
+
+    @Override
+    protected void onPostExecute(Transportation transportation) {
+      AddTransportation.this.transportation = transportation;
+      // TODO Fill in fields with fields from transportation object
+    }
+
+    @Override
+    protected Transportation doInBackground(Long... transportationIds) {
+      return TripsDatabase.getInstance(getContext()).getTransportationDao()
+          .selectOne(transportationIds[0]);
+    }
+  }
 }
 

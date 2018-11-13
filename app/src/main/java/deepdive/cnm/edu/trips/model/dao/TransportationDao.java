@@ -6,6 +6,8 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
+import android.arch.persistence.room.Update;
+import deepdive.cnm.edu.trips.model.entity.Flight;
 import java.util.List;
 
 import deepdive.cnm.edu.trips.model.entity.Transportation;
@@ -21,6 +23,12 @@ public interface TransportationDao {
 
     @Query("SELECT * FROM Transportation WHERE person_id = :personId ORDER BY pick_up")
     List<Transportation> select(long personId);
+
+    @Query("SELECT * FROM Transportation WHERE transportation_id = :transportationId LIMIT 1")
+    Transportation selectOne(long transportationId);
+
+    @Update
+    int update(Transportation transportation);
 
     @Delete
     int delete(Transportation transportation);

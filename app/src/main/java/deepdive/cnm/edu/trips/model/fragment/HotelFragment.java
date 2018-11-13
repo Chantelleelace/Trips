@@ -12,11 +12,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.R;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase;
+import deepdive.cnm.edu.trips.model.dialog.AddFlight;
+import deepdive.cnm.edu.trips.model.dialog.AddHotel;
 import deepdive.cnm.edu.trips.model.entity.Hotel;
 import java.util.List;
 
@@ -41,9 +44,12 @@ public class HotelFragment extends Fragment implements AddCallBack {
     return view;
   }
 
+  // TODO Create a clickListener for trashcan to delete cards
+
   @Override
   public void update() {
     new HotelTask().execute();
+    // TODO
   }
 
   private class HotelTask extends AsyncTask<Void, Void, List<Hotel>> {
@@ -90,6 +96,14 @@ public class HotelFragment extends Fragment implements AddCallBack {
       ((TextView) view.findViewById(R.id.hotel_rewards)).setText(hotel.getHotelRewards());
       ((TextView) view.findViewById(R.id.room_type)).setText(hotel.getRoomType());
       ((TextView) view.findViewById(R.id.hotel_cost)).setText(hotel.getCost());
+      Button editButton = view.findViewById(R.id.edit_flight);
+      editButton.setOnClickListener((v) -> {
+        // TODO ADD code to display AddFlight dialog fragment
+        AddHotel newFragment = new AddHotel();
+        newFragment.setHotelId(hotel.getId());
+        newFragment.setAddCallBack(HotelFragment.this);
+        newFragment.show(getActivity().getSupportFragmentManager(), "add hotel dialog");
+      });
       //    puts in EXPAND view
       view.findViewById(R.id.calendar_check_in).setVisibility(View.VISIBLE);
       view.findViewById(R.id.calendar_check_out).setVisibility(View.VISIBLE);

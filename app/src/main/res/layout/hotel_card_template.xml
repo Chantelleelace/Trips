@@ -226,12 +226,20 @@
 
       <ImageButton
         android:id="@+id/trash_hotel"
-        android:layout_width="27dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_below="@+id/user_data_hotel"
         android:layout_alignParentLeft="true"
         android:src="@drawable/ic_trash"/>
+
+      <ImageButton
+        android:id="@+id/edit_hotel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/expand_less_hotel"
+        android:layout_toEndOf="@+id/trash_hotel"
+        android:src="@drawable/ic_edit"/>
 
     </RelativeLayout>
 
