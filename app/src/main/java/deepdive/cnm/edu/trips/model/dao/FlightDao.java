@@ -30,5 +30,5 @@ public interface  FlightDao {
     int update(Flight flight);
 
     @Delete
-    int delete(List<Flight> flights);
+    int delete(Flight flight);
 }

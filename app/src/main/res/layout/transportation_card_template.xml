@@ -20,7 +20,7 @@
       android:padding="16dp"
       >
 
-      <ImageButton
+      <ImageView
         android:id="@+id/expand_more_transportation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -216,7 +216,7 @@
         />
       </LinearLayout>
 
-      <ImageButton
+      <ImageView
         android:id="@+id/expand_less_transportation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

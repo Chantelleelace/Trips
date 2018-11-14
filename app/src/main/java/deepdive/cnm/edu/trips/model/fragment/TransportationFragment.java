@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatImageButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,6 +30,9 @@ public class TransportationFragment extends Fragment implements AddCallBack {
 
   private ListView view;
 
+  /**
+   * Instantiates a new Transportation fragment.
+   */
   public TransportationFragment() {
     // Required empty public constructor
   }
@@ -47,6 +51,20 @@ public class TransportationFragment extends Fragment implements AddCallBack {
     new TransportationTask().execute();
   }
 
+  private class DeleteTask extends AsyncTask<Transportation, Void, Void> {
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+      new TransportationTask().execute();
+    }
+
+    @Override
+    protected Void doInBackground(Transportation... transportation) {
+      TripsDatabase.getInstance(getActivity()).getTransportationDao().delete(transportation[0]);
+      return null;
+    }
+  }
+
   private class TransportationTask extends AsyncTask<Void, Void, List<Transportation>> {
 
     @Override
@@ -62,10 +80,19 @@ public class TransportationFragment extends Fragment implements AddCallBack {
     }
   }
 
+  /**
+   * Refresh list.
+   */
   public void refreshList() { new TransportationTask().execute(); }
 
   private class TransportationListAdapter extends ArrayAdapter<Transportation> {
 
+    /**
+     * Instantiates a new Transportation list adapter.
+     *
+     * @param context the context
+     * @param objects the objects
+     */
     public TransportationListAdapter(
         @NonNull Context context,
         @NonNull List<Transportation> objects) {
@@ -97,9 +124,10 @@ public class TransportationFragment extends Fragment implements AddCallBack {
           .setText(transportation.getRentalRewards());
       ((TextView) view.findViewById(R.id.car_type)).setText(transportation.getCarType());
       ((TextView) view.findViewById(R.id.rental_cost)).setText(transportation.getRentalCost());
-      Button editButton = view.findViewById(R.id.edit_transportation);
+      AppCompatImageButton deleteButton = view.findViewById(R.id.trash_transportation);
+      deleteButton.setOnClickListener((v) -> new DeleteTask().execute(transportation));
+      AppCompatImageButton editButton = view.findViewById(R.id.edit_transportation);
       editButton.setOnClickListener((v) -> {
-        // TODO ADD code to display AddTransportation dialog fragment
         AddTransportation newFragment = new AddTransportation();
         newFragment.setTransportationId(transportation.getId());
         newFragment.setAddCallBack(TransportationFragment.this);

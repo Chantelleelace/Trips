@@ -25,14 +25,14 @@ import java.util.Calendar;
  * A simple {@link Fragment} subclass that lets the user add their own hotel information to create
  * new cards.
  */
-public class AddTransportation extends DialogFragment {
+public class AddTransportation extends AddDialog {
 
   private TextInputEditText pickUpDate;
   private TextInputEditText returnDate;
-  private Calendar calendar;
   private AddCallBack addCallBack;
   private long transportationId;
   private Transportation transportation;
+  private View view;
 
   public void setTransportationId(long transportationId) {
     this.transportationId = transportationId;
@@ -42,39 +42,19 @@ public class AddTransportation extends DialogFragment {
     // Required empty public constructor
   }
 
-  private void pickUpDate(final TextInputEditText dateField) {
-    DateTimeFragment picker = new DateTimeFragment();
-    picker.setMode(Mode.DATE);
-    picker.setCalendar(calendar);
-    picker.show(getFragmentManager(), picker.getClass().getSimpleName());
-    picker.setListener(new OnChangeListener() {
-      /**
-       * This get the date from my date picker and adds it to my textInput field.
-       * @param calendar
-       */
-      @Override
-      public void onChange(Calendar calendar) {
-        java.text.DateFormat format = DateFormat.getDateFormat(getActivity());
-        dateField.setText(format.format(calendar.getTime()));
-      }
-
-    });
-  }
-
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-    // Inflate the layout for this fragment
-    final View view = inflater.inflate(R.layout.transportation_add, container, false);
+    // Inflates the layout for this fragment
+    // Inflates the calendar
+    view = inflater.inflate(R.layout.transportation_add, container, false);
     pickUpDate = view.findViewById(R.id.pick_up_date_input);
-    pickUpDate.setOnClickListener(v -> pickUpDate(pickUpDate));
+    pickUpDate.setOnClickListener(v -> pickDate(pickUpDate));
     returnDate = view.findViewById(R.id.return_date_input);
-    returnDate.setOnClickListener(v -> pickUpDate(returnDate));
-
+    returnDate.setOnClickListener(v -> pickDate(returnDate));
     // saves all input to database.
     view.findViewById(R.id.submit_transportation).setOnClickListener(
         v -> {
-          Transportation transportation = new Transportation();
           if ((((TextInputEditText)
               view.findViewById(R.id.rental_company_input)).getText() != null)) {
             transportation.setRentalCompanyName(((TextInputEditText)
@@ -140,6 +120,8 @@ public class AddTransportation extends DialogFragment {
   /**
    * This add (Transportation) call back add a new card to my Transportation fragment from my add
    * transportation fragment.
+   *
+   * @param addCallBack the add call back
    */
   public void setAddCallBack(AddCallBack addCallBack) {
     this.addCallBack = addCallBack;
@@ -169,7 +151,27 @@ public class AddTransportation extends DialogFragment {
     @Override
     protected void onPostExecute(Transportation transportation) {
       AddTransportation.this.transportation = transportation;
-      // TODO Fill in fields with fields from transportation object
+      // Sets text from database into fields for user to edit
+      ((TextInputEditText) view.findViewById(R.id.rental_company_input))
+          .setText(transportation.getRentalCompanyName());
+      ((TextInputEditText) view.findViewById(R.id.rental_address_input))
+          .setText(transportation.getRentalCompanyAddress());
+      ((TextInputEditText) view.findViewById(R.id.rental_phone_number_input))
+          .setText(transportation.getRentalCompanyPhone());
+      ((TextInputEditText) view.findViewById(R.id.return_date_input))
+          .setText(transportation.getRentalReturn());
+      ((TextInputEditText) view.findViewById(R.id.pick_up_date_input))
+          .setText(transportation.getRentalPickUp());
+      ((TextInputEditText) view.findViewById(R.id.rental_car_type_input))
+          .setText(transportation.getCarType());
+      ((TextInputEditText) view.findViewById(R.id.rental_cost_input))
+          .setText(transportation.getRentalCost());
+      ((TextInputEditText) view.findViewById(R.id.rental_name_on_reservation_input))
+          .setText(transportation.getNameOnRentalReservation());
+      ((TextInputEditText) view.findViewById(R.id.rental_confirmation_input))
+          .setText(transportation.getRentalConfirmation());
+      ((TextInputEditText) view.findViewById(R.id.rental_rewards_input))
+          .setText(transportation.getRentalRewards());
     }
 
     @Override

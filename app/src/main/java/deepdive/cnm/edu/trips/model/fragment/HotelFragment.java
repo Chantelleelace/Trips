@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.AppCompatImageButton;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,10 +32,12 @@ public class HotelFragment extends Fragment implements AddCallBack {
 
   private ListView view;
 
+  /**
+   * Instantiates a new Hotel fragment.
+   */
   public HotelFragment() {
     // Required empty public constructor
   }
-
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,12 +47,23 @@ public class HotelFragment extends Fragment implements AddCallBack {
     return view;
   }
 
-  // TODO Create a clickListener for trashcan to delete cards
-
   @Override
   public void update() {
     new HotelTask().execute();
-    // TODO
+  }
+
+  private class DeleteTask extends AsyncTask<Hotel, Void, Void> {
+
+    @Override
+    protected void onPostExecute(Void aVoid) {
+      new HotelTask().execute();
+    }
+
+    @Override
+    protected Void doInBackground(Hotel... hotel) {
+      TripsDatabase.getInstance(getActivity()).getHotelDao().delete(hotel[0]);
+      return null;
+    }
   }
 
   private class HotelTask extends AsyncTask<Void, Void, List<Hotel>> {
@@ -67,12 +81,21 @@ public class HotelFragment extends Fragment implements AddCallBack {
 
   }
 
+  /**
+   * Refresh list.
+   */
   public void refreshList() {
     new HotelTask().execute();
   }
 
   private class HotelListAdapter extends ArrayAdapter<Hotel> {
 
+    /**
+     * Instantiates a new Hotel list adapter.
+     *
+     * @param context the context
+     * @param objects the objects
+     */
     public HotelListAdapter(
         @NonNull Context context,
         @NonNull List<Hotel> objects) {
@@ -96,9 +119,12 @@ public class HotelFragment extends Fragment implements AddCallBack {
       ((TextView) view.findViewById(R.id.hotel_rewards)).setText(hotel.getHotelRewards());
       ((TextView) view.findViewById(R.id.room_type)).setText(hotel.getRoomType());
       ((TextView) view.findViewById(R.id.hotel_cost)).setText(hotel.getCost());
-      Button editButton = view.findViewById(R.id.edit_hotel);
+      // Lets user delete the card using the delete button
+      AppCompatImageButton deleteButton = view.findViewById(R.id.trash_hotel);
+      deleteButton.setOnClickListener((v) -> new DeleteTask().execute(hotel));
+      // Lets user edit the card using the edit button
+      AppCompatImageButton editButton = view.findViewById(R.id.edit_hotel);
       editButton.setOnClickListener((v) -> {
-        // TODO ADD code to display AddFlight dialog fragment
         AddHotel newFragment = new AddHotel();
         newFragment.setHotelId(hotel.getId());
         newFragment.setAddCallBack(HotelFragment.this);
