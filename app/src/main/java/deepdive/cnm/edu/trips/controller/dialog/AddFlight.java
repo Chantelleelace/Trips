@@ -1,22 +1,19 @@
-package deepdive.cnm.edu.trips.model.dialog;
+package deepdive.cnm.edu.trips.controller.dialog;
 
 
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputEditText;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.Toast;
 import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.R;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment.Mode;
-import deepdive.cnm.edu.trips.controller.DateTimeFragment.OnChangeListener;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase;
 import deepdive.cnm.edu.trips.model.entity.Flight;
 import java.util.Calendar;
@@ -50,14 +47,38 @@ public class AddFlight extends AddDialog {
     // Required empty public constructor
   }
 
-  private void pickTime(final TextInputEditText timeField) {
+  private void pickTime(final TextInputEditText timeField, final boolean isDeparture) {
+    Calendar calendar = Calendar.getInstance();
     DateTimeFragment picker = new DateTimeFragment();
+    if (isDeparture) {
+      calendar.setTime(flight.getDeparture());
+    } else {
+      calendar.setTime(flight.getArrival());
+    }
     picker.setMode(Mode.TIME);
     picker.setCalendar(calendar);
     picker.show(getFragmentManager(), picker.getClass().getSimpleName());
-    picker.setListener(calendar -> {
+    picker.setListener(cal -> {
+      // TODO Deal with timezone issues
+      if (isDeparture) {
+        if (cal.getTime().compareTo(flight.getArrival()) > 0) {
+          Toast.makeText(getActivity(),
+              "Please choose an arrival time that is after the current departure time.",
+              Toast.LENGTH_LONG).show();
+          return;
+        }
+        flight.setDeparture(cal.getTime());
+      } else {
+        if (cal.getTime().compareTo(flight.getDeparture()) < 0) {
+          Toast.makeText(getActivity(),
+              "Please choose an arrival time that is after the current departure time.",
+              Toast.LENGTH_LONG).show();
+          return;
+        }
+        flight.setArrival(cal.getTime());
+      }
       java.text.DateFormat format = DateFormat.getTimeFormat(getActivity());
-      timeField.setText(format.format(calendar.getTime()));
+      timeField.setText(format.format(cal.getTime()));
     });
   }
 
@@ -72,9 +93,9 @@ public class AddFlight extends AddDialog {
     date1 = view.findViewById(R.id.arrival_date_input);
     date1.setOnClickListener(v -> pickDate(date1));
     time = view.findViewById(R.id.departure_time_input);
-    time.setOnClickListener(v -> pickTime(time));
+    time.setOnClickListener(v -> pickTime(time, true));
     time1 = view.findViewById(R.id.arrival_time_input);
-    time1.setOnClickListener(v -> pickTime(time1));
+    time1.setOnClickListener(v -> pickTime(time1, false));
     // saves all input to database
     view.findViewById(R.id.submit_flight).setOnClickListener(
         clickView -> {
@@ -88,16 +109,16 @@ public class AddFlight extends AddDialog {
             flight.setDepartureAirport(((TextInputEditText)
                 view.findViewById(R.id.departure_airport_input)).getText().toString());
           }
-          if ((((TextInputEditText)
-              view.findViewById(R.id.departure_date_input)).getText() != null)) {
-            flight.setDepartureDate(((TextInputEditText)
-                view.findViewById(R.id.departure_date_input)).getText().toString());
-          }
-          if ((((TextInputEditText)
-              view.findViewById(R.id.arrival_date_input)).getText() != null)) {
-            flight.setArrivalDate(((TextInputEditText)
-                view.findViewById(R.id.arrival_date_input)).getText().toString());
-          }
+//          if ((((TextInputEditText)
+//              view.findViewById(R.id.departure_date_input)).getText() != null)) {
+//            flight.setDepartureDate(((TextInputEditText)
+//                view.findViewById(R.id.departure_date_input)).getText().toString());
+//          }
+//          if ((((TextInputEditText)
+//              view.findViewById(R.id.arrival_date_input)).getText() != null)) {
+//            flight.setArrivalDate(((TextInputEditText)
+//                view.findViewById(R.id.arrival_date_input)).getText().toString());
+//          }
           if ((((TextInputEditText)
               view.findViewById(R.id.flight_number_input)).getText() != null)) {
             flight.setFlightNumber(((TextInputEditText)
@@ -118,16 +139,16 @@ public class AddFlight extends AddDialog {
             flight.setFlightRewards(((TextInputEditText)
                 view.findViewById(R.id.flight_rewards_input)).getText().toString());
           }
-          if ((((TextInputEditText)
-              view.findViewById(R.id.arrival_time_input)).getText() != null)) {
-            flight.setArrivalTime(((TextInputEditText)
-                view.findViewById(R.id.arrival_time_input)).getText().toString());
-          }
-          if ((((TextInputEditText)
-              view.findViewById(R.id.departure_time_input)).getText() != null)) {
-            flight.setDepartureTime(((TextInputEditText)
-                view.findViewById(R.id.departure_time_input)).getText().toString());
-          }
+//          if ((((TextInputEditText)
+//              view.findViewById(R.id.arrival_time_input)).getText() != null)) {
+//            flight.setArrivalTime(((TextInputEditText)
+//                view.findViewById(R.id.arrival_time_input)).getText().toString());
+//          }
+//          if ((((TextInputEditText)
+//              view.findViewById(R.id.departure_time_input)).getText() != null)) {
+//            flight.setDepartureTime(((TextInputEditText)
+//                view.findViewById(R.id.departure_time_input)).getText().toString());
+//          }
           dismiss();
           new FlightTask().execute(flight);
         });
@@ -171,6 +192,8 @@ public class AddFlight extends AddDialog {
 
     @Override
     protected void onPostExecute(Flight flight) {
+      java.text.DateFormat dateFormat = DateFormat.getDateFormat(getActivity());
+      java.text.DateFormat timeFormat = DateFormat.getTimeFormat(getActivity());
       AddFlight.this.flight = flight;
       // sets text from database into fields for user to edit
       ((TextInputEditText) view.findViewById(R.id.arrival_airport_input))
@@ -178,9 +201,9 @@ public class AddFlight extends AddDialog {
       ((TextInputEditText) view.findViewById(R.id.departure_airport_input))
           .setText(flight.getDepartureAirport());
       ((TextInputEditText) view.findViewById(R.id.departure_date_input))
-          .setText(flight.getDepartureDate());
+          .setText(dateFormat.format(flight.getDeparture()));
       ((TextInputEditText) view.findViewById(R.id.arrival_date_input))
-          .setText(flight.getArrivalDate());
+          .setText(dateFormat.format(flight.getArrival()));
       ((TextInputEditText) view.findViewById(R.id.flight_number_input))
           .setText(flight.getFlightNumber());
       ((TextInputEditText) view.findViewById(R.id.flight_confirmation_input))
@@ -190,9 +213,9 @@ public class AddFlight extends AddDialog {
       ((TextInputEditText) view.findViewById(R.id.flight_rewards_input))
           .setText(flight.getFlightRewards());
       ((TextInputEditText) view.findViewById(R.id.arrival_time_input))
-          .setText(flight.getArrivalTime());
+          .setText(timeFormat.format(flight.getArrival()));
       ((TextInputEditText) view.findViewById(R.id.departure_time_input))
-          .setText(flight.getDepartureTime());
+          .setText(timeFormat.format(flight.getDeparture()));
     }
 
     @Override

@@ -4,7 +4,7 @@
   android:layout_height="match_parent"
   xmlns:tools="http://schemas.android.com/tools"
   android:padding="16dp"
-  tools:context=".model.fragment.HotelFragment"
+  tools:context=".controller.fragment.HotelFragment"
   >
 
   <android.support.v7.widget.CardView
@@ -237,7 +237,7 @@
         android:id="@+id/edit_hotel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@+id/expand_less_hotel"
+        android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/trash_hotel"
         android:src="@drawable/ic_edit"/>
 

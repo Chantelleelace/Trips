@@ -3,6 +3,7 @@ package deepdive.cnm.edu.trips.model.entity;
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
+import java.util.Date;
 
 @Entity //(foreignKeys = {
 //        @ForeignKey(entity = Person.class, parentColumns = "person_id", childColumns = "person_id", onDelete = ForeignKey.CASCADE)
@@ -22,11 +23,11 @@ public class Flight {
     @ColumnInfo(name = "departure_airport")
     private String departureAirport;
 
-    @ColumnInfo(name = "departure_date", index = true)
-    private String departureDate;
+    @ColumnInfo(index = true)
+    private Date departure = new Date();
 
-    @ColumnInfo(name = "arrival_date")
-    private String arrivalDate;
+    @ColumnInfo(index = true)
+    private Date arrival = new Date();
 
     @ColumnInfo(name = "flight_number")
     private String flightNumber;
@@ -39,12 +40,6 @@ public class Flight {
 
     @ColumnInfo(name = "flight_rewards")
     private String flightRewards;
-
-    @ColumnInfo(name = "arrival_time", index = true)
-    private String arrivalTime;
-
-    @ColumnInfo(name = "departure_time")
-    private String departureTime;
 
     public long getId() {
         return id;
@@ -76,22 +71,6 @@ public class Flight {
 
     public void setDepartureAirport(String departureAirport) {
         this.departureAirport = departureAirport;
-    }
-
-    public String getDepartureDate() {
-        return departureDate;
-    }
-
-    public void setDepartureDate(String departureDate) {
-        this.departureDate = departureDate;
-    }
-
-    public String getArrivalDate() {
-        return arrivalDate;
-    }
-
-    public void setArrivalDate(String arrivalDate) {
-        this.arrivalDate = arrivalDate;
     }
 
     public String getFlightNumber() {
@@ -126,19 +105,19 @@ public class Flight {
         this.flightRewards = flightRewards;
     }
 
-    public String getArrivalTime() {
-        return arrivalTime;
+    public Date getDeparture() {
+        return departure;
     }
 
-    public void setArrivalTime(String arrivalTime) {
-        this.arrivalTime = arrivalTime;
+    public void setDeparture(Date departure) {
+        this.departure = departure;
     }
 
-    public String getDepartureTime() {
-        return departureTime;
+    public Date getArrival() {
+        return arrival;
     }
 
-    public void setDepartureTime(String departureTime) {
-        this.departureTime = departureTime;
+    public void setArrival(Date arrival) {
+        this.arrival = arrival;
     }
 }

@@ -17,12 +17,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
-import deepdive.cnm.edu.trips.model.dialog.AddFlight;
-import deepdive.cnm.edu.trips.model.dialog.AddHotel;
-import deepdive.cnm.edu.trips.model.dialog.AddTransportation;
-import deepdive.cnm.edu.trips.model.fragment.FlightFragment;
-import deepdive.cnm.edu.trips.model.fragment.HotelFragment;
-import deepdive.cnm.edu.trips.model.fragment.TransportationFragment;
+import deepdive.cnm.edu.trips.controller.dialog.AddFlight;
+import deepdive.cnm.edu.trips.controller.dialog.AddHotel;
+import deepdive.cnm.edu.trips.controller.dialog.AddTransportation;
+import deepdive.cnm.edu.trips.controller.fragment.FlightFragment;
+import deepdive.cnm.edu.trips.controller.fragment.HotelFragment;
+import deepdive.cnm.edu.trips.controller.fragment.TransportationFragment;
 
 public class MainActivity extends AppCompatActivity {
 

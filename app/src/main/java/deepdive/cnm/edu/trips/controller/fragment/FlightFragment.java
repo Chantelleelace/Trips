@@ -1,6 +1,7 @@
-package deepdive.cnm.edu.trips.model.fragment;
+package deepdive.cnm.edu.trips.controller.fragment;
 
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -8,21 +9,23 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatImageButton;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.R;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase;
-import deepdive.cnm.edu.trips.model.dialog.AddFlight;
+import deepdive.cnm.edu.trips.controller.dialog.AddFlight;
 import deepdive.cnm.edu.trips.model.entity.Flight;
 import java.time.Duration;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Period;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -104,10 +107,13 @@ public class FlightFragment extends Fragment implements AddCallBack {
       super(context, 0, objects);
     }
 
+    @SuppressLint("NewApi")
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView,
         @NonNull ViewGroup parent) {
+      java.text.DateFormat dateFormat = DateFormat.getDateFormat(getActivity());
+      java.text.DateFormat timeFormat = DateFormat.getTimeFormat(getActivity());
       final View view = getLayoutInflater()
           .inflate(R.layout.flight_card_template, parent, false);
       final Flight flight = getItem(position);
@@ -121,31 +127,30 @@ public class FlightFragment extends Fragment implements AddCallBack {
       ((TextView) view.findViewById(R.id.airport_code_arrival)).setText(flight.getArrivalAirport());
       ((TextView) view.findViewById(R.id.airport_code_arrival_1))
           .setText(flight.getArrivalAirport());
-      if (flight.getDepartureDate() != null && flight.getDepartureDate().length()>3) {
+      if (flight.getDeparture() != null) {
         ((TextView) view.findViewById(R.id.departure_date))
-            .setText(flight.getDepartureDate().substring(0, 5));
-        // TODO Fix 5 digits/ 4 digits for date string
+            .setText(dateFormat.format(flight.getDeparture()));
       }
-      ((TextView) view.findViewById(R.id.departure_time)).setText(flight.getDepartureTime());
-      if (flight.getArrivalDate() != null && flight.getArrivalDate().length()>3) {
+      ((TextView) view.findViewById(R.id.departure_time)).setText(timeFormat.format(flight.getDeparture()));
+      if (flight.getArrival() != null) {
         ((TextView) view.findViewById(R.id.arrival_date))
-            .setText(flight.getArrivalDate().substring(0, 5));
+            .setText(dateFormat.format(flight.getArrival()));
       }
-      ((TextView) view.findViewById(R.id.arrival_time)).setText(flight.getArrivalTime());
+      ((TextView) view.findViewById(R.id.arrival_time)).setText(timeFormat.format(flight.getArrival()));
       ((TextView) view.findViewById(R.id.flight_confirmation))
           .setText(flight.getConfirmationNumber());
-      DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("h:m a");
-      LocalTime arrivalTime = null;
-      if (flight.getArrivalTime() != null && !flight.getArrivalTime().isEmpty()) {
-        arrivalTime = LocalTime.parse(flight.getArrivalTime(), dateTimeFormatter);
-      }
-      LocalTime departureTime = null;
-      if (flight.getDepartureTime() != null && !flight.getDepartureTime().isEmpty()) {
-        departureTime = LocalTime.parse(flight.getDepartureTime(), dateTimeFormatter);
-      }
+//      LocalTime arrivalTime = null;
+//      if (flight.getArrival() != null) {
+//        arrivalTime = LocalTime.parse(flight.getArrivalTime(), dateTimeFormatter);
+//      }
+//      LocalTime departureTime = null;
+//      if (flight.getDepartureTime() != null && !flight.getDepartureTime().isEmpty()) {
+//        departureTime = LocalTime.parse(flight.getDepartureTime(), dateTimeFormatter);
+//      }
       Duration length = null;
-      if (departureTime != null && arrivalTime != null) {
-        length = Duration.between(departureTime, arrivalTime);
+      if (flight.getDeparture() != null && flight.getArrival() != null) {
+        length = Duration.between(LocalDateTime.ofInstant(flight.getDeparture().toInstant(),
+            ZoneId.systemDefault()), LocalDateTime.ofInstant(flight.getArrival().toInstant(), ZoneId.systemDefault()));
       }
       long s = 0;
       if (length != null) {

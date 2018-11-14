@@ -1,24 +1,17 @@
-package deepdive.cnm.edu.trips.model.dialog;
+package deepdive.cnm.edu.trips.controller.dialog;
 
 
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
-import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
-import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.R;
-import deepdive.cnm.edu.trips.controller.DateTimeFragment;
-import deepdive.cnm.edu.trips.controller.DateTimeFragment.Mode;
-import deepdive.cnm.edu.trips.controller.DateTimeFragment.OnChangeListener;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase;
 import deepdive.cnm.edu.trips.model.entity.Transportation;
-import java.util.Calendar;
 
 
 /**

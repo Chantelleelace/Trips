@@ -1,4 +1,4 @@
-package deepdive.cnm.edu.trips.model.fragment;
+package deepdive.cnm.edu.trips.controller.fragment;
 
 
 import android.content.Context;
@@ -10,17 +10,14 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatImageButton;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.R;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase;
-import deepdive.cnm.edu.trips.model.dialog.AddFlight;
-import deepdive.cnm.edu.trips.model.dialog.AddHotel;
+import deepdive.cnm.edu.trips.controller.dialog.AddHotel;
 import deepdive.cnm.edu.trips.model.entity.Hotel;
 import java.util.List;
 

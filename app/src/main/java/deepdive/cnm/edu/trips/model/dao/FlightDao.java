@@ -20,7 +20,7 @@ public interface  FlightDao {
     @Query("SELECT * FROM Flight ORDER BY flight_id")
     List<Flight> select();
 
-    @Query("SELECT * FROM Flight WHERE person_id = :personId ORDER BY departure_date")
+    @Query("SELECT * FROM Flight WHERE person_id = :personId ORDER BY departure")
     List<Flight> select(long personId);
 
     @Query("SELECT * FROM Flight WHERE flight_id = :flightId LIMIT 1")

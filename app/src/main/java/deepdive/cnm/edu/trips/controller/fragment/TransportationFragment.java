@@ -1,4 +1,4 @@
-package deepdive.cnm.edu.trips.model.fragment;
+package deepdive.cnm.edu.trips.controller.fragment;
 
 
 import android.content.Context;
@@ -12,13 +12,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.R;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase;
-import deepdive.cnm.edu.trips.model.dialog.AddTransportation;
+import deepdive.cnm.edu.trips.controller.dialog.AddTransportation;
 import deepdive.cnm.edu.trips.model.entity.Transportation;
 import java.util.List;
 

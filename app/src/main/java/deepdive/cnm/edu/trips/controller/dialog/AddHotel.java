@@ -1,4 +1,4 @@
-package deepdive.cnm.edu.trips.model.dialog;
+package deepdive.cnm.edu.trips.controller.dialog;
 
 
 import android.os.AsyncTask;
