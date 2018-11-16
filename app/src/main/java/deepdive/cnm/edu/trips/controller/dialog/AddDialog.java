@@ -7,10 +7,21 @@ import deepdive.cnm.edu.trips.controller.DateTimeFragment;
 import deepdive.cnm.edu.trips.controller.DateTimeFragment.Mode;
 import java.util.Calendar;
 
+/**
+ * The type Add dialog.
+ */
 public abstract class AddDialog extends DialogFragment {
 
+  /**
+   * The Calendar.
+   */
   protected Calendar calendar = Calendar.getInstance();
 
+  /**
+   * Pick date.
+   *
+   * @param dateField the date field
+   */
   protected void pickDate(final TextInputEditText dateField) {
     DateTimeFragment picker = new DateTimeFragment();
     picker.setMode(Mode.DATE);

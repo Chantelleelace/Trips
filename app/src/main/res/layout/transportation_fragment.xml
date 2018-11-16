@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:padding="16dp"
     android:paddingBottom="20dp"
-    tools:context=".controller.fragment.HotelFragment">
+  android:background="@color/colorPrimary"
+  tools:context=".controller.fragment.HotelFragment">
 
 
 </ListView>

@@ -27,10 +27,18 @@ public class AddTransportation extends AddDialog {
   private Transportation transportation;
   private View view;
 
+  /**
+   * Sets transportation id.
+   *
+   * @param transportationId the transportation id
+   */
   public void setTransportationId(long transportationId) {
     this.transportationId = transportationId;
   }
 
+  /**
+   * Instantiates a new Add transportation.
+   */
   public AddTransportation() {
     // Required empty public constructor
   }

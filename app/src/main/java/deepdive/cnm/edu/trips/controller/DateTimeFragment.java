@@ -12,6 +12,9 @@ import android.widget.DatePicker;
 import android.widget.TimePicker;
 import java.util.Calendar;
 
+/**
+ * The type Date time fragment.
+ */
 public class DateTimeFragment extends DialogFragment
     implements DatePickerDialog.OnDateSetListener, TimePickerDialog.OnTimeSetListener {
 
@@ -61,37 +64,85 @@ public class DateTimeFragment extends DialogFragment
     }
   }
 
+  /**
+   * Gets mode.
+   *
+   * @return the mode
+   */
   public Mode getMode() {
     return mode;
   }
 
+  /**
+   * Sets mode.
+   *
+   * @param mode the mode
+   */
   public void setMode(Mode mode) {
     this.mode = mode;
   }
 
+  /**
+   * Gets calendar.
+   *
+   * @return the calendar
+   */
   public Calendar getCalendar() {
     return calendar;
   }
 
+  /**
+   * Sets calendar.
+   *
+   * @param calendar the calendar
+   */
   public void setCalendar(Calendar calendar) {
     this.calendar = calendar;
   }
 
+  /**
+   * Gets listener.
+   *
+   * @return the listener
+   */
   public OnChangeListener getListener() {
     return listener;
   }
 
+  /**
+   * Sets listener.
+   *
+   * @param listener the listener
+   */
   public void setListener(
       OnChangeListener listener) {
     this.listener = listener;
   }
 
+  /**
+   * The enum Mode.
+   */
   public enum Mode {
-    DATE, TIME
+    /**
+     * Date mode.
+     */
+    DATE,
+    /**
+     * Time mode.
+     */
+    TIME
   }
 
+  /**
+   * The interface On change listener.
+   */
   public interface OnChangeListener {
 
+    /**
+     * On change.
+     *
+     * @param calendar the calendar
+     */
     void onChange(Calendar calendar);
   }
 

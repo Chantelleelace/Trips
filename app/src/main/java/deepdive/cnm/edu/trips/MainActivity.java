@@ -24,6 +24,9 @@ import deepdive.cnm.edu.trips.controller.fragment.FlightFragment;
 import deepdive.cnm.edu.trips.controller.fragment.HotelFragment;
 import deepdive.cnm.edu.trips.controller.fragment.TransportationFragment;
 
+/**
+ * The type Main activity.
+ */
 public class MainActivity extends AppCompatActivity {
 
     /**
@@ -91,16 +94,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * The interface Add call back.
+     */
     public interface AddCallBack {
+
+        /**
+         * Update.
+         */
         void update();
     }
 
 
-    /**
-     * This inflates a menu and adds items to the action bar if it is present.
-     * @param menu
-     * @return
-     */
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
@@ -132,11 +138,17 @@ public class MainActivity extends AppCompatActivity {
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
 
+        /**
+         * Instantiates a new Placeholder fragment.
+         */
         public PlaceholderFragment() {
         }
 
         /**
          * Returns a new instance of this fragment for the given section number.
+         *
+         * @param sectionNumber the section number
+         * @return the placeholder fragment
          */
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
@@ -163,6 +175,11 @@ public class MainActivity extends AppCompatActivity {
      */
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
+        /**
+         * Instantiates a new Sections pager adapter.
+         *
+         * @param fm the fm
+         */
         public SectionsPagerAdapter(FragmentManager fm) {
             super(fm);
         }

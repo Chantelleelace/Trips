@@ -36,6 +36,11 @@ public class AddFlight extends AddDialog {
   private Flight flight;
   private View view;
 
+  /**
+   * Sets flight id.
+   *
+   * @param flightId the flight id
+   */
   public void setFlightId(long flightId) {
     this.flightId = flightId;
   }

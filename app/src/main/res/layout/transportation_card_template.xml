@@ -3,7 +3,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   xmlns:tools="http://schemas.android.com/tools"
-  android:padding="16dp"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   tools:context=".controller.fragment.HotelFragment"
   >
 
@@ -12,6 +12,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:animateLayoutChanges="true"
+    app:cardBackgroundColor="@color/colorAccent"
     >
 
     <RelativeLayout
@@ -45,6 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/rental_company_logo"
+        android:textColor="@color/text_color_primary"
         android:layout_alignParentTop="true"
         android:textSize="30sp"
         android:text="Company Name"
@@ -74,9 +76,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/rental_company_logo"
+        android:textColor="@color/text_color_primary"
         android:layout_below="@+id/rental_company_name"
         android:text="company_address"
-        android:textColor="@android:color/darker_gray"
         android:textSize="8pt"
         />
 
@@ -87,8 +89,8 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/rental_company_logo"
         android:layout_below="@+id/rental_company_address"
+        android:textColor="@color/text_color_primary"
         android:text="rental phone"
-        android:textColor="@android:color/darker_gray"
         android:textSize="8pt"
         />
 
@@ -119,6 +121,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/calendar_check_out_car_2"
         android:layout_below="@+id/rental_company_phone"
+        android:textColor="@color/text_color_primary"
         android:paddingTop="8dp"
         android:text="check-in date"
         android:textSize="8pt"
@@ -132,6 +135,7 @@
         android:layout_toRightOf="@id/calendar_check_out_car_2"
         android:layout_below="@+id/calendar_check_in_car_2"
         android:paddingTop="8dp"
+        android:textColor="@color/text_color_primary"
         android:text="check-out date"
         android:textSize="8pt"
         />
@@ -154,8 +158,8 @@
         android:layout_below="@+id/rental_pick_up"
         android:paddingTop="12dp"
         android:text="Name on Reservation"
+        android:textColor="@color/text_color_primary"
         android:textSize="9pt"
-        android:textColor="@android:color/black"
         android:textStyle="bold|italic"
         />
 
@@ -169,6 +173,7 @@
         android:layout_below="@+id/name_on_rental_reservation"
         android:paddingTop="8dp"
         android:text="Confirmation #"
+        android:textColor="@color/text_color_primary"
         android:textSize="8pt"
         />
 
@@ -180,6 +185,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignWithParentIfMissing="true"
         android:layout_below="@+id/rental_confirmation"
+        android:textColor="@color/text_color_primary"
         android:paddingTop="8dp"
         android:text="Rewards #"
         android:textSize="8pt"
@@ -193,6 +199,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignWithParentIfMissing="true"
         android:layout_below="@+id/rental_rewards"
+        android:textColor="@color/text_color_primary"
         android:paddingTop="8dp"
         android:text="Ford Escape"
         android:textSize="8pt"
@@ -207,10 +214,10 @@
         android:layout_alignParentStart="true"
         android:layout_alignWithParentIfMissing="true"
         android:layout_below="@+id/car_type"
+        android:textColor="@color/text_color_primary"
         android:paddingTop="8dp"
         android:text="$$$$"
         android:textSize="8pt"
-        android:textColor="@android:color/black"
         android:singleLine="false"
         android:textStyle="bold"
         />
@@ -231,14 +238,17 @@
         android:layout_below="@+id/user_data_transportation"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
+        android:background="@color/colorAccent"
         android:src="@drawable/ic_trash"/>
 
       <ImageButton
         android:id="@+id/edit_transportation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_alignTop="@+id/expand_less_transportation"
         android:layout_toEndOf="@+id/trash_transportation"
+        android:background="@color/colorAccent"
         android:src="@drawable/ic_edit"/>
 
     </RelativeLayout>

@@ -20,6 +20,9 @@ import deepdive.cnm.edu.trips.model.entity.Person;
 import deepdive.cnm.edu.trips.model.entity.Transportation;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase.Converters;
 
+/**
+ * The type Trips database.
+ */
 @Database(
         entities = {
             Flight.class,
@@ -36,14 +39,40 @@ public abstract class TripsDatabase extends RoomDatabase {
 
     private static TripsDatabase instance = null;
 
+    /**
+     * Gets flight dao.
+     *
+     * @return the flight dao
+     */
     public abstract FlightDao getFlightDao();
 
+    /**
+     * Gets hotel dao.
+     *
+     * @return the hotel dao
+     */
     public abstract HotelDao getHotelDao();
 
+    /**
+     * Gets person dao.
+     *
+     * @return the person dao
+     */
     public abstract PersonDao getPersonDao();
 
+    /**
+     * Gets transportation dao.
+     *
+     * @return the transportation dao
+     */
     public abstract TransportationDao getTransportationDao();
 
+    /**
+     * Gets instance.
+     *
+     * @param context the context
+     * @return the instance
+     */
     public synchronized static TripsDatabase getInstance(Context context) {
         if (instance == null) {
             instance = Room.databaseBuilder(context.getApplicationContext(), TripsDatabase.class, DB_NAME)
@@ -52,13 +81,31 @@ public abstract class TripsDatabase extends RoomDatabase {
         return instance;
     }
 
+    /**
+     * Forget instance.
+     */
     public synchronized static void forgetInstance() { instance = null; }
 
+    /**
+     * The type Converters.
+     */
     public static class Converters {
 
+        /**
+         * Date from long date.
+         *
+         * @param time the time
+         * @return the date
+         */
         @TypeConverter
         public static Date dateFromLong(Long time) { return (time != null) ? new Date(time) : null; }
 
+        /**
+         * Long from date long.
+         *
+         * @param date the date
+         * @return the long
+         */
         @TypeConverter
         public static Long longFromDate(Date date) { return (date != null) ? date.getTime() : null; }
     }
