@@ -18,8 +18,11 @@ Trips uses google search engine.
 
 ### Links
 [Trips ERD](https://github.com/Chantelleelace/Trips/blob/master/Trips%20ERD.pdf "Trips ERD")
+
 [Trips Mockup](https://github.com/Chantelleelace/Trips/commit/c6c875a2db48afc9f205185d4b971366dc55c499 "Trips Mockup")
+
 [Trips JavaDocs](https://github.com/Chantelleelace/Trips/docs/api "Trips JavaDocs")
+
 [Trips UserGuide](https://github.com/Chantelleelace/Trips/blob/master/UserGuide "Trips User Guide")
 
 
