@@ -21,6 +21,7 @@ import deepdive.cnm.edu.trips.R;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase;
 import deepdive.cnm.edu.trips.controller.dialog.AddFlight;
 import deepdive.cnm.edu.trips.model.entity.Flight;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -112,7 +113,7 @@ public class FlightFragment extends Fragment implements AddCallBack {
     @Override
     public View getView(int position, @Nullable View convertView,
         @NonNull ViewGroup parent) {
-      java.text.DateFormat dateFormat = DateFormat.getDateFormat(getActivity());
+      java.text.DateFormat dateFormat = new SimpleDateFormat("MM/dd");
       java.text.DateFormat timeFormat = DateFormat.getTimeFormat(getActivity());
       final View view = getLayoutInflater()
           .inflate(R.layout.flight_card_template, parent, false);
@@ -139,14 +140,6 @@ public class FlightFragment extends Fragment implements AddCallBack {
       ((TextView) view.findViewById(R.id.arrival_time)).setText(timeFormat.format(flight.getArrival()));
       ((TextView) view.findViewById(R.id.flight_confirmation))
           .setText(flight.getConfirmationNumber());
-//      LocalTime arrivalTime = null;
-//      if (flight.getArrival() != null) {
-//        arrivalTime = LocalTime.parse(flight.getArrivalTime(), dateTimeFormatter);
-//      }
-//      LocalTime departureTime = null;
-//      if (flight.getDepartureTime() != null && !flight.getDepartureTime().isEmpty()) {
-//        departureTime = LocalTime.parse(flight.getDepartureTime(), dateTimeFormatter);
-//      }
       Duration length = null;
       if (flight.getDeparture() != null && flight.getArrival() != null) {
         length = Duration.between(LocalDateTime.ofInstant(flight.getDeparture().toInstant(),
@@ -168,70 +161,45 @@ public class FlightFragment extends Fragment implements AddCallBack {
         newFragment.show(getActivity().getSupportFragmentManager(), "add flight dialog");
       });
       //    puts in EXPAND view
-      view.findViewById(R.id.first_plane).setVisibility(View.VISIBLE);
-      view.findViewById(R.id.airport_code_departure_1).setVisibility(View.VISIBLE);
-      view.findViewById(R.id.airport_code_arrival_1).setVisibility(View.VISIBLE);
-      view.findViewById(R.id.flight_length).setVisibility(View.VISIBLE);
-      view.findViewById(R.id.expand_more_flight).setVisibility(View.VISIBLE);
-      view.findViewById(R.id.passenger_1).setVisibility(View.GONE);
-      view.findViewById(R.id.passenger_1_rewards).setVisibility(View.GONE);
-      view.findViewById(R.id.airport_code_outbound).setVisibility(View.GONE);
-      view.findViewById(R.id.airport_code_arrival).setVisibility(View.GONE);
-      view.findViewById(R.id.departure_date).setVisibility(View.GONE);
-      view.findViewById(R.id.departure_time).setVisibility(View.GONE);
-      view.findViewById(R.id.arrival_date).setVisibility(View.GONE);
-      view.findViewById(R.id.arrival_time).setVisibility(View.GONE);
-      view.findViewById(R.id.flight_confirmation).setVisibility(View.GONE);
-      view.findViewById(R.id.flight_number).setVisibility(View.GONE);
-      view.findViewById(R.id.plane_outbound_icon).setVisibility(View.GONE);
-      view.findViewById(R.id.expand_less_flight).setVisibility(View.GONE);
-      view.findViewById(R.id.trash_flight).setVisibility(View.GONE);
-      view.findViewById(R.id.edit_flight).setVisibility(View.GONE);
+      expandView(view, false);
       //    expands card
-      view.findViewById(R.id.flight_card_1).setOnClickListener(v -> {
+      view.setOnClickListener(v -> {
         if (view.findViewById(R.id.passenger_1).getVisibility() == View.VISIBLE) {
-          view.findViewById(R.id.first_plane).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.airport_code_departure_1).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.airport_code_arrival_1).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.flight_length).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.expand_more_flight).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.passenger_1).setVisibility(View.GONE);
-          view.findViewById(R.id.passenger_1_rewards).setVisibility(View.GONE);
-          view.findViewById(R.id.airport_code_outbound).setVisibility(View.GONE);
-          view.findViewById(R.id.airport_code_arrival).setVisibility(View.GONE);
-          view.findViewById(R.id.departure_date).setVisibility(View.GONE);
-          view.findViewById(R.id.departure_time).setVisibility(View.GONE);
-          view.findViewById(R.id.arrival_date).setVisibility(View.GONE);
-          view.findViewById(R.id.arrival_time).setVisibility(View.GONE);
-          view.findViewById(R.id.flight_confirmation).setVisibility(View.GONE);
-          view.findViewById(R.id.flight_number).setVisibility(View.GONE);
-          view.findViewById(R.id.plane_outbound_icon).setVisibility(View.GONE);
-          view.findViewById(R.id.expand_less_flight).setVisibility(View.GONE);
-          view.findViewById(R.id.trash_flight).setVisibility(View.GONE);
-          view.findViewById(R.id.edit_flight).setVisibility(View.GONE);
+          expandView(view, false);
         } else {
-          view.findViewById(R.id.first_plane).setVisibility(View.GONE);
-          view.findViewById(R.id.airport_code_departure_1).setVisibility(View.GONE);
-          view.findViewById(R.id.airport_code_arrival_1).setVisibility(View.GONE);
-          view.findViewById(R.id.flight_length).setVisibility(View.GONE);
-          view.findViewById(R.id.expand_more_flight).setVisibility(View.GONE);
-          view.findViewById(R.id.passenger_1).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.passenger_1_rewards).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.airport_code_outbound).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.airport_code_arrival).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.departure_date).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.departure_time).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.arrival_date).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.arrival_time).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.flight_confirmation).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.flight_number).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.plane_outbound_icon).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.expand_less_flight).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.trash_flight).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.edit_flight).setVisibility(View.VISIBLE);
+          expandView(view, true);
         }
       });
       return view;
     }
+  }
+
+  private void expandView(View view, boolean expand) {
+    int visibilityTop = View.VISIBLE;
+    int visibilityBottom = View.GONE;
+    if (expand) {
+      visibilityTop = View.GONE;
+      visibilityBottom = View.VISIBLE;
+
+    }
+    view.findViewById(R.id.first_plane).setVisibility(visibilityTop);
+    view.findViewById(R.id.airport_code_departure_1).setVisibility(visibilityTop);
+    view.findViewById(R.id.airport_code_arrival_1).setVisibility(visibilityTop);
+    view.findViewById(R.id.flight_length).setVisibility(visibilityTop);
+    view.findViewById(R.id.expand_more_flight).setVisibility(visibilityTop);
+    view.findViewById(R.id.passenger_1).setVisibility(visibilityBottom);
+    view.findViewById(R.id.passenger_1_rewards).setVisibility(visibilityBottom);
+    view.findViewById(R.id.airport_code_outbound).setVisibility(visibilityBottom);
+    view.findViewById(R.id.airport_code_arrival).setVisibility(visibilityBottom);
+    view.findViewById(R.id.departure_date).setVisibility(visibilityBottom);
+    view.findViewById(R.id.departure_time).setVisibility(visibilityBottom);
+    view.findViewById(R.id.arrival_date).setVisibility(visibilityBottom);
+    view.findViewById(R.id.arrival_time).setVisibility(visibilityBottom);
+    view.findViewById(R.id.flight_confirmation).setVisibility(visibilityBottom);
+    view.findViewById(R.id.flight_number).setVisibility(visibilityBottom);
+    view.findViewById(R.id.plane_outbound_icon).setVisibility(visibilityBottom);
+    view.findViewById(R.id.expand_less_flight).setVisibility(visibilityBottom);
+    view.findViewById(R.id.trash_flight).setVisibility(visibilityBottom);
+    view.findViewById(R.id.edit_flight).setVisibility(visibilityBottom);
   }
 }

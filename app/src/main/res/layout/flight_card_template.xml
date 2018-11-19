@@ -1,311 +1,305 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
   android:layout_width="match_parent"
   android:layout_height="wrap_content"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
   android:isScrollContainer="true"
   >
 
   <android.support.v7.widget.CardView
-    android:id="@+id/flight_card_1"
+    style="@style/cardView"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent">
+
+
+  <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:padding="20dp"
-    android:animateLayoutChanges="true"
-    android:paddingBottom="16dp"
-    app:cardElevation="2dp"
-    android:translationZ="8dp"
-    app:cardUseCompatPadding="true"
-    app:cardBackgroundColor="@color/colorAccent">
+    android:layout_gravity="center"
+    android:padding="16dp">
 
     <RelativeLayout
-      android:layout_width="match_parent"
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
-      android:layout_gravity="center"
-      android:padding="16dp">
+      android:orientation="vertical">
 
-      <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <LinearLayout
-          android:id="@+id/flight_first_view"
-          android:layout_width="321dp"
-          android:layout_height="65dp"
-          android:layout_alignParentLeft="true"
-          android:orientation="horizontal"
-          >
-
-          <ImageView
-            android:id="@+id/first_plane"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:src="@drawable/ic_flight_black"
-            />
-
-          <TextView
-            android:id="@+id/airport_code_departure_1"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_toLeftOf="@id/first_plane"
-            android:paddingLeft="35dp"
-            android:maxLength="3"
-            android:textColor="@color/text_color_primary"
-            android:text="ABQ"
-            android:textAllCaps="true"
-            android:textSize="30sp"/>
-
-          <TextView
-            android:id="@+id/airport_code_arrival_1"
-            android:textStyle="bold"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_toLeftOf="@id/airport_code_departure_1"
-            android:paddingLeft="35dp"
-            android:maxLength="3"
-            android:text="LAX"
-            android:textAllCaps="true"
-            android:textSize="30sp"
-            android:textColor="@color/text_color_primary"/>
-
-          <TextView
-            android:id="@+id/flight_length"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_toLeftOf="@id/airport_code_arrival_1"
-            android:paddingLeft="35dp"
-            android:text="1 hr 16 m"
-            android:textAlignment="center"
-            android:textColor="@color/text_color_primary"
-            android:textSize="20sp"
-            />
-
-        </LinearLayout>
-
-
-        <ImageView
-          android:id="@+id/expand_more_flight"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:layout_alignParentRight="true"
-          android:layout_below="@+id/flight_first_view"
-          android:src="@drawable/ic_expand_more"/>
-
-      </RelativeLayout>
-
-
-      <android.support.v7.widget.LinearLayoutCompat
-        android:id="@+id/center_column"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:orientation="vertical"
+      <LinearLayout
+        android:id="@+id/flight_first_view"
+        android:layout_width="321dp"
+        android:layout_height="65dp"
+        android:layout_alignParentLeft="true"
+        android:orientation="horizontal"
         >
 
-        <!--Expand Shown-->
         <ImageView
-          android:id="@+id/plane_outbound_icon"
-          android:layout_width="match_parent"
+          android:id="@+id/first_plane"
+          android:layout_width="50dp"
           android:layout_height="50dp"
-          android:layout_alignParentTop="true"
-          android:src="@drawable/ic_flight_black"/>
+          android:layout_gravity="center"
+          android:src="@drawable/ic_flight_black"
+          />
 
-        <!--Expand Show-->
         <TextView
-          android:id="@+id/flight_number"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_below="@id/plane_outbound_icon"
-          android:paddingTop="5sp"
-          android:gravity="center"
-          android:text="SWA 1202"
-          android:textColor="@color/text_color_primary"
-          android:textAlignment="center"
-          android:textSize="15sp"/>
-
-        <!--Expand Show-->
-        <TextView
-          android:id="@+id/flight_confirmation"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="-5dp"
-          android:layout_below="@id/flight_number"
-          android:layout_centerHorizontal="true"
-          android:paddingTop="5sp"
-          android:gravity="center"
-          android:textColor="@color/text_color_primary"
-          android:text="PXOPR9"
-          android:textAlignment="center"
-          android:textSize="15sp"/>
-
-      </android.support.v7.widget.LinearLayoutCompat>
-
-      <android.support.v7.widget.LinearLayoutCompat
-        android:id="@+id/left_column"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:orientation="vertical">
-        <!--Expand Shown-->
-        <TextView
-          android:id="@+id/airport_code_outbound"
+          android:id="@+id/airport_code_departure_1"
           android:textStyle="bold"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_alignParentLeft="true"
-          android:layout_alignParentTop="true"
-          android:layout_centerHorizontal="true"
-          android:textColor="@color/text_color_primary"
-          android:gravity="center"
+          android:layout_gravity="center"
+          android:layout_toLeftOf="@id/first_plane"
+          android:paddingLeft="35dp"
           android:maxLength="3"
           android:text="ABQ"
-          android:textAlignment="center"
           android:textAllCaps="true"
+          android:textColor="@color/text_color_primary"
           android:textSize="30sp"/>
 
-        <!--Expand Shown-->
         <TextView
-          android:id="@+id/departure_date"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_below="@id/airport_code_outbound"
-          android:layout_centerHorizontal="true"
-          android:textColor="@color/text_color_primary"
-          android:gravity="center"
-          android:text="APR 7"
-          android:textAlignment="center"
-          android:textSize="15sp"/>
-
-        <!--Expand Shown-->
-        <TextView
-          android:id="@+id/departure_time"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_below="@id/departure_date"
-          android:layout_centerHorizontal="true"
-          android:textColor="@color/text_color_primary"
-          android:gravity="center"
-          android:text="11:45a"
-          android:textAlignment="center"
-          android:textSize="15sp"/>
-
-      </android.support.v7.widget.LinearLayoutCompat>
-
-      <android.support.v7.widget.LinearLayoutCompat
-        android:id="@+id/right_column"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:orientation="vertical">
-        <!--Expand Shown-->
-        <TextView
-          android:id="@+id/airport_code_arrival"
+          android:id="@+id/airport_code_arrival_1"
           android:textStyle="bold"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_alignParentRight="true"
-          android:layout_alignParentTop="true"
-          android:layout_centerHorizontal="true"
-          android:textColor="@color/text_color_primary"
-          android:gravity="center"
+          android:layout_gravity="center"
+          android:layout_toLeftOf="@id/airport_code_departure_1"
+          android:paddingLeft="35dp"
           android:maxLength="3"
           android:text="LAX"
-          android:textAlignment="center"
           android:textAllCaps="true"
+          android:textColor="@color/text_color_primary"
           android:textSize="30sp"/>
 
-
-        <!--Expand Shown-->
         <TextView
-          android:id="@+id/arrival_date"
-          android:layout_width="match_parent"
+          android:id="@+id/flight_length"
+          android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_below="@id/airport_code_arrival"
-          android:gravity="center"
-          android:text="APR 7"
-          android:textColor="@color/text_color_primary"
+          android:layout_gravity="center"
+          android:layout_toLeftOf="@id/airport_code_arrival_1"
+          android:paddingLeft="35dp"
+          android:text="1 hr 16 m"
           android:textAlignment="center"
-          android:textSize="15sp"/>
-
-        <!--Expand  Shown-->
-        <TextView
-          android:id="@+id/arrival_time"
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_below="@id/arrival_date"
-          android:layout_toRightOf="@id/plane_outbound_icon"
-          android:gravity="center"
           android:textColor="@color/text_color_primary"
-          android:text="1:45p"
-          android:textAlignment="center"
-          android:textSize="15sp"/>
+          android:textSize="20sp"
+          />
 
-      </android.support.v7.widget.LinearLayoutCompat>
-
-      <!--Expand Show-->
-      <TextView
-        android:id="@+id/passenger_1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:textColor="@color/text_color_primary"
-        android:layout_below="@id/left_column"
-        android:paddingTop="30dp"
-        android:text="passenger_name"
-        android:textAlignment="center"
-        android:textSize="8pt"/>
+      </LinearLayout>
 
 
-      <!--Expand Show-->
-      <TextView
-        android:id="@+id/passenger_1_rewards"
+      <ImageView
+        android:id="@+id/expand_more_flight"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/right_column"
-        android:textColor="@color/text_color_primary"
-        android:paddingTop="30dp"
-        android:text="20138961636"
-        android:textAlignment="center"
-        android:textSize="8pt"/>
-
-      <ImageView
-        android:id="@+id/expand_less_flight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/right_column"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/passenger_1_rewards"
-        android:src="@drawable/ic_expand_less"/>
-
-      <ImageButton
-        android:id="@+id/trash_flight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/left_column"
-        android:layout_alignParentBottom="true"
-        android:layout_below="@+id/passenger_1"
-        android:background="@color/colorAccent"
-        android:src="@drawable/ic_trash"/>
-
-      <ImageButton
-        android:id="@+id/edit_flight"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/trash_flight"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorAccent"
-        android:src="@drawable/ic_edit"/>
-
+        android:layout_below="@+id/flight_first_view"
+        android:src="@drawable/ic_expand_more"/>
 
     </RelativeLayout>
 
-  </android.support.v7.widget.CardView>
 
-</LinearLayout>
+    <android.support.v7.widget.LinearLayoutCompat
+      android:id="@+id/center_column"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerHorizontal="true"
+      android:orientation="vertical"
+      >
+
+      <!--Expand Shown-->
+      <ImageView
+        android:id="@+id/plane_outbound_icon"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/ic_flight_black"/>
+
+      <!--Expand Show-->
+      <TextView
+        android:id="@+id/flight_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/plane_outbound_icon"
+        android:paddingTop="5sp"
+        android:gravity="center"
+        android:text="SWA 1202"
+        android:textAlignment="center"
+        android:textColor="@color/text_color_primary"
+        android:textSize="15sp"/>
+
+      <!--Expand Show-->
+      <TextView
+        android:id="@+id/flight_confirmation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="-5dp"
+        android:layout_below="@id/flight_number"
+        android:layout_centerHorizontal="true"
+        android:paddingTop="5sp"
+        android:gravity="center"
+        android:text="PXOPR9"
+        android:textAlignment="center"
+        android:textColor="@color/text_color_primary"
+        android:textSize="15sp"/>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <android.support.v7.widget.LinearLayoutCompat
+      android:id="@+id/left_column"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentLeft="true"
+      android:orientation="vertical">
+      <!--Expand Shown-->
+      <TextView
+        android:id="@+id/airport_code_outbound"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:maxLength="3"
+        android:text="ABQ"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/text_color_primary"
+        android:textSize="30sp"/>
+
+      <!--Expand Shown-->
+      <TextView
+        android:id="@+id/departure_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/airport_code_outbound"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="APR 7"
+        android:textAlignment="center"
+        android:textColor="@color/text_color_primary"
+        android:textSize="15sp"/>
+
+      <!--Expand Shown-->
+      <TextView
+        android:id="@+id/departure_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/departure_date"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:text="11:45a"
+        android:textAlignment="center"
+        android:textColor="@color/text_color_primary"
+        android:textSize="15sp"/>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <android.support.v7.widget.LinearLayoutCompat
+      android:id="@+id/right_column"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:orientation="vertical">
+      <!--Expand Shown-->
+      <TextView
+        android:id="@+id/airport_code_arrival"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:maxLength="3"
+        android:text="LAX"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textColor="@color/text_color_primary"
+        android:textSize="30sp"/>
+
+
+      <!--Expand Shown-->
+      <TextView
+        android:id="@+id/arrival_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/airport_code_arrival"
+        android:gravity="center"
+        android:text="APR 7"
+        android:textAlignment="center"
+        android:textColor="@color/text_color_primary"
+        android:textSize="15sp"/>
+
+      <!--Expand  Shown-->
+      <TextView
+        android:id="@+id/arrival_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/arrival_date"
+        android:layout_toRightOf="@id/plane_outbound_icon"
+        android:gravity="center"
+        android:text="1:45p"
+        android:textAlignment="center"
+        android:textColor="@color/text_color_primary"
+        android:textSize="15sp"/>
+
+    </android.support.v7.widget.LinearLayoutCompat>
+
+    <!--Expand Show-->
+    <TextView
+      android:id="@+id/passenger_1"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentLeft="true"
+      android:layout_below="@id/left_column"
+      android:paddingTop="30dp"
+      android:text="passenger_name"
+      android:textAlignment="center"
+      android:textColor="@color/text_color_primary"
+      android:textSize="8pt"/>
+
+
+    <!--Expand Show-->
+    <TextView
+      android:id="@+id/passenger_1_rewards"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_below="@id/right_column"
+      android:paddingTop="30dp"
+      android:text="20138961636"
+      android:textAlignment="center"
+      android:textColor="@color/text_color_primary"
+      android:textSize="8pt"/>
+
+    <ImageView
+      android:id="@+id/expand_less_flight"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignEnd="@+id/right_column"
+      android:layout_alignParentBottom="true"
+      android:layout_below="@+id/passenger_1_rewards"
+      android:src="@drawable/ic_expand_less"/>
+
+    <ImageButton
+      android:id="@+id/trash_flight"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_alignStart="@+id/left_column"
+      android:layout_below="@+id/passenger_1"
+      android:background="@color/colorAccent"
+      android:src="@drawable/ic_trash"/>
+
+    <ImageButton
+      android:id="@+id/edit_flight"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:layout_toEndOf="@+id/trash_flight"
+      android:background="@color/colorAccent"
+      android:src="@drawable/ic_edit"/>
+
+
+  </RelativeLayout>
+
+</android.support.v7.widget.CardView>
+
+  </LinearLayout>

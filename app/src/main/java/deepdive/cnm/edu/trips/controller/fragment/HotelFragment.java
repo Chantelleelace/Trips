@@ -16,10 +16,12 @@ import android.widget.ListView;
 import android.widget.TextView;
 import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.R;
+import deepdive.cnm.edu.trips.controller.GoogleSearchApi;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase;
 import deepdive.cnm.edu.trips.controller.dialog.AddHotel;
 import deepdive.cnm.edu.trips.model.entity.Hotel;
 import java.util.List;
+import retrofit2.Retrofit;
 
 
 /**
@@ -99,6 +101,20 @@ public class HotelFragment extends Fragment implements AddCallBack {
       super(context, 0, objects);
     }
 
+    public class GoogleImageTask extends AsyncTask<String, Void, Void> {
+
+      @Override
+      protected Void doInBackground(String... strings) {
+        Retrofit restAdapter = new Retrofit.Builder()
+            .baseUrl("https://www.googleapis.com")
+            .build();
+        GoogleSearchApi restApi = restAdapter.create(GoogleSearchApi.class);
+        restApi.customSearch(getString(R.string.googleSearchApiKey), "006852542688344643578:bqsiyiqglvw", "pictures");
+        return null;
+      }
+    }
+
+
 
     @NonNull
     @Override
@@ -128,64 +144,42 @@ public class HotelFragment extends Fragment implements AddCallBack {
         newFragment.show(getActivity().getSupportFragmentManager(), "add hotel dialog");
       });
       //    puts in EXPAND view
-      view.findViewById(R.id.calendar_check_in).setVisibility(View.VISIBLE);
-      view.findViewById(R.id.calendar_check_out).setVisibility(View.VISIBLE);
-      view.findViewById(R.id.expand_more_hotel).setVisibility(View.VISIBLE);
-      view.findViewById(R.id.hotel_address).setVisibility(View.GONE);
-      view.findViewById(R.id.hotel_phone).setVisibility(View.GONE);
-      view.findViewById(R.id.hotel_check_in).setVisibility(View.GONE);
-      view.findViewById(R.id.hotel_check_out).setVisibility(View.GONE);
-      view.findViewById(R.id.calendar_check_in_2).setVisibility(View.GONE);
-      view.findViewById(R.id.calendar_check_out_2).setVisibility(View.GONE);
-      view.findViewById(R.id.name_on_reservation).setVisibility(View.GONE);
-      view.findViewById(R.id.hotel_confirmation).setVisibility(View.GONE);
-      view.findViewById(R.id.hotel_rewards).setVisibility(View.GONE);
-      view.findViewById(R.id.room_type).setVisibility(View.GONE);
-      view.findViewById(R.id.hotel_cost).setVisibility(View.GONE);
-      view.findViewById(R.id.expand_less_hotel).setVisibility(View.GONE);
-      view.findViewById(R.id.trash_hotel).setVisibility(View.GONE);
-      view.findViewById(R.id.edit_hotel).setVisibility(View.GONE);
+      expandView(view, false);
 //    expands card
       view.findViewById(R.id.hotel_card_1).setOnClickListener(v -> {
         if (view.findViewById(R.id.calendar_check_in).getVisibility() == View.VISIBLE) {
-          view.findViewById(R.id.calendar_check_in).setVisibility(View.GONE);
-          view.findViewById(R.id.calendar_check_out).setVisibility(View.GONE);
-          view.findViewById(R.id.expand_more_hotel).setVisibility(View.GONE);
-          view.findViewById(R.id.hotel_address).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.hotel_phone).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.hotel_check_in).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.hotel_check_out).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.calendar_check_in_2).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.calendar_check_out_2).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.name_on_reservation).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.hotel_confirmation).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.hotel_rewards).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.room_type).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.hotel_cost).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.expand_less_hotel).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.trash_hotel).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.edit_hotel).setVisibility(View.VISIBLE);
+          expandView(view, true);
         } else {
-          view.findViewById(R.id.calendar_check_in).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.calendar_check_out).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.expand_more_hotel).setVisibility(View.VISIBLE);
-          view.findViewById(R.id.hotel_address).setVisibility(View.GONE);
-          view.findViewById(R.id.hotel_phone).setVisibility(View.GONE);
-          view.findViewById(R.id.hotel_check_in).setVisibility(View.GONE);
-          view.findViewById(R.id.hotel_check_out).setVisibility(View.GONE);
-          view.findViewById(R.id.calendar_check_in_2).setVisibility(View.GONE);
-          view.findViewById(R.id.calendar_check_out_2).setVisibility(View.GONE);
-          view.findViewById(R.id.name_on_reservation).setVisibility(View.GONE);
-          view.findViewById(R.id.hotel_confirmation).setVisibility(View.GONE);
-          view.findViewById(R.id.hotel_rewards).setVisibility(View.GONE);
-          view.findViewById(R.id.room_type).setVisibility(View.GONE);
-          view.findViewById(R.id.hotel_cost).setVisibility(View.GONE);
-          view.findViewById(R.id.expand_less_hotel).setVisibility(View.GONE);
-          view.findViewById(R.id.trash_hotel).setVisibility(View.GONE);
-          view.findViewById(R.id.edit_hotel).setVisibility(View.GONE);
+          expandView(view, false);
         }
       });
       return view;
     }
+  }
+
+  private void expandView(View view, boolean expand) {
+    int visibilityTop = View.VISIBLE;
+    int visibilityBottom = View.GONE;
+    if (expand) {
+      visibilityTop = View.GONE;
+      visibilityBottom = View.VISIBLE;
+    }
+    view.findViewById(R.id.calendar_check_in).setVisibility(visibilityTop);
+    view.findViewById(R.id.calendar_check_out).setVisibility(visibilityTop);
+    view.findViewById(R.id.expand_more_hotel).setVisibility(visibilityTop);
+    view.findViewById(R.id.hotel_address).setVisibility(visibilityBottom);
+    view.findViewById(R.id.hotel_phone).setVisibility(visibilityBottom);
+    view.findViewById(R.id.hotel_check_in).setVisibility(visibilityBottom);
+    view.findViewById(R.id.hotel_check_out).setVisibility(visibilityBottom);
+    view.findViewById(R.id.calendar_check_in_2).setVisibility(visibilityBottom);
+    view.findViewById(R.id.calendar_check_out_2).setVisibility(visibilityBottom);
+    view.findViewById(R.id.name_on_reservation).setVisibility(visibilityBottom);
+    view.findViewById(R.id.hotel_confirmation).setVisibility(visibilityBottom);
+    view.findViewById(R.id.hotel_rewards).setVisibility(visibilityBottom);
+    view.findViewById(R.id.room_type).setVisibility(visibilityBottom);
+    view.findViewById(R.id.hotel_cost).setVisibility(visibilityBottom);
+    view.findViewById(R.id.expand_less_hotel).setVisibility(visibilityBottom);
+    view.findViewById(R.id.trash_hotel).setVisibility(visibilityBottom);
+    view.findViewById(R.id.edit_hotel).setVisibility(visibilityBottom);
   }
 }
