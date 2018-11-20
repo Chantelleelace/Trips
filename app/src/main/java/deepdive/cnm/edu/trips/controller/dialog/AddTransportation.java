@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
+import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -114,6 +115,8 @@ public class AddTransportation extends AddDialog {
     } else {
       transportation = new Transportation();
     }
+    ((TextInputEditText) view.findViewById(R.id.rental_phone_number_input)).addTextChangedListener(
+        new PhoneNumberFormattingTextWatcher());
     return view;
   }
 

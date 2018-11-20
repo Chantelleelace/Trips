@@ -18,16 +18,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.R;
-import deepdive.cnm.edu.trips.model.db.TripsDatabase;
 import deepdive.cnm.edu.trips.controller.dialog.AddFlight;
+import deepdive.cnm.edu.trips.model.db.TripsDatabase;
 import deepdive.cnm.edu.trips.model.entity.Flight;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.Period;
 import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 
@@ -132,18 +129,21 @@ public class FlightFragment extends Fragment implements AddCallBack {
         ((TextView) view.findViewById(R.id.departure_date))
             .setText(dateFormat.format(flight.getDeparture()));
       }
-      ((TextView) view.findViewById(R.id.departure_time)).setText(timeFormat.format(flight.getDeparture()));
+      ((TextView) view.findViewById(R.id.departure_time))
+          .setText(timeFormat.format(flight.getDeparture()));
       if (flight.getArrival() != null) {
         ((TextView) view.findViewById(R.id.arrival_date))
             .setText(dateFormat.format(flight.getArrival()));
       }
-      ((TextView) view.findViewById(R.id.arrival_time)).setText(timeFormat.format(flight.getArrival()));
+      ((TextView) view.findViewById(R.id.arrival_time))
+          .setText(timeFormat.format(flight.getArrival()));
       ((TextView) view.findViewById(R.id.flight_confirmation))
           .setText(flight.getConfirmationNumber());
       Duration length = null;
       if (flight.getDeparture() != null && flight.getArrival() != null) {
         length = Duration.between(LocalDateTime.ofInstant(flight.getDeparture().toInstant(),
-            ZoneId.systemDefault()), LocalDateTime.ofInstant(flight.getArrival().toInstant(), ZoneId.systemDefault()));
+            ZoneId.systemDefault()),
+            LocalDateTime.ofInstant(flight.getArrival().toInstant(), ZoneId.systemDefault()));
       }
       long s = 0;
       if (length != null) {

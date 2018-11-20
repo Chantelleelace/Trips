@@ -18,10 +18,10 @@ public interface HotelDao {
     @Insert(onConflict = OnConflictStrategy.FAIL)
     long insert(Hotel hotel);
 
-    @Query("SELECT * FROM Hotel ORDER BY check_in")
+    @Query("SELECT * FROM Hotel ORDER BY check_in, hotel_id")
     List<Hotel> select();
 
-    @Query("SELECT * FROM Hotel WHERE person_id = :personId ORDER BY check_in")
+    @Query("SELECT * FROM Hotel WHERE person_id = :personId ORDER BY check_in, hotel_id")
     List<Hotel> select(long personId);
 
     @Query("SELECT * FROM Hotel WHERE hotel_id = :hotelId LIMIT 1")

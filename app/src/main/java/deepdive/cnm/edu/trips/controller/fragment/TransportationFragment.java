@@ -82,7 +82,9 @@ public class TransportationFragment extends Fragment implements AddCallBack {
   /**
    * Refresh list.
    */
-  public void refreshList() { new TransportationTask().execute(); }
+  public void refreshList() {
+    new TransportationTask().execute();
+  }
 
   private class TransportationListAdapter extends ArrayAdapter<Transportation> {
 
@@ -113,16 +115,22 @@ public class TransportationFragment extends Fragment implements AddCallBack {
           .setText(transportation.getRentalCompanyPhone());
       ((TextView) view.findViewById(R.id.rental_return))
           .setText(transportation.getRentalReturn());
+      ((TextView) view.findViewById(R.id.rental_return_date))
+          .setText(transportation.getRentalReturn());
       ((TextView) view.findViewById(R.id.rental_pick_up))
           .setText(transportation.getRentalPickUp());
+      ((TextView) view.findViewById(R.id.rental_pick_up_date))
+          .setText(transportation.getRentalPickUp());
       ((TextView) view.findViewById(R.id.name_on_rental_reservation))
-          .setText(transportation.getNameOnRentalReservation());
+          .setText("Name on Reservation: " + transportation.getNameOnRentalReservation());
       ((TextView) view.findViewById(R.id.rental_confirmation))
-          .setText(transportation.getRentalConfirmation());
+          .setText("Rental Confirmation: #" + transportation.getRentalConfirmation());
       ((TextView) view.findViewById(R.id.rental_rewards))
-          .setText(transportation.getRentalRewards());
-      ((TextView) view.findViewById(R.id.car_type)).setText(transportation.getCarType());
-      ((TextView) view.findViewById(R.id.rental_cost)).setText(transportation.getRentalCost());
+          .setText("Rental Rewards: #" + transportation.getRentalRewards());
+      ((TextView) view.findViewById(R.id.car_type))
+          .setText("Car Type: " + transportation.getCarType());
+      ((TextView) view.findViewById(R.id.rental_cost))
+          .setText("Rental Cost: $" + transportation.getRentalCost() + "/per day");
       AppCompatImageButton deleteButton = view.findViewById(R.id.trash_transportation);
       deleteButton.setOnClickListener((v) -> new DeleteTask().execute(transportation));
       AppCompatImageButton editButton = view.findViewById(R.id.edit_transportation);
@@ -137,7 +145,7 @@ public class TransportationFragment extends Fragment implements AddCallBack {
 //    expands card
       view.findViewById(R.id.transportation_card_1)
           .setOnClickListener(v -> {
-            if (view.findViewById(R.id.calendar_check_in_car).getVisibility() == View.VISIBLE) {
+            if (view.findViewById(R.id.rental_pick_up_date).getVisibility() == View.VISIBLE) {
               expandView(view, true);
             } else {
               expandView(view, false);
@@ -155,15 +163,16 @@ public class TransportationFragment extends Fragment implements AddCallBack {
       visibilityBottom = View.VISIBLE;
 
     }
-    view.findViewById(R.id.calendar_check_in_car).setVisibility(visibilityTop);
-    view.findViewById(R.id.calendar_check_out_car).setVisibility(visibilityTop);
+    view.findViewById(R.id.rental_pick_up_date).setVisibility(visibilityTop);
+    view.findViewById(R.id.rental_return_date).setVisibility(visibilityTop);
+    view.findViewById(R.id.rental_pick_up_dash).setVisibility(visibilityTop);
     view.findViewById(R.id.expand_more_transportation).setVisibility(visibilityTop);
     view.findViewById(R.id.rental_company_address).setVisibility(visibilityBottom);
     view.findViewById(R.id.rental_company_phone).setVisibility(visibilityBottom);
     view.findViewById(R.id.rental_return).setVisibility(visibilityBottom);
     view.findViewById(R.id.rental_pick_up).setVisibility(visibilityBottom);
-    view.findViewById(R.id.calendar_check_in_car_2).setVisibility(visibilityBottom);
-    view.findViewById(R.id.calendar_check_out_car_2).setVisibility(visibilityBottom);
+    view.findViewById(R.id.rental_pick_up_date_2).setVisibility(visibilityBottom);
+    view.findViewById(R.id.rental_return_date_2).setVisibility(visibilityBottom);
     view.findViewById(R.id.name_on_rental_reservation).setVisibility(visibilityBottom);
     view.findViewById(R.id.rental_confirmation).setVisibility(visibilityBottom);
     view.findViewById(R.id.rental_rewards).setVisibility(visibilityBottom);

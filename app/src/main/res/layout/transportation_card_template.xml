@@ -9,13 +9,13 @@
 
   <android.support.v7.widget.CardView
     android:id="@+id/transportation_card_1"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     style="@style/cardView"
     >
 
     <RelativeLayout
-      android:layout_width="match_parent"
+      android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:padding="16dp"
       >
@@ -44,6 +44,7 @@
         android:id="@+id/rental_company_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/textView"
         android:layout_toRightOf="@id/rental_company_logo"
         android:textColor="@color/text_color_primary"
         android:layout_alignParentTop="true"
@@ -52,33 +53,47 @@
         />
 
       <!--Hide Expand-->
-      <ImageView
-        android:id="@+id/calendar_check_in_car"
-        android:layout_width="30dp"
+      <TextView
+        android:id="@+id/rental_pick_up_date"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
+        style="@style/textView"
         android:layout_below="@id/rental_company_name"
         android:layout_toRightOf="@id/rental_company_logo"
-        android:src="@drawable/date_7_calendar"/>
+        android:text="Pickup_date"
+        />
+
+      <TextView
+        android:id="@+id/rental_pick_up_dash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textView"
+        android:layout_below="@id/rental_company_name"
+        android:layout_toRightOf="@id/rental_pick_up_date"
+        android:text=" - "
+        android:textStyle="bold"
+        />
 
       <!--Hide Expand-->
-      <ImageView
-        android:id="@+id/calendar_check_out_car"
-        android:layout_width="30dp"
+      <TextView
+        android:id="@+id/rental_return_date"
+        android:layout_width="wrap_content"
         android:layout_height="30dp"
+        style="@style/textView"
         android:layout_below="@id/rental_company_name"
-        android:layout_toRightOf="@id/calendar_check_in_car"
-        android:src="@drawable/date_14_calendar"/>
+        android:layout_toRightOf="@id/rental_pick_up_dash"
+        android:text="Return_date"
+        />
 
       <!--Show Expand-->
       <TextView
         android:id="@+id/rental_company_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/textView"
         android:layout_toRightOf="@id/rental_company_logo"
-        android:textColor="@color/text_color_primary"
         android:layout_below="@+id/rental_company_name"
         android:text="company_address"
-        android:textSize="8pt"
         />
 
       <!--Show Expand-->
@@ -86,44 +101,45 @@
         android:id="@+id/rental_company_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/textView"
         android:layout_toRightOf="@id/rental_company_logo"
         android:layout_below="@+id/rental_company_address"
-        android:textColor="@color/text_color_primary"
         android:text="rental phone"
-        android:textSize="8pt"
         />
 
       <!--Show Expand-->
-      <ImageView
-        android:id="@+id/calendar_check_in_car_2"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+      <TextView
+        android:id="@+id/rental_pick_up_date_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textView"
         android:layout_below="@id/rental_company_phone"
         android:layout_toRightOf="@id/rental_company_logo"
-        android:paddingTop="8dp"
-        android:src="@drawable/date_7_calendar"/>
+        android:text="Pick Up Date: "
+        android:textStyle="bold"
+        />
 
       <!--Show Expand-->
-      <ImageView
-        android:id="@+id/calendar_check_out_car_2"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_below="@id/calendar_check_in_car_2"
+      <TextView
+        android:id="@+id/rental_return_date_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textView"
+        android:layout_below="@id/rental_pick_up_date_2"
         android:layout_toRightOf="@id/rental_company_logo"
-        android:paddingTop="8dp"
-        android:src="@drawable/date_14_calendar"/>
+        android:text="Return Date: "
+        android:textStyle="bold"
+        />
 
       <!--Show Expand-->
       <TextView
         android:id="@+id/rental_return"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/calendar_check_out_car_2"
+        style="@style/textView"
+        android:layout_toRightOf="@id/rental_return_date_2"
         android:layout_below="@+id/rental_company_phone"
-        android:textColor="@color/text_color_primary"
-        android:paddingTop="8dp"
         android:text="check-in date"
-        android:textSize="8pt"
         />
 
       <!--Show Expand-->
@@ -131,12 +147,10 @@
         android:id="@+id/rental_pick_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/calendar_check_out_car_2"
-        android:layout_below="@+id/calendar_check_in_car_2"
-        android:paddingTop="8dp"
-        android:textColor="@color/text_color_primary"
+        style="@style/textView"
+        android:layout_toRightOf="@id/rental_return_date_2"
+        android:layout_below="@+id/rental_pick_up_date_2"
         android:text="check-out date"
-        android:textSize="8pt"
         />
 
       <LinearLayout
@@ -152,13 +166,11 @@
         android:id="@+id/name_on_rental_reservation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/textView"
         android:layout_alignParentLeft="true"
         android:layout_alignWithParentIfMissing="true"
         android:layout_below="@+id/rental_pick_up"
-        android:paddingTop="12dp"
         android:text="Name on Reservation"
-        android:textColor="@color/text_color_primary"
-        android:textSize="9pt"
         android:textStyle="bold|italic"
         />
 
@@ -167,13 +179,11 @@
         android:id="@+id/rental_confirmation"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/textView"
         android:layout_alignParentStart="true"
         android:layout_alignWithParentIfMissing="true"
         android:layout_below="@+id/name_on_rental_reservation"
-        android:paddingTop="8dp"
         android:text="Confirmation #"
-        android:textColor="@color/text_color_primary"
-        android:textSize="8pt"
         />
 
       <!--Show Expand-->
@@ -181,13 +191,11 @@
         android:id="@+id/rental_rewards"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/textView"
         android:layout_alignParentStart="true"
         android:layout_alignWithParentIfMissing="true"
         android:layout_below="@+id/rental_confirmation"
-        android:textColor="@color/text_color_primary"
-        android:paddingTop="8dp"
         android:text="Rewards #"
-        android:textSize="8pt"
         />
 
       <!--Show Expand-->
@@ -195,13 +203,11 @@
         android:id="@+id/car_type"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/textView"
         android:layout_alignParentStart="true"
         android:layout_alignWithParentIfMissing="true"
         android:layout_below="@+id/rental_rewards"
-        android:textColor="@color/text_color_primary"
-        android:paddingTop="8dp"
         android:text="Ford Escape"
-        android:textSize="8pt"
         android:singleLine="false"
         />
 
@@ -210,13 +216,11 @@
         android:id="@+id/rental_cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/textView"
         android:layout_alignParentStart="true"
         android:layout_alignWithParentIfMissing="true"
         android:layout_below="@+id/car_type"
-        android:textColor="@color/text_color_primary"
-        android:paddingTop="8dp"
         android:text="$$$$"
-        android:textSize="8pt"
         android:singleLine="false"
         android:textStyle="bold"
         />

@@ -2,6 +2,7 @@ package deepdive.cnm.edu.trips;
 
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
@@ -59,6 +60,24 @@ public class MainActivity extends AppCompatActivity {
         // Set up the ViewPager with the sections adapter.
         mViewPager = findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
+
+        mViewPager.addOnPageChangeListener(new SimpleOnPageChangeListener(){
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                switch (position){
+                    case 0:
+                        flightFragment.update();
+                        break;
+                    case 1:
+                        hotelFragment.update();
+                        break;
+                    case 2:
+                        transportationFragment.update();
+                        break;
+                }
+            }
+        });
 
         final TabLayout tabLayout = findViewById(R.id.tabs);
 

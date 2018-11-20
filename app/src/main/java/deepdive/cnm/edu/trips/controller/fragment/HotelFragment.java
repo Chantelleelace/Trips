@@ -8,12 +8,10 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatImageButton;
-import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
@@ -129,11 +127,13 @@ public class HotelFragment extends Fragment implements AddCallBack {
       ((TextView) view.findViewById(R.id.hotel_phone)).setText(hotel.getHotelPhone());
       ((TextView) view.findViewById(R.id.hotel_check_in)).setText(hotel.getCheckIn());
       ((TextView) view.findViewById(R.id.hotel_check_out)).setText(hotel.getCheckOut());
-      ((TextView) view.findViewById(R.id.name_on_reservation)).setText(hotel.getNameOnResrvation());
-      ((TextView) view.findViewById(R.id.hotel_confirmation)).setText(hotel.getHotelConfirmation());
-      ((TextView) view.findViewById(R.id.hotel_rewards)).setText(hotel.getHotelRewards());
-      ((TextView) view.findViewById(R.id.room_type)).setText(hotel.getRoomType());
-      ((TextView) view.findViewById(R.id.hotel_cost)).setText(hotel.getCost());
+      ((TextView) view.findViewById(R.id.check_in_date)).setText(hotel.getCheckIn());
+      ((TextView) view.findViewById(R.id.check_out_date)).setText(hotel.getCheckOut());
+      ((TextView) view.findViewById(R.id.name_on_reservation)).setText("Name on Reservation: " + hotel.getNameOnResrvation());
+      ((TextView) view.findViewById(R.id.hotel_confirmation)).setText("Hotel Confirmation: #" + hotel.getHotelConfirmation());
+      ((TextView) view.findViewById(R.id.hotel_rewards)).setText("Hotel Rewards: #" + hotel.getHotelRewards());
+      ((TextView) view.findViewById(R.id.room_type)).setText("Room Type: " + hotel.getRoomType());
+      ((TextView) view.findViewById(R.id.hotel_cost)).setText("Cost: $" + hotel.getCost() + "/per night");
       // Lets user delete the card using the delete button
       AppCompatImageButton deleteButton = view.findViewById(R.id.trash_hotel);
       deleteButton.setOnClickListener((v) -> new DeleteTask().execute(hotel));
@@ -149,7 +149,7 @@ public class HotelFragment extends Fragment implements AddCallBack {
       expandView(view, false);
 //    expands card
       view.findViewById(R.id.hotel_card_1).setOnClickListener(v -> {
-        if (view.findViewById(R.id.calendar_check_in).getVisibility() == View.VISIBLE) {
+        if (view.findViewById(R.id.check_in_date).getVisibility() == View.VISIBLE) {
           expandView(view, true);
         } else {
           expandView(view, false);
@@ -166,15 +166,16 @@ public class HotelFragment extends Fragment implements AddCallBack {
       visibilityTop = View.GONE;
       visibilityBottom = View.VISIBLE;
     }
-    view.findViewById(R.id.calendar_check_in).setVisibility(visibilityTop);
-    view.findViewById(R.id.calendar_check_out).setVisibility(visibilityTop);
+    view.findViewById(R.id.check_in_date).setVisibility(visibilityTop);
+    view.findViewById(R.id.check_out_date).setVisibility(visibilityTop);
+    view.findViewById(R.id.check_in_dash).setVisibility(visibilityTop);
     view.findViewById(R.id.expand_more_hotel).setVisibility(visibilityTop);
     view.findViewById(R.id.hotel_address).setVisibility(visibilityBottom);
     view.findViewById(R.id.hotel_phone).setVisibility(visibilityBottom);
     view.findViewById(R.id.hotel_check_in).setVisibility(visibilityBottom);
     view.findViewById(R.id.hotel_check_out).setVisibility(visibilityBottom);
-    view.findViewById(R.id.calendar_check_in_2).setVisibility(visibilityBottom);
-    view.findViewById(R.id.calendar_check_out_2).setVisibility(visibilityBottom);
+    view.findViewById(R.id.check_in_date_2).setVisibility(visibilityBottom);
+    view.findViewById(R.id.check_out_date_2).setVisibility(visibilityBottom);
     view.findViewById(R.id.name_on_reservation).setVisibility(visibilityBottom);
     view.findViewById(R.id.hotel_confirmation).setVisibility(visibilityBottom);
     view.findViewById(R.id.hotel_rewards).setVisibility(visibilityBottom);

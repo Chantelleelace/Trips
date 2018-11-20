@@ -44,41 +44,56 @@
         android:id="@+id/hotel_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/textView"
         android:layout_toRightOf="@id/hotel_picture"
         android:layout_alignParentTop="true"
-        android:textColor="@color/text_color_primary"
         android:textSize="30sp"
         android:text="Hotel Name"
         />
 
       <!--Hide Expand-->
-      <ImageView
-        android:id="@+id/calendar_check_in"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+      <TextView
+        android:id="@+id/check_in_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textView"
         android:layout_below="@id/hotel_name"
         android:layout_toRightOf="@id/hotel_picture"
-        android:src="@drawable/date_7_calendar"/>
+        android:text="check_in_date"
+        />
+
+      <TextView
+        android:id="@+id/check_in_dash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textView"
+        android:layout_below="@id/hotel_name"
+        android:layout_toRightOf="@id/check_in_date"
+        android:text=" - "
+        android:textStyle="bold"
+        />
 
       <!--Hide Expand-->
-      <ImageView
-        android:id="@+id/calendar_check_out"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+      <TextView
+        android:id="@+id/check_out_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textView"
         android:layout_below="@id/hotel_name"
-        android:layout_toRightOf="@id/calendar_check_in"
-        android:src="@drawable/date_14_calendar"/>
+        android:layout_toRightOf="@id/check_in_dash"
+        android:text="check_out_date"
+        />
 
       <!--Show Expand-->
       <TextView
         android:id="@+id/hotel_address"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/textView"
         android:layout_toRightOf="@id/hotel_picture"
         android:textColor="@color/text_color_primary"
         android:layout_below="@+id/hotel_name"
         android:text="@string/hotel_address"
-        android:textSize="8pt"
         />
 
       <!--Show Expand-->
@@ -86,45 +101,46 @@
         android:id="@+id/hotel_phone"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        style="@style/textView"
         android:layout_toRightOf="@id/hotel_picture"
-        android:textColor="@color/text_color_primary"
         android:layout_below="@+id/hotel_address"
         android:inputType="phone"
         android:text="@string/hotel_phone"
-        android:textSize="8pt"
         />
 
       <!--Show Expand-->
-      <ImageView
-        android:id="@+id/calendar_check_in_2"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+      <TextView
+        android:id="@+id/check_in_date_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textView"
         android:layout_below="@id/hotel_phone"
         android:layout_toRightOf="@id/hotel_picture"
-        android:paddingTop="8dp"
-        android:src="@drawable/date_7_calendar"/>
+        android:text="Check In:"
+        android:textStyle="bold"
+        />
 
       <!--Show Expand-->
-      <ImageView
-        android:id="@+id/calendar_check_out_2"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_below="@id/calendar_check_in_2"
+      <TextView
+        android:id="@+id/check_out_date_2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/textView"
+        android:layout_below="@id/check_in_date_2"
         android:layout_toRightOf="@id/hotel_picture"
-        android:paddingTop="8dp"
-        android:src="@drawable/date_14_calendar"/>
+        android:text="Check Out:"
+        android:textStyle="bold"
+        />
 
       <!--Show Expand-->
       <TextView
         android:id="@+id/hotel_check_out"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/calendar_check_in_2"
-        android:textColor="@color/text_color_primary"
-        android:layout_below="@+id/hotel_phone"
-        android:paddingTop="8dp"
-        android:text="check-in date"
-        android:textSize="8pt"
+        style="@style/textView"
+        android:layout_toRightOf="@id/check_out_date_2"
+        android:layout_below="@+id/hotel_check_in"
+        android:text="check-out date"
         />
 
       <!--Show Expand-->
@@ -132,91 +148,69 @@
         android:id="@+id/hotel_check_in"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/calendar_check_out_2"
-        android:textColor="@color/text_color_primary"
-        android:layout_below="@+id/calendar_check_in_2"
-        android:paddingTop="8dp"
-        android:text="check-out date"
-        android:textSize="8pt"
+        style="@style/textView"
+        android:layout_toRightOf="@id/check_in_date_2"
+        android:layout_below="@+id/hotel_phone"
+        android:text="check-in date"
         />
 
       <LinearLayout
         android:id="@+id/user_data_hotel"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@id/hotel_check_in"
+        android:layout_below="@id/hotel_check_out"
+        android:paddingTop="15dp"
         >
+          <!--Show Expand-->
+          <TextView
+            android:id="@+id/name_on_reservation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/textView"
+            android:text="Name on Reservation"
+            android:textStyle="bold|italic"
+            />
 
+          <TextView
+            android:id="@+id/hotel_confirmation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/textView"
+            android:text="Confirmation #"
+            />
 
-      <!--Show Expand-->
-      <TextView
-        android:id="@+id/name_on_reservation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/hotel_check_out"
-        android:textColor="@color/text_color_primary"
-        android:paddingTop="12dp"
-        android:text="Name on Reservation"
-        android:textSize="9pt"
-        android:textStyle="bold|italic"
-        />
+          <!--Show Expand-->
+          <TextView
+            android:id="@+id/hotel_rewards"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/textView"
+            android:layout_below="@+id/hotel_confirmation"
+            android:text="Rewards #"
+            />
 
-      <!--Show Expand-->
-      <TextView
-        android:id="@+id/hotel_confirmation"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/name_on_reservation"
-        android:textColor="@color/text_color_primary"
-        android:paddingTop="8dp"
-        android:text="Confirmation #"
-        android:textSize="8pt"
-        />
+          <!--Show Expand-->
+          <TextView
+            android:id="@+id/room_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/textView"
+            android:layout_below="@+id/hotel_rewards"
+            android:text="2 ROOM SUITE­1 KING BED­NONSMOKING STANDARD ROOM REWARD"
+            android:singleLine="false"
+            />
 
-      <!--Show Expand-->
-      <TextView
-        android:id="@+id/hotel_rewards"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/hotel_confirmation"
-        android:textColor="@color/text_color_primary"
-        android:paddingTop="8dp"
-        android:text="Rewards #"
-        android:textSize="8pt"
-        />
-
-      <!--Show Expand-->
-      <TextView
-        android:id="@+id/room_type"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/hotel_rewards"
-        android:textColor="@color/text_color_primary"
-        android:paddingTop="8dp"
-        android:text="2 ROOM SUITE­1 KING BED­NONSMOKING STANDARD ROOM REWARD"
-        android:textSize="8pt"
-        android:singleLine="false"
-        />
-
-      <!--Show Expand-->
-      <TextView
-        android:id="@+id/hotel_cost"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/room_type"
-        android:textColor="@color/text_color_primary"
-        android:paddingTop="8dp"
-        android:text="$$$$"
-        android:textSize="8pt"
-        android:singleLine="false"
-        android:textStyle="bold"
-        />
+          <!--Show Expand-->
+          <TextView
+            android:id="@+id/hotel_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/textView"
+            android:layout_below="@+id/room_type"
+            android:text="$$$$"
+            android:textStyle="bold"
+            />
 
       </LinearLayout>
 
@@ -242,6 +236,7 @@
         android:id="@+id/edit_hotel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingLeft="25dp"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/trash_hotel"
         android:background="@color/colorAccent"

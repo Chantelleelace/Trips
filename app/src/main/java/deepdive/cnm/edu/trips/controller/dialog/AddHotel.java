@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
+import android.telephony.PhoneNumberFormattingTextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -115,11 +116,13 @@ public class AddHotel extends AddDialog {
     } else {
       hotel = new Hotel();
     }
+    ((TextInputEditText) view.findViewById(R.id.hotel_phone_input)).addTextChangedListener(
+        new PhoneNumberFormattingTextWatcher());
     return view;
   }
 
   /**
-   * This add (Hotel) call back add a new card to my Hotel fragment from my add hotel fragment.
+   * This add (Hotel) call back adds a new card to my Hotel fragment from my add hotel fragment.
    *
    * @param addCallBack the add call back
    */
