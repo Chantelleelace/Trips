@@ -121,7 +121,8 @@
           android:textColor="@color/text_color_primary"
           android:hint="State"
           android:inputType="text"
-          android:textSize="10sp"/>
+          android:textSize="10sp"
+          android:maxLength="2"/>
 
       </android.support.design.widget.TextInputLayout>
 

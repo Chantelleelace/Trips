@@ -160,7 +160,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_below="@id/hotel_check_out"
-        android:paddingTop="15dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
         >
           <!--Show Expand-->
           <TextView

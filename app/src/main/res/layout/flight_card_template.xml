@@ -243,18 +243,44 @@
 
     </android.support.v7.widget.LinearLayoutCompat>
 
+    <TextView
+      android:id="@+id/passenger_header"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentLeft="true"
+      android:layout_below="@id/left_column"
+      android:paddingTop="30dp"
+      android:text="Passenger(s):"
+      android:textAlignment="center"
+      android:textColor="@color/text_color_primary"
+      android:textSize="15dp"
+      android:textStyle="bold"/>
+
     <!--Expand Show-->
     <TextView
       android:id="@+id/passenger_1"
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_alignParentLeft="true"
-      android:layout_below="@id/left_column"
-      android:paddingTop="30dp"
+      android:layout_below="@id/passenger_header"
       android:text="passenger_name"
       android:textAlignment="center"
       android:textColor="@color/text_color_primary"
-      android:textSize="8pt"/>
+      android:textSize="8pt"
+      android:paddingBottom="16dp"/>
+
+    <TextView
+      android:id="@+id/passenger_rewards_header"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_below="@id/right_column"
+      android:paddingTop="30dp"
+      android:text="Rewards #:"
+      android:textAlignment="center"
+      android:textColor="@color/text_color_primary"
+      android:textSize="15dp"
+      android:textStyle="bold"/>
 
 
     <!--Expand Show-->
@@ -263,12 +289,12 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_alignParentRight="true"
-      android:layout_below="@id/right_column"
-      android:paddingTop="30dp"
+      android:layout_below="@id/passenger_rewards_header"
       android:text="20138961636"
       android:textAlignment="center"
       android:textColor="@color/text_color_primary"
-      android:textSize="8pt"/>
+      android:textSize="8pt"
+      android:paddingBottom="16dp"/>
 
     <ImageView
       android:id="@+id/expand_less_flight"
@@ -294,6 +320,7 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"
+      android:paddingLeft="25dp"
       android:layout_toEndOf="@+id/trash_flight"
       android:background="@color/colorAccent"
       android:src="@drawable/ic_edit"/>

@@ -115,6 +115,7 @@
           android:layout_height="match_parent"
           android:hint="State"
           android:inputType="text"
+          android:maxLength="2"
          />
 
       </android.support.design.widget.TextInputLayout>

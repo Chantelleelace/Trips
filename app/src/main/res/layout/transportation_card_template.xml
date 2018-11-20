@@ -159,6 +159,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_below="@+id/rental_pick_up"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
         >
 
       <!--Show Expand-->
@@ -249,6 +251,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:paddingLeft="25dp"
         android:layout_alignTop="@+id/expand_less_transportation"
         android:layout_toEndOf="@+id/trash_transportation"
         android:background="@color/colorAccent"

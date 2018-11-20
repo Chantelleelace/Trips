@@ -117,7 +117,8 @@ public class FlightFragment extends Fragment implements AddCallBack {
       final Flight flight = getItem(position);
       ((TextView) view.findViewById(R.id.flight_number)).setText(flight.getFlightNumber());
       ((TextView) view.findViewById(R.id.passenger_1)).setText(flight.getPassengerName());
-      ((TextView) view.findViewById(R.id.passenger_1_rewards)).setText(flight.getFlightRewards());
+      ((TextView) view.findViewById(R.id.passenger_1_rewards))
+          .setText("#" + flight.getFlightRewards());
       ((TextView) view.findViewById(R.id.airport_code_outbound))
           .setText(flight.getDepartureAirport());
       ((TextView) view.findViewById(R.id.airport_code_departure_1))
@@ -138,7 +139,7 @@ public class FlightFragment extends Fragment implements AddCallBack {
       ((TextView) view.findViewById(R.id.arrival_time))
           .setText(timeFormat.format(flight.getArrival()));
       ((TextView) view.findViewById(R.id.flight_confirmation))
-          .setText(flight.getConfirmationNumber());
+          .setText("#" + flight.getConfirmationNumber());
       Duration length = null;
       if (flight.getDeparture() != null && flight.getArrival() != null) {
         length = Duration.between(LocalDateTime.ofInstant(flight.getDeparture().toInstant(),
@@ -187,6 +188,9 @@ public class FlightFragment extends Fragment implements AddCallBack {
     view.findViewById(R.id.airport_code_arrival_1).setVisibility(visibilityTop);
     view.findViewById(R.id.flight_length).setVisibility(visibilityTop);
     view.findViewById(R.id.expand_more_flight).setVisibility(visibilityTop);
+    view.findViewById(R.id.expand_more_flight).setVisibility(visibilityTop);
+    view.findViewById(R.id.passenger_header).setVisibility(visibilityBottom);
+    view.findViewById(R.id.passenger_rewards_header).setVisibility(visibilityBottom);
     view.findViewById(R.id.passenger_1).setVisibility(visibilityBottom);
     view.findViewById(R.id.passenger_1_rewards).setVisibility(visibilityBottom);
     view.findViewById(R.id.airport_code_outbound).setVisibility(visibilityBottom);
