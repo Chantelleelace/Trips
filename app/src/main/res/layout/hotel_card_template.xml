@@ -89,6 +89,7 @@
         android:layout_toRightOf="@id/hotel_picture"
         android:textColor="@color/text_color_primary"
         android:layout_below="@+id/hotel_address"
+        android:inputType="phone"
         android:text="@string/hotel_phone"
         android:textSize="8pt"
         />

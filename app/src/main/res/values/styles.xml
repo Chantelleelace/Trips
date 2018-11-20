@@ -48,4 +48,9 @@
     <item name="cardBackgroundColor">@color/colorAccent</item>
   </style>
 
+
+  <style name="InputField" parent="android:TextAppearance">
+    <item name="android:textColorHint">@color/text_color_primary</item>
+    <item name="android:textColor">@color/text_color_primary</item>
+  </style>
 </resources>

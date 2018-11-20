@@ -21,14 +21,16 @@
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:textColorHint="@color/text_color_primary"
+        app:hintTextAppearance="@style/InputField"
         android:layout_margin="@dimen/activity_horizontal_margin"
+        android:backgroundTint="@color/text_color_primary"
         app:hintAnimationEnabled="true">
 
         <android.support.design.widget.TextInputEditText
           android:id="@+id/hotel_name_input"
           android:layout_width="match_parent"
-          android:textColor="@color/text_color_primary"
           android:layout_height="wrap_content"
+          android:textColorHint="@color/text_color_primary"
           android:hint="Hotel"
           android:textSize="10sp"/>
 
@@ -38,6 +40,7 @@
         android:layout_width="110dp"
         android:layout_height="match_parent"
         android:textColorHint="@color/text_color_primary"
+        app:hintTextAppearance="@style/InputField"
         android:layout_gravity="center"
         android:layout_margin="@dimen/activity_horizontal_margin"
         app:hintAnimationEnabled="false">
@@ -66,6 +69,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textColorHint="@color/text_color_primary"
+        app:hintTextAppearance="@style/InputField"
         android:layout_margin="@dimen/activity_horizontal_margin"
         app:hintAnimationEnabled="false">
 
@@ -91,6 +95,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textColorHint="@color/text_color_primary"
+        app:hintTextAppearance="@style/InputField"
         android:layout_margin="@dimen/activity_horizontal_margin"
         app:hintAnimationEnabled="false">
 
@@ -110,6 +115,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:textColorHint="@color/text_color_primary"
+        app:hintTextAppearance="@style/InputField"
         android:layout_margin="@dimen/activity_horizontal_margin"
         app:hintAnimationEnabled="false">
 
@@ -129,6 +135,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:textColorHint="@color/text_color_primary"
+        app:hintTextAppearance="@style/InputField"
         android:layout_margin="@dimen/activity_horizontal_margin"
         app:hintAnimationEnabled="false">
 
@@ -153,6 +160,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColorHint="@color/text_color_primary"
+        app:hintTextAppearance="@style/InputField"
         android:layout_margin="@dimen/activity_horizontal_margin"
         app:hintAnimationEnabled="false">
 
@@ -180,6 +188,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:textColorHint="@color/text_color_primary"
+        app:hintTextAppearance="@style/InputField"
         android:layout_margin="@dimen/activity_horizontal_margin"
         >
 
@@ -198,6 +207,7 @@
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:textColorHint="@color/text_color_primary"
+        app:hintTextAppearance="@style/InputField"
         android:layout_gravity="center"
         android:layout_margin="@dimen/activity_horizontal_margin"
         app:hintAnimationEnabled="false">
@@ -224,6 +234,7 @@
         android:layout_width="70dp"
         android:layout_height="wrap_content"
         android:textColorHint="@color/text_color_primary"
+        app:hintTextAppearance="@style/InputField"
         android:layout_margin="@dimen/activity_horizontal_margin"
         app:hintAnimationEnabled="false">
 
@@ -242,6 +253,7 @@
         android:layout_width="70dp"
         android:layout_height="match_parent"
         android:textColorHint="@color/text_color_primary"
+        app:hintTextAppearance="@style/InputField"
         android:layout_margin="@dimen/activity_horizontal_margin"
         app:hintAnimationEnabled="false">
 
@@ -260,6 +272,7 @@
         android:layout_width="70dp"
         android:layout_height="match_parent"
         android:textColorHint="@color/text_color_primary"
+        app:hintTextAppearance="@style/InputField"
         android:layout_margin="@dimen/activity_horizontal_margin"
         app:hintAnimationEnabled="false">
 
@@ -285,6 +298,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:textColorHint="@color/text_color_primary"
+        app:hintTextAppearance="@style/InputField"
         android:layout_margin="@dimen/activity_horizontal_margin"
         app:hintAnimationEnabled="false">
 
