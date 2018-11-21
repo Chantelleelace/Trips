@@ -43,6 +43,15 @@ public class Hotel {
     @ColumnInfo(name = "hotel_address")
     private String hotelAddress;
 
+    @ColumnInfo(name = "hotel_city")
+    private String hotelCity;
+
+    @ColumnInfo(name = "hotel_state")
+    private String hotelState;
+
+    @ColumnInfo(name = "hotel_zip")
+    private String hotelZip;
+
     @ColumnInfo(name = "hotel_phone")
     private String hotelPhone;
 
@@ -143,5 +152,29 @@ public class Hotel {
 
     public void setNameOnResrvation(String nameOnResrvation) {
         this.nameOnResrvation = nameOnResrvation;
+    }
+
+    public String getHotelCity() {
+        return hotelCity;
+    }
+
+    public void setHotelCity(String hotelCity) {
+        this.hotelCity = hotelCity;
+    }
+
+    public String getHotelState() {
+        return hotelState;
+    }
+
+    public void setHotelState(String hotelState) {
+        this.hotelState = hotelState;
+    }
+
+    public String getHotelZip() {
+        return hotelZip;
+    }
+
+    public void setHotelZip(String hotelZip) {
+        this.hotelZip = hotelZip;
     }
 }

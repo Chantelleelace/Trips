@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  xmlns:tools="http://schemas.android.com/tools"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
   tools:context=".controller.fragment.HotelFragment"
   >
 
   <android.support.v7.widget.CardView
     android:id="@+id/hotel_card_1"
+    style="@style/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    style="@style/cardView"
     >
 
     <RelativeLayout
@@ -33,30 +33,30 @@
         android:id="@+id/hotel_picture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/hotel_picture_small"
+        android:layout_marginRight="16dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginRight="16dp"
+        android:src="@drawable/hotel_picture_small"
         />
 
       <!--Always Shown-->
       <TextView
         android:id="@+id/hotel_name"
+        style="@style/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textView"
-        android:layout_toRightOf="@id/hotel_picture"
         android:layout_alignParentTop="true"
-        android:textSize="30sp"
+        android:layout_toRightOf="@id/hotel_picture"
         android:text="Hotel Name"
+        android:textSize="30sp"
         />
 
       <!--Hide Expand-->
       <TextView
         android:id="@+id/check_in_date"
+        style="@style/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textView"
         android:layout_below="@id/hotel_name"
         android:layout_toRightOf="@id/hotel_picture"
         android:text="check_in_date"
@@ -64,21 +64,21 @@
 
       <TextView
         android:id="@+id/check_in_dash"
+        style="@style/textView"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textView"
         android:layout_below="@id/hotel_name"
         android:layout_toRightOf="@id/check_in_date"
         android:text=" - "
-        android:textStyle="bold"
         />
 
       <!--Hide Expand-->
       <TextView
         android:id="@+id/check_out_date"
+        style="@style/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textView"
         android:layout_below="@id/hotel_name"
         android:layout_toRightOf="@id/check_in_dash"
         android:text="check_out_date"
@@ -87,23 +87,57 @@
       <!--Show Expand-->
       <TextView
         android:id="@+id/hotel_address"
+        style="@style/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textView"
-        android:layout_toRightOf="@id/hotel_picture"
-        android:textColor="@color/text_color_primary"
         android:layout_below="@+id/hotel_name"
+        android:layout_toRightOf="@id/hotel_picture"
         android:text="@string/hotel_address"
+        android:textColor="@color/text_color_primary"
         />
+      <LinearLayout
+        android:id="@+id/city_state_zip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/hotel_address"
+        android:layout_alignParentRight="true"
+        android:orientation="horizontal">
+◘
+        <!--Show Expand-->
+        <TextView
+          android:id="@+id/hotel_city"
+          style="@style/textView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="hotel_city"
+          />
+
+        <TextView
+          android:id="@+id/hotel_state"
+          style="@style/textView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="hotel_state"
+          />
+
+        <TextView
+          android:id="@+id/hotel_zip"
+          style="@style/textView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="hotel_zip"
+          />
+
+      </LinearLayout>
 
       <!--Show Expand-->
       <TextView
         android:id="@+id/hotel_phone"
+        style="@style/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textView"
+        android:layout_below="@+id/city_state_zip"
         android:layout_toRightOf="@id/hotel_picture"
-        android:layout_below="@+id/hotel_address"
         android:inputType="phone"
         android:text="@string/hotel_phone"
         />
@@ -111,46 +145,46 @@
       <!--Show Expand-->
       <TextView
         android:id="@+id/check_in_date_2"
+        style="@style/textView"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textView"
         android:layout_below="@id/hotel_phone"
         android:layout_toRightOf="@id/hotel_picture"
         android:text="Check In:"
-        android:textStyle="bold"
         />
 
       <!--Show Expand-->
       <TextView
         android:id="@+id/check_out_date_2"
+        style="@style/textView"
+        android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textView"
         android:layout_below="@id/check_in_date_2"
         android:layout_toRightOf="@id/hotel_picture"
         android:text="Check Out:"
-        android:textStyle="bold"
         />
 
       <!--Show Expand-->
       <TextView
         android:id="@+id/hotel_check_out"
+        style="@style/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textView"
-        android:layout_toRightOf="@id/check_out_date_2"
         android:layout_below="@+id/hotel_check_in"
+        android:layout_toRightOf="@id/check_out_date_2"
         android:text="check-out date"
         />
 
       <!--Show Expand-->
       <TextView
         android:id="@+id/hotel_check_in"
+        style="@style/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/textView"
-        android:layout_toRightOf="@id/check_in_date_2"
         android:layout_below="@+id/hotel_phone"
+        android:layout_toRightOf="@id/check_in_date_2"
         android:text="check-in date"
         />
 
@@ -158,60 +192,60 @@
         android:id="@+id/user_data_hotel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_below="@id/hotel_check_out"
         android:paddingTop="16dp"
         android:paddingBottom="16dp"
+        android:orientation="vertical"
         >
-          <!--Show Expand-->
-          <TextView
-            android:id="@+id/name_on_reservation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/textView"
-            android:text="Name on Reservation"
-            android:textStyle="bold|italic"
-            />
+        <!--Show Expand-->
+        <TextView
+          android:id="@+id/name_on_reservation"
+          style="@style/textView"
+          android:textStyle="bold|italic"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Name on Reservation"
+          />
 
-          <TextView
-            android:id="@+id/hotel_confirmation"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/textView"
-            android:text="Confirmation #"
-            />
+        <TextView
+          android:id="@+id/hotel_confirmation"
+          style="@style/textView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Confirmation #"
+          />
 
-          <!--Show Expand-->
-          <TextView
-            android:id="@+id/hotel_rewards"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/textView"
-            android:layout_below="@+id/hotel_confirmation"
-            android:text="Rewards #"
-            />
+        <!--Show Expand-->
+        <TextView
+          android:id="@+id/hotel_rewards"
+          style="@style/textView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/hotel_confirmation"
+          android:text="Rewards #"
+          />
 
-          <!--Show Expand-->
-          <TextView
-            android:id="@+id/room_type"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/textView"
-            android:layout_below="@+id/hotel_rewards"
-            android:text="2 ROOM SUITE­1 KING BED­NONSMOKING STANDARD ROOM REWARD"
-            android:singleLine="false"
-            />
+        <!--Show Expand-->
+        <TextView
+          android:id="@+id/room_type"
+          style="@style/textView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/hotel_rewards"
+          android:singleLine="false"
+          android:text="2 ROOM SUITE­1 KING BED­NONSMOKING STANDARD ROOM REWARD"
+          />
 
-          <!--Show Expand-->
-          <TextView
-            android:id="@+id/hotel_cost"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/textView"
-            android:layout_below="@+id/room_type"
-            android:text="$$$$"
-            android:textStyle="bold"
-            />
+        <!--Show Expand-->
+        <TextView
+          android:id="@+id/hotel_cost"
+          style="@style/textView"
+          android:textStyle="bold"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/room_type"
+          android:text="$$$$"
+          />
 
       </LinearLayout>
 
@@ -228,8 +262,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_below="@+id/user_data_hotel"
         android:layout_alignParentLeft="true"
+        android:layout_below="@+id/user_data_hotel"
         android:background="@color/colorAccent"
         android:src="@drawable/ic_trash"/>
 
@@ -237,9 +271,9 @@
         android:id="@+id/edit_hotel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="25dp"
         android:layout_alignParentBottom="true"
         android:layout_toEndOf="@+id/trash_hotel"
+        android:paddingLeft="25dp"
         android:background="@color/colorAccent"
         android:src="@drawable/ic_edit"/>
 

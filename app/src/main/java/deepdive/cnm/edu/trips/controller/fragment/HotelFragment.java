@@ -101,20 +101,6 @@ public class HotelFragment extends Fragment implements AddCallBack {
       super(context, 0, objects);
     }
 
-    public class GoogleImageTask extends AsyncTask<String, Void, Void> {
-
-      @Override
-      protected Void doInBackground(String... strings) {
-        Retrofit restAdapter = new Retrofit.Builder()
-            .baseUrl("https://www.googleapis.com")
-            .build();
-        GoogleSearchApi restApi = restAdapter.create(GoogleSearchApi.class);
-        restApi.customSearch(getString(R.string.googleSearchApiKey), "006852542688344643578:bqsiyiqglvw", "pictures");
-        return null;
-      }
-    }
-
-
 
     @NonNull
     @Override

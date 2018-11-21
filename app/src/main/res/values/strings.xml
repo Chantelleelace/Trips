@@ -20,4 +20,6 @@
   <string name="check_out_date">check_out_date</string>
   <string name="check_out_time">check_out_time</string>
   <string name="cost">cost_due_at_check_out</string>
+  <string name="facebook_app_id">610307222722254</string>
+  <string name="fb_login_protocol_scheme">fb610307222722254</string>
 </resources>
