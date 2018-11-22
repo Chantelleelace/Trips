@@ -10,10 +10,10 @@
     <item name="android:colorForeground">@color/colorPrimary</item>
     <item name="android:textColorPrimary">@color/text_color_primary</item>
     <item name="android:textColorSecondary">@color/text_color_primary</item>
-    <item name="android:textColorSecondaryInverse">@color/text_color_primary</item>
+    <item name="android:textColorSecondaryInverse">@color/textColorSecondaryInverse</item>
     <item name="android:navigationBarColor">@color/navigation_bar_color</item>
     <item name="android:statusBarColor">@color/colorPrimaryDark</item>
-    <item name="android:textColorPrimaryInverse">@color/text_color_primary</item>
+    <item name="android:textColorPrimaryInverse">@color/textColorPrimaryInverse</item>
     <item name="android:windowBackground">@color/colorPrimary</item>
     <item name="android:colorAccent">@color/accent_material_light</item>
   </style>
@@ -65,15 +65,16 @@
     <item name="android:padding">2dp</item>
   </style>
 
-  <!--<style name="AppBaseTheme" parent="android:Theme.Material.Light">-->
-    <!--<item name="android:datePickerDialogTheme">@style/MyDatePickerDialogTheme</item>-->
-  <!--</style>-->
-
-  <!--<style name="MyDatePickerDialogTheme" parent="android:Theme.Material.Light.Dialog">-->
-    <!--<item name="android:datePickerStyle">@color/colorPrimary</item>-->
-    <!--<item name="android:colorAccent">@color/colorAccent</item>-->
-  <!--</style>-->
-
-
 
 </resources>
+
+  <!--<style name="MyDatePickerDialogTheme" parent="android:Theme.Material.Light.Dialog">-->
+  <!--<item name="android:datePickerStyle">@style/MyDatePickerStyle</item>-->
+  <!--</style>-->
+
+  <!--<style name="MyDatePickerStyle" parent="@android:style/Widget.Material.Light.DatePicker">-->
+  <!--<item name="android:headerBackground">@color/colorPrimary</item>-->
+  <!--<item name="android:dayOfWeekBackground">@color/colorPrimary</item>-->
+  <!--<item name="android:calendarTextColor">@color/colorPrimaryDark</item>-->
+  <!--</style>-->
+  <!--<item name="android:datePickerDialogTheme">@style/MyDatePickerDialogTheme</item>-->

@@ -99,6 +99,21 @@ public class AddHotel extends AddDialog {
                 view.findViewById(R.id.hotel_address_input)).getText().toString());
           }
           if ((((TextInputEditText)
+              view.findViewById(R.id.hotel_city_input)).getText() != null)) {
+            hotel.setHotelCity(((TextInputEditText)
+                view.findViewById(R.id.hotel_city_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.hotel_state_input)).getText() != null)) {
+            hotel.setHotelState(((TextInputEditText)
+                view.findViewById(R.id.hotel_state_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.hotel_zip_input)).getText() != null)) {
+            hotel.setHotelZip(((TextInputEditText)
+                view.findViewById(R.id.hotel_zip_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
               view.findViewById(R.id.hotel_phone_input)).getText() != null)) {
             hotel.setHotelPhone(((TextInputEditText)
                 view.findViewById(R.id.hotel_phone_input)).getText().toString());
@@ -168,6 +183,12 @@ public class AddHotel extends AddDialog {
       ((TextInputEditText) view.findViewById(R.id.hotel_cost_input)).setText(hotel.getCost());
       ((TextInputEditText) view.findViewById(R.id.hotel_address_input))
           .setText(hotel.getHotelAddress());
+      ((TextInputEditText) view.findViewById(R.id.hotel_city_input))
+          .setText(hotel.getHotelCity());
+      ((TextInputEditText) view.findViewById(R.id.hotel_state_input))
+          .setText(hotel.getHotelState());
+      ((TextInputEditText) view.findViewById(R.id.hotel_zip_input))
+          .setText(hotel.getHotelZip());
       ((TextInputEditText) view.findViewById(R.id.hotel_phone_input))
           .setText(hotel.getHotelPhone());
       ((TextInputEditText) view.findViewById(R.id.hotel_name_on_reservation_input))

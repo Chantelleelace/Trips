@@ -12,4 +12,6 @@
   <color name="navigation_bar_color">#442c2e</color>
   <color name="primary_text_default_material_dark">#442c2e</color>
   <color name="accent_material_light">#442c2e</color>
+  <color name="textColorPrimaryInverse">#fedbd0</color>
+  <color name="textColorSecondaryInverse">#fedbd0</color>
 </resources>

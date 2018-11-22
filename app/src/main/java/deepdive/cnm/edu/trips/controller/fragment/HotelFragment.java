@@ -110,6 +110,9 @@ public class HotelFragment extends Fragment implements AddCallBack {
       Hotel hotel = getItem(position);
       ((TextView) view.findViewById(R.id.hotel_name)).setText(hotel.getHotelName());
       ((TextView) view.findViewById(R.id.hotel_address)).setText(hotel.getHotelAddress());
+      ((TextView) view.findViewById(R.id.hotel_city)).setText(hotel.getHotelCity() + ", ");
+      ((TextView) view.findViewById(R.id.hotel_state)).setText(hotel.getHotelState() + " ");
+      ((TextView) view.findViewById(R.id.hotel_zip)).setText(hotel.getHotelZip());
       ((TextView) view.findViewById(R.id.hotel_phone)).setText(hotel.getHotelPhone());
       ((TextView) view.findViewById(R.id.hotel_check_in)).setText(hotel.getCheckIn());
       ((TextView) view.findViewById(R.id.hotel_check_out)).setText(hotel.getCheckOut());
@@ -157,6 +160,9 @@ public class HotelFragment extends Fragment implements AddCallBack {
     view.findViewById(R.id.check_in_dash).setVisibility(visibilityTop);
     view.findViewById(R.id.expand_more_hotel).setVisibility(visibilityTop);
     view.findViewById(R.id.hotel_address).setVisibility(visibilityBottom);
+    view.findViewById(R.id.hotel_city).setVisibility(visibilityBottom);
+    view.findViewById(R.id.hotel_state).setVisibility(visibilityBottom);
+    view.findViewById(R.id.hotel_zip).setVisibility(visibilityBottom);
     view.findViewById(R.id.hotel_phone).setVisibility(visibilityBottom);
     view.findViewById(R.id.hotel_check_in).setVisibility(visibilityBottom);
     view.findViewById(R.id.hotel_check_out).setVisibility(visibilityBottom);
