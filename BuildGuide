@@ -1,0 +1,6 @@
+1. Navigate to the Trips repository on GitHub.
+2. Click on "Clone Repository"
+3. In IntelliJ, open from existing sources and input the cloned repositories URL. 
+4. Open the newly cloned project. 
+5. Sync and Build the project so all libraries are functioning properly. 
+6. Run the program. 
