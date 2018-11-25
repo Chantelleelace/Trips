@@ -23,6 +23,15 @@ public class Transportation {
   @ColumnInfo(name = "company_address")
   private String rentalCompanyAddress;
 
+  @ColumnInfo(name = "rental_city")
+  private String rentalCity;
+
+  @ColumnInfo(name = "rental_state")
+  private String rentalState;
+
+  @ColumnInfo(name = "rental_zip")
+  private String rentalZip;
+
   @ColumnInfo(name = "company_phone")
   private String rentalCompanyPhone;
 
@@ -141,5 +150,29 @@ public class Transportation {
 
   public void setRentalConfirmation(String rentalConfirmation) {
     this.rentalConfirmation = rentalConfirmation;
+  }
+
+  public String getRentalCity() {
+    return rentalCity;
+  }
+
+  public void setRentalCity(String rentalCity) {
+    this.rentalCity = rentalCity;
+  }
+
+  public String getRentalState() {
+    return rentalState;
+  }
+
+  public void setRentalState(String rentalState) {
+    this.rentalState = rentalState;
+  }
+
+  public String getRentalZip() {
+    return rentalZip;
+  }
+
+  public void setRentalZip(String rentalZip) {
+    this.rentalZip = rentalZip;
   }
 }

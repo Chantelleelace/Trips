@@ -96,6 +96,41 @@
         android:text="company_address"
         />
 
+      <LinearLayout
+        android:id="@+id/rental_city_state_zip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rental_company_address"
+        android:layout_toRightOf="@id/rental_company_logo"
+        android:orientation="horizontal">
+
+        <!--Show Expand-->
+        <TextView
+          android:id="@+id/rental_city"
+          style="@style/textView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="rental_city"
+          />
+
+        <TextView
+          android:id="@+id/rental_state"
+          style="@style/textView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="rental_state"
+          />
+
+        <TextView
+          android:id="@+id/rental_zip"
+          style="@style/textView"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="rental_zip"
+          />
+
+      </LinearLayout>
+
       <!--Show Expand-->
       <TextView
         android:id="@+id/rental_company_phone"
@@ -103,7 +138,7 @@
         android:layout_height="wrap_content"
         style="@style/textView"
         android:layout_toRightOf="@id/rental_company_logo"
-        android:layout_below="@+id/rental_company_address"
+        android:layout_below="@+id/rental_city_state_zip"
         android:text="rental phone"
         />
 

@@ -45,7 +45,7 @@ public class FlightFragment extends Fragment implements AddCallBack {
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-    view = (ListView) inflater.inflate(R.layout.flight_fragment, container, false);
+
     new FlightTask().execute();
     return view;
   }

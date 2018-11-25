@@ -111,6 +111,11 @@ public class TransportationFragment extends Fragment implements AddCallBack {
           .setText(transportation.getRentalCompanyName());
       ((TextView) view.findViewById(R.id.rental_company_address))
           .setText(transportation.getRentalCompanyAddress());
+      ((TextView) view.findViewById(R.id.rental_city))
+          .setText(transportation.getRentalCity() + ", ");
+      ((TextView) view.findViewById(R.id.rental_state))
+          .setText(transportation.getRentalState() + " ");
+      ((TextView) view.findViewById(R.id.rental_zip)).setText(transportation.getRentalZip());
       ((TextView) view.findViewById(R.id.rental_company_phone))
           .setText(transportation.getRentalCompanyPhone());
       ((TextView) view.findViewById(R.id.rental_return))
@@ -167,6 +172,9 @@ public class TransportationFragment extends Fragment implements AddCallBack {
     view.findViewById(R.id.rental_return_date).setVisibility(visibilityTop);
     view.findViewById(R.id.rental_pick_up_dash).setVisibility(visibilityTop);
     view.findViewById(R.id.expand_more_transportation).setVisibility(visibilityTop);
+    view.findViewById(R.id.rental_city).setVisibility(visibilityBottom);
+    view.findViewById(R.id.rental_state).setVisibility(visibilityBottom);
+    view.findViewById(R.id.rental_zip).setVisibility(visibilityBottom);
     view.findViewById(R.id.rental_company_address).setVisibility(visibilityBottom);
     view.findViewById(R.id.rental_company_phone).setVisibility(visibilityBottom);
     view.findViewById(R.id.rental_return).setVisibility(visibilityBottom);

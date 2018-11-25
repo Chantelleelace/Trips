@@ -95,6 +95,7 @@
         android:text="@string/hotel_address"
         android:textColor="@color/text_color_primary"
         />
+
       <LinearLayout
         android:id="@+id/city_state_zip"
         android:layout_width="wrap_content"
@@ -102,7 +103,7 @@
         android:layout_below="@id/hotel_address"
         android:layout_toRightOf="@id/hotel_picture"
         android:orientation="horizontal">
-◘
+
         <!--Show Expand-->
         <TextView
           android:id="@+id/hotel_city"

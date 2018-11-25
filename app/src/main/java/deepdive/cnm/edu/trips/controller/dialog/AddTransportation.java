@@ -68,6 +68,21 @@ public class AddTransportation extends AddDialog {
                 view.findViewById(R.id.rental_address_input)).getText().toString());
           }
           if ((((TextInputEditText)
+              view.findViewById(R.id.rental_city_input)).getText() != null)) {
+            transportation.setRentalCity(((TextInputEditText)
+                view.findViewById(R.id.rental_city_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.rental_state_input)).getText() != null)) {
+            transportation.setRentalState(((TextInputEditText)
+                view.findViewById(R.id.rental_state_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
+              view.findViewById(R.id.rental_zip_input)).getText() != null)) {
+            transportation.setRentalZip(((TextInputEditText)
+                view.findViewById(R.id.rental_zip_input)).getText().toString());
+          }
+          if ((((TextInputEditText)
               view.findViewById(R.id.rental_phone_number_input)).getText() != null)) {
             transportation.setRentalCompanyPhone(((TextInputEditText)
                 view.findViewById(R.id.rental_phone_number_input)).getText().toString());
@@ -160,6 +175,12 @@ public class AddTransportation extends AddDialog {
           .setText(transportation.getRentalCompanyName());
       ((TextInputEditText) view.findViewById(R.id.rental_address_input))
           .setText(transportation.getRentalCompanyAddress());
+      ((TextInputEditText) view.findViewById(R.id.rental_city_input))
+          .setText(transportation.getRentalCity());
+      ((TextInputEditText) view.findViewById(R.id.rental_state_input))
+          .setText(transportation.getRentalState());
+      ((TextInputEditText) view.findViewById(R.id.rental_zip_input))
+          .setText(transportation.getRentalZip());
       ((TextInputEditText) view.findViewById(R.id.rental_phone_number_input))
           .setText(transportation.getRentalCompanyPhone());
       ((TextInputEditText) view.findViewById(R.id.return_date_input))

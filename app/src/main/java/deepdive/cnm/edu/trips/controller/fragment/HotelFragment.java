@@ -16,12 +16,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 import deepdive.cnm.edu.trips.MainActivity.AddCallBack;
 import deepdive.cnm.edu.trips.R;
-import deepdive.cnm.edu.trips.controller.GoogleSearchApi;
 import deepdive.cnm.edu.trips.model.db.TripsDatabase;
 import deepdive.cnm.edu.trips.controller.dialog.AddHotel;
 import deepdive.cnm.edu.trips.model.entity.Hotel;
 import java.util.List;
-import retrofit2.Retrofit;
 
 
 /**
