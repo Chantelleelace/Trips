@@ -1,16 +1,14 @@
 package deepdive.cnm.edu.trips;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.CallbackManager.Factory;
-import com.facebook.FacebookButtonBase;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import java.util.Arrays;
@@ -71,18 +69,6 @@ public class Login extends AppCompatActivity {
       callbackManager.onActivityResult(requestCode, resultCode, data);
       super.onActivityResult(requestCode, resultCode, data);
   }
-
-//  private void signInFb(){
-//    AccessToken token = AccessToken.getCurrentAccessToken();
-//    if (token==null){
-//      ().logInWithReadPermissions(Login.this));
-//    }else{
-//      LoginManager.getInstance().logOut();
-//      Toast.makeText(this, Toast.LENGTH_LONG).show();
-//
-//    }
-//  }
-
 
 
 }
