@@ -1,0 +1,374 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "864eba516d541e1a81c8613f5f9a74d0",
+    "entities": [
+      {
+        "tableName": "Flight",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`flight_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `person_id` INTEGER NOT NULL, `arrival_airport` TEXT, `departure_airport` TEXT, `departure` INTEGER, `arrival` INTEGER, `flight_number` TEXT, `confirmation_number` TEXT, `passenger_name` TEXT, `flight_rewards` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "flight_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "personId",
+            "columnName": "person_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "arrivalAirport",
+            "columnName": "arrival_airport",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "departureAirport",
+            "columnName": "departure_airport",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "departure",
+            "columnName": "departure",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "arrival",
+            "columnName": "arrival",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "flightNumber",
+            "columnName": "flight_number",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "confirmationNumber",
+            "columnName": "confirmation_number",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "passengerName",
+            "columnName": "passenger_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "flightRewards",
+            "columnName": "flight_rewards",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "flight_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Flight_person_id",
+            "unique": false,
+            "columnNames": [
+              "person_id"
+            ],
+            "createSql": "CREATE  INDEX `index_Flight_person_id` ON `${TABLE_NAME}` (`person_id`)"
+          },
+          {
+            "name": "index_Flight_departure",
+            "unique": false,
+            "columnNames": [
+              "departure"
+            ],
+            "createSql": "CREATE  INDEX `index_Flight_departure` ON `${TABLE_NAME}` (`departure`)"
+          },
+          {
+            "name": "index_Flight_arrival",
+            "unique": false,
+            "columnNames": [
+              "arrival"
+            ],
+            "createSql": "CREATE  INDEX `index_Flight_arrival` ON `${TABLE_NAME}` (`arrival`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Hotel",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`hotel_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `person_id` INTEGER NOT NULL, `hotel_name` TEXT, `check_in` TEXT, `check_out` TEXT, `hotel_confirmation` TEXT, `hotel_rewards` TEXT, `room_type` TEXT, `hotel_cost` TEXT, `hotel_address` TEXT, `hotel_city` TEXT, `hotel_state` TEXT, `hotel_zip` TEXT, `hotel_phone` TEXT, `name_on_reservation` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "hotel_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "personId",
+            "columnName": "person_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hotelName",
+            "columnName": "hotel_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "checkIn",
+            "columnName": "check_in",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "checkOut",
+            "columnName": "check_out",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hotelConfirmation",
+            "columnName": "hotel_confirmation",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hotelRewards",
+            "columnName": "hotel_rewards",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "roomType",
+            "columnName": "room_type",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "cost",
+            "columnName": "hotel_cost",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hotelAddress",
+            "columnName": "hotel_address",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hotelCity",
+            "columnName": "hotel_city",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hotelState",
+            "columnName": "hotel_state",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hotelZip",
+            "columnName": "hotel_zip",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "hotelPhone",
+            "columnName": "hotel_phone",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nameOnResrvation",
+            "columnName": "name_on_reservation",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "hotel_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Hotel_person_id",
+            "unique": false,
+            "columnNames": [
+              "person_id"
+            ],
+            "createSql": "CREATE  INDEX `index_Hotel_person_id` ON `${TABLE_NAME}` (`person_id`)"
+          },
+          {
+            "name": "index_Hotel_check_in",
+            "unique": false,
+            "columnNames": [
+              "check_in"
+            ],
+            "createSql": "CREATE  INDEX `index_Hotel_check_in` ON `${TABLE_NAME}` (`check_in`)"
+          },
+          {
+            "name": "index_Hotel_check_out",
+            "unique": false,
+            "columnNames": [
+              "check_out"
+            ],
+            "createSql": "CREATE  INDEX `index_Hotel_check_out` ON `${TABLE_NAME}` (`check_out`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Person",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`person_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "person_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "person_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Transportation",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`transportation_id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `person_id` INTEGER NOT NULL, `company_name` TEXT, `company_address` TEXT, `rental_city` TEXT, `rental_state` TEXT, `rental_zip` TEXT, `company_phone` TEXT, `pick_up` TEXT, `return` TEXT, `rental_rewards` TEXT, `car_type` TEXT, `rental_cost` TEXT, `name_on_rental_reservation` TEXT, `rental_confirmation` TEXT)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "transportation_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "personId",
+            "columnName": "person_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "rentalCompanyName",
+            "columnName": "company_name",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rentalCompanyAddress",
+            "columnName": "company_address",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rentalCity",
+            "columnName": "rental_city",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rentalState",
+            "columnName": "rental_state",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rentalZip",
+            "columnName": "rental_zip",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rentalCompanyPhone",
+            "columnName": "company_phone",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rentalPickUp",
+            "columnName": "pick_up",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rentalReturn",
+            "columnName": "return",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rentalRewards",
+            "columnName": "rental_rewards",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "carType",
+            "columnName": "car_type",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rentalCost",
+            "columnName": "rental_cost",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "nameOnRentalReservation",
+            "columnName": "name_on_rental_reservation",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rentalConfirmation",
+            "columnName": "rental_confirmation",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "transportation_id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [
+          {
+            "name": "index_Transportation_person_id",
+            "unique": false,
+            "columnNames": [
+              "person_id"
+            ],
+            "createSql": "CREATE  INDEX `index_Transportation_person_id` ON `${TABLE_NAME}` (`person_id`)"
+          }
+        ],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"864eba516d541e1a81c8613f5f9a74d0\")"
+    ]
+  }
+}
